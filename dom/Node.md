@@ -37,7 +37,7 @@ var name = node.nodeName;   //'#text'
     <script src="test.js"></script>
 </body>
 ```
-after dom loaded, run script:
+After dom loaded, run script:
 
 ```javascript
 var nodes = document.body.childNodes;
@@ -65,9 +65,45 @@ for (var i = 0; i < len; i++) {
 ```
 
 
-Node.firstChild
+##### Node.firstChild
 
-Node.lastChild
+The Node.firstChild read-only property returns the node's first child in the tree, or null if the node is childless
+
+```html
+<p id="para-01"><span>First span</span><span>Middle span</span><span>Last span</span></p>
+```
+```javascript
+var pNode = document.getElementById('para-01');
+var first = pNode.firstChild;   // <span>First span</span>
+```
+##### Node.lastChild
+
+The Node.lastChild read-only property returns the last child of the node. It returns null if there are no child elements
+
+```html
+<p id="para-01"><span>First span</span><span>Middle span</span><span>Last span</span></p>
+```
+```javascript
+var pNode = document.getElementById('para-01');
+var last = pNode.lastChild;   // <span>Last span</span>
+```
+
+*Note:* If the Node contains whitespace, the firstNode or lastNode return a text node
+
+**Example**
+
+```html
+<p id="para-01">
+    <span>First span</span>
+    <span>Middle span</span>
+    <span>Last span</span>
+</p>
+```
+```javascript
+var pNode = document.getElementById('para-01');
+var first = pNode.firstChild;   //a node reference to text Node
+var last = pNode.lastChild;     //a node reference to text Node
+```
 
 Node.nextSibling
 
