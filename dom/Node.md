@@ -23,6 +23,47 @@ var type = node.nodeType;   //3 TEXT_NODE
 var name = node.nodeName;   //'#text'
 ```
 
+**Example2**
+
+```html
+<body>
+    <!-- This is a comment node! -->
+    <p>Click the button get info about the body element's child nodes.</p>
+    <button onclick="myFunction()">Try it</button>
+    <p><strong>Note:</strong> Whitespace inside elements is considered as text, and text
+    is considered as nodes. Comments are also considered as nodes.</p>
+    <p id="demo"></p>
+    <script src="test.js"></script>
+</body>
+```
+after dom loaded, run script:
+
+```javascript
+var nodes = document.body.childNodes;
+var len = nodes.length;
+for (var i = 0; i < len; i++) {
+    var type = nodes[i].nodeType;
+    var name = nodes[i].nodeName;
+    console.log(name);
+}
+
+// output
+// nodeName:#text nodeType:3
+// nodeName:#comment nodeType:8     comment
+// nodeName:#text nodeType:3
+// nodeName:P nodeType:1            p
+// nodeName:#text nodeType:3
+// nodeName:BUTTON nodeType:1       button
+// nodeName:#text nodeType:3
+// nodeName:P nodeType:1            p
+// nodeName:#text nodeType:3
+// nodeName:P nodeType:1            p
+// nodeName:#text nodeType:3
+// nodeName:SCRIPT nodeType:1       script
+// nodeName:#text nodeType:3
+```
+
+
 Node.firstChild
 
 Node.lastChild
