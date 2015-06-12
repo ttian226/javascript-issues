@@ -22,6 +22,7 @@ var node = nodes[0];        //first node
 var type = node.nodeType;   //3 TEXT_NODE 
 var name = node.nodeName;   //'#text'
 ```
+*Note:* Whitespace inside elements is considered as text
 
 **Example2**
 
