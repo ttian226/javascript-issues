@@ -105,9 +105,11 @@ var first = pNode.firstChild;   //a node reference to text Node
 var last = pNode.lastChild;     //a node reference to text Node
 ```
 
-Node.nextSibling
+##### Node.nodeName
 
-Node.nodeName
+interface | nodeName value
+----------|---------------
+Comment|'#comment'
 
 Node.nodeType
 
