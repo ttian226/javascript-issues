@@ -133,4 +133,13 @@ COMMENT_NODE|8
 DOCUMENT_NODE|9
 
 
-Node.nodeValue
+##### Node.nodeValue
+
+The Node.nodeValue property returns or sets the value of the current node. For the document itself, nodeValue returns null. For text, comment, and CDATA nodes, nodeValue returns the content of the node
+
+Attr | value of attribute
+-----|-------------------
+Comment|content of comment
+Document|null
+Element|null
+Text|content of the text node
