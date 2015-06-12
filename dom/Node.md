@@ -107,12 +107,30 @@ var last = pNode.lastChild;     //a node reference to text Node
 
 ##### Node.nodeName
 
+The Node.nodeName read-only property returns the name of the current node as a string.
+
+*The returned values for different types of nodes are:*
+
 interface | nodeName value
 ----------|---------------
 Comment|"#comment"
+Document|"#document"
 Text|"#text"
 Element|The value of Element.tagName
 
-Node.nodeType
+
+##### Node.nodeType
+
+The read-only Node.nodeType property returns an unsigned short integer representing the type of the node
+
+*type is an unsigned short with one of the following values:*
+
+Name | Value
+-----|------
+ELEMENT_NODE|1
+TEXT_NODE|3
+COMMENT_NODE|8
+DOCUMENT_NODE|9
+
 
 Node.nodeValue
