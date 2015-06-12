@@ -109,7 +109,9 @@ var last = pNode.lastChild;     //a node reference to text Node
 
 interface | nodeName value
 ----------|---------------
-Comment|'#comment'
+Comment|"#comment"
+Text|"#text"
+Element|The value of Element.tagName
 
 Node.nodeType
 
