@@ -143,3 +143,53 @@ Comment|content of comment
 Document|null
 Element|null
 Text|content of the text node
+
+
+##### Node.textContent
+
+```html
+<div id="div1">some text</div>
+```
+```javascript
+var div = document.getElementById('div1');
+
+// get the text content
+var content = div.textContent;      //some text
+
+// set content
+div.textContent = 'other text';     //content set to "other text"
+```
+
+##### Node.parentNode
+
+The Node.parentNode read-only property returns the parent of the specified node in the DOM tree
+
+```html
+<html>
+    <body>
+        <div id="div0"><div id="div1">some text</div></div>
+    </body>
+</html>
+```
+```javascript
+var div1 = document.getElementById('div1');
+var div0 = div1.parentNode;     // reference to div0
+var body = div0.parentNode;     // reference to body
+var html = body.parentNode;     // reference to html
+
+console.log(html.nodeType);     // 1 html still ELEMENT_NODE
+console.log(html.parentNode.nodeType);      // 9 DOCUMENT_NODE
+```
+
+##### Node.nextSibling
+
+##### Node.previousSibling
+
+```html
+<div id="div1"></div><div id="div2"></div><div id="div3"></div>
+```
+```javascript
+var div2 = document.getElementById('div2');
+var div3 = div2.nextSibling;
+var div1 = div2.previousSibling;
+```
