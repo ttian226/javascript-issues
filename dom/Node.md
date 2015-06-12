@@ -44,7 +44,7 @@ var len = nodes.length;
 for (var i = 0; i < len; i++) {
     var type = nodes[i].nodeType;
     var name = nodes[i].nodeName;
-    console.log(name);
+    console.log('nodeName:' + name + ' nodeType:' + type);
 }
 
 // output
