@@ -193,3 +193,92 @@ var div2 = document.getElementById('div2');
 var div3 = div2.nextSibling;
 var div1 = div2.previousSibling;
 ```
+
+#### Methods
+
+##### Node.appendChild()
+
+The **Node.appendChild()** method adds a node to the end of the list of children of a specified parent node. If the given child is a reference to an existing node in the document, appendChild() moves it from its current position to the new position
+
+
+**Example1**
+
+create new element <p> and append to <body> element
+
+```javascript
+var p = document.createElement('p');
+document.body.appendChild(p);
+```
+result:
+
+```html
+<body>
+    <p></p>
+</body>
+```
+
+**Example2**
+before append, html is like:
+
+```html
+<body>
+    <div id="div1"></div>
+    <div id="div0"></div>
+</body>
+```
+```javascript
+var div1 = document.getElementById('div1');
+var div0 = document.getElementById('div0');
+div0.appendChild(div1);
+```
+after append, div1's position has been changed
+
+```html
+<body>
+    <div id="div0"><div id="div1"></div></div>
+</body>
+```
+
+##### Node.cloneNode()
+
+The **Node.cloneNode()** method returns a duplicate of the node on which this method was called
+
+```javascript
+var dupNode = node.cloneNode(deep);
+```
+* *node:*The node to be cloned
+* *deep:*The new node that will be a clone of node
+* *dupNode:*true if the children of the node should also be cloned, or false to clone only the specified node, default is false
+
+```html
+<body>
+    <div id="div1"><div id="subdiv1"></div></div>
+    <div id="div0"></div>
+</body>
+```
+```javascript
+var div1 = document.getElementById('div1');
+var div0 = document.getElementById('div0');
+// no deep clone or equal to div1.cloneNode(false)
+var newdiv1 = div1.cloneNode();
+div0.appendChild(newdiv1);
+```
+```html
+<body>
+    <div id="div1"><div id="subdiv1"></div></div>
+    <div id="div0"><div id="div1"></div></div>
+</body>
+```
+
+deep clone
+
+```javascript
+var newdiv2 = div1.cloneNode(true);
+div0.appendChild(newdiv2);
+```
+```html
+<body>
+    <div id="div1"><div id="subdiv1"></div></div>
+    <div id="div0"><div id="div1"><div id="subdiv1"></div></div></div>
+</body>
+```
