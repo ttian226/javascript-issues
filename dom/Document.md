@@ -6,7 +6,37 @@
 
 Returns the <body> or <frameset> node of the current document, or null if no such element exists.
 
+##### document.documentElement
 
+The Document.documentElement read-only property returns the Element that is the root element of the document (for example, the <html> element for HTML documents).
+
+##### document.forms
+
+forms returns a collection (an HTMLCollection) of the form elements within the current document.
+
+##### document.head
+
+Returns the <head> element of the current document. If there are more than one <head> elements, the first one is returned
+
+##### document.images
+
+document.images returns a collection of the images in the current HTML document.
+
+*Note*
+```document.images.length``` – property, returns the number of images on the page.
+
+##### document.location
+
+The Document.location read-only property returns a **Location** object, which contains information about the URL of the document and provides methods for changing that URL and loading another URL
+
+```javascript
+document.location = 'http://www.mozilla.org';   //Equivalent to
+document.location.href = 'http://www.mozilla.org';
+```
+
+##### document.referrer
+
+Returns the [URI](http://www.w3.org/Addressing/#background) of the page that linked to this page.
 
 #### Methods
 
