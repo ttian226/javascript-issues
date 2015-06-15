@@ -198,7 +198,7 @@ var div1 = div2.previousSibling;
 
 ##### Node.appendChild()
 
-The **Node.appendChild()** method adds a node to the end of the list of children of a specified parent node. If the given child is a reference to an existing node in the document, appendChild() moves it from its current position to the new position
+The *Node.appendChild()* method adds a node to the end of the list of children of a specified parent node. If the given child is a reference to an existing node in the document, appendChild() moves it from its current position to the new position
 
 
 **Example1**
@@ -241,14 +241,14 @@ after append, div1's position has been changed
 
 ##### Node.cloneNode()
 
-The **Node.cloneNode()** method returns a duplicate of the node on which this method was called
+The *Node.cloneNode()* method returns a duplicate of the node on which this method was called
 
 ```javascript
 var dupNode = node.cloneNode(deep);
 ```
-* *node:*The node to be cloned
-* *deep:*The new node that will be a clone of node
-* *dupNode:*true if the children of the node should also be cloned, or false to clone only the specified node, default is false
+* *node:* The node to be cloned
+* *deep:* The new node that will be a clone of node
+* *dupNode:* true if the children of the node should also be cloned, or false to clone only the specified node, default is false
 
 ```html
 <body>
@@ -282,3 +282,109 @@ div0.appendChild(newdiv2);
     <div id="div0"><div id="div1"><div id="subdiv1"></div></div></div>
 </body>
 ```
+
+##### Node.hasChildNodes()
+
+The *Node.hasChildNodes()* method returns a Boolean value indicating whether the current Node has child nodes or not.
+
+##### Node.insertBefore()
+
+The Node.insertBefore() method inserts the specified node before a reference element as a child of the current node
+
+```javascript
+var insertedElement = parentElement.insertBefore(newElement, referenceElement);
+```
+
+* *insertedElement:* The node being inserted, that is newElement
+* *parentElement:* The parent of the newly inserted node.
+* *newElement:* The node to insert
+* *referenceElement:* The node before which newElement is inserted
+
+**Example**
+
+```html
+<div id="parentElement">
+    <span id="childElement">foo bar</span>
+</div>
+```
+```javascript
+var sp1 = document.createElement('span');
+var sp2 = document.getElementById('childElement');
+var parent = sp2.parentNode;
+var newnode = parent.insertBefore(sp1, sp2);
+console.log(newnode === sp1);   //ture
+```
+after insertBefore:
+
+```html
+<div id="parentElement">
+    <span></span>
+    <span id="childElement">foo bar</span>
+</div>
+```
+
+##### Node.removeChild()
+
+The Node.removeChild() method removes a child node from the DOM. Returns removed node
+
+```javascript
+var oldChild = element.removeChild(child);
+```
+
+* *child* is the child node to be removed from the DOM.
+* *element* is the parent node of child.
+* *oldChild* holds a reference to the removed child node. oldChild === child.
+
+**Example**
+
+```html
+<div id="top">
+    <div id="nested"></div>
+</div>
+```
+```javascript
+var d_top = document.getElementById('top');
+var d_nested = document.getElementById('nested');
+var throwawayNode = d_top.removeChild(d_nested);
+console.log(throwawayNode === d_nested);    //true
+```
+
+#### Node.replaceChild()
+
+The Node.replaceChild() method replaces one child node of the specified element with another
+
+```javascript
+replacedNode = parentNode.replaceChild(newChild, oldChild);
+```
+* *newChild* is the new node to replace oldChild. If it already exists in the DOM, it is first removed.
+* *oldChild* is the existing child to be replaced.
+* *replacedNode* is the replaced node. This is the same node as oldChild.
+
+**Example**
+
+```html
+<div>
+    <span id="childSpan">foo bar</span>
+</div>
+```
+```javascript
+var sp1 = document.createElement('span');
+sp1.setAttribute('id', 'newSpan');
+
+var sp1_content = document.createTextNode('new replacement span element.');
+sp1.appendChild(sp1_content);
+
+var sp2 = document.getElementById('childSpan');
+var parentDiv = sp2.parentNode;
+
+var replaceNode = parentDiv.replaceChild(sp1, sp2);
+console.log(replaceNode === sp2);   //true
+```
+after replace:
+
+```html
+<div>
+    <span id="newSpan">new replacement span element.</span>
+</div>
+```
+
