@@ -175,3 +175,5 @@ var element = document.querySelector(selectors);
 
 ##### document.querySelectorAll(selectors)
 Returns a list of the elements within the document (using depth-first pre-order traversal of the document's nodes) that match the specified group of selectors. The object returned is a **NodeList**.
+
+
