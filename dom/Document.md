@@ -27,4 +27,4 @@ document.images returns a collection of the images in the current HTML document.
 
 ##### document.scripts
 
-Returns a list of the <script> elements in the document. The returned object is an HTMLCollection.
+Returns a list of the script elements in the document. The returned object is an HTMLCollection.
