@@ -83,6 +83,8 @@ Returns the name of the element
 
 *Note:* tagName returns the element name in the uppercase form, The value of tagName is the same as that of nodeName.
 
+**Example**
+
 ```html
 <div id="div1" name="test1" class="cls1" myattr="my_val"></div>
 ```
@@ -94,4 +96,41 @@ var tagname = div.tagName;  //'DIV'
 console.log(tagname.toLowerCase()); //'div'
 ```
 
+#### Methods
+
+##### [Element.getAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute)
+
+getAttribute() returns the value of a specified attribute on the element. If the given attribute does not exist, the value returned will either be null or "" (the empty string); see Notes for details
+
+```javascript
+var attribute = element.getAttribute(attributeName);
+```
+* *attribute* is a string containing the value of *attributeName*.
+* *attributeName* is the name of the attribute whose value you want to get
+
+**Example**
+
+```html
+<div id="div1" name="test1" class="cls1" myattr="my_val" style="display:none"></div>
+```
+```javascript
+var div = document.getElementById('div1'),
+    id = div.getAttribute('id'),
+    name = div.getAttribute('name'),
+    classname = div.getAttribute('class'),
+    myattr = div.getAttribute('myattr'),
+    style = div.getAttribute('style');
+
+console.log(id);        //'div1'
+console.log(name);      //'test1'
+console.log(classname); //'cls1'
+console.log(myattr);    //'my_val'
+console.log(style);     //'display:none'
+```
+
+##### [Element.getElementsByClassName()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByClassName)
+
+The **Element.getElementsByClassName()** method returns a live HTMLCollection containing all child elements which have all of the given class names. When called on the document object, the complete document is searched, including the root node.
+
+Similarly the method [Document.getElementsByClassName()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName) acts on the whole document; it will return elements which are descendants of the specified document root element with the given class names.
 
