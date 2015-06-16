@@ -1,4 +1,4 @@
-#### HTMLCollection
+#### [HTMLCollection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection)
 
 The HTMLCollection interface represents a generic collection (array-like object) of elements (in document order) and offers methods and properties for selecting from the list.
 
@@ -6,7 +6,7 @@ The HTMLCollection interface represents a generic collection (array-like object)
 
 Returns the number of items in the collection
 
-##### HTMLCollection.item()
+##### [HTMLCollection.item()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection/item)
 
 Returns the specific node at the given zero-based index into the list. Returns null if the index is out of range.
 
