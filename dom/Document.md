@@ -237,6 +237,16 @@ var text = document.createTextNode(data);
 * *text* is a Text node.
 * *data* is a string containing the data to be put in the text node.
 
+##### document.createAttribute()
+
+createAttribute creates a new attribute node, and returns it.
+
+```javascript
+attribute = document.createAttribute(name)
+```
+* *attribute* is an attribute node.
+* *name* is a string containing the name of the attribute.
+
 **Example**
 
 *init html is:*
@@ -249,6 +259,10 @@ var text = document.createTextNode(data);
 ```javascript
 var sp1 = document.createElement('span');
 sp1.setAttribute('id', 'newSpan');
+
+var a = document.createAttribute('myattr');
+a.value = 'my_value';
+sp1.setAttributeNode(a);
 
 var sp1_content = document.createTextNode('new replacement span element.');
 sp1.appendChild(sp1_content);
@@ -263,7 +277,7 @@ parentDiv.appendChild(sp1);
 ```html
 <div>
     <span id="childSpan">foo bar</span>
-    <span id="newSpan">new replacement span element.</span>
+    <span id="newSpan" myattr="my_value">new replacement span element.</span>
 </div>
 ```
 
