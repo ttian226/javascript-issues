@@ -182,7 +182,7 @@ console.log(html.parentNode.nodeType);      // 9 DOCUMENT_NODE
 ```
 
 ##### [Node.nextSibling](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)
-()
+
 ##### [Node.previousSibling](https://developer.mozilla.org/en-US/docs/Web/API/Node/previousSibling)
 
 ```html
