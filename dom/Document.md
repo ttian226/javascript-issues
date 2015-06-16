@@ -170,8 +170,46 @@ Returns the first element within the document (using depth-first pre-order trave
 ```javascript
 var element = document.querySelector(selectors);
 ```
-* **element** is an element object.
-* **selectors** is a string containing one or more CSS selectors separated by commas
+* *element* is an element object.
+* *selectors* is a string containing one or more CSS selectors separated by commas
+
+**Example**
+
+```html
+<ul>
+    <li class="test" id="l1"></li>
+    <li class="test" id="l2"></li>
+    <li class="test" id="l3"></li>
+    <li class="test" id="l4"></li>
+    <li class="test" id="l5"></li>
+</ul>```
+```javascript
+var ul = document.querySelector('.test');   // equal to "document.querySelector('#l1')"
+console.log(ul);    //<li class="test" id="l1"></li>
+```
+
 
 ##### document.querySelectorAll(selectors)
 Returns a list of the elements within the document (using depth-first pre-order traversal of the document's nodes) that match the specified group of selectors. The object returned is a **NodeList**.
+
+**Example**
+
+```html
+<ul>
+    <li class="test"></li>
+    <li class="test"></li>
+    <li class="test"></li>
+    <li class="test"></li>
+    <li class="test"></li>
+</ul>
+```
+```javascript
+var uls = document.querySelectorAll('.test');
+console.log(uls.length);    //5
+```
+
+This example returns a list of all div elements within the document with a class of either "note" or "alert":
+
+```javascript
+var matches = document.querySelectorAll("div.note, div.alert");
+```
