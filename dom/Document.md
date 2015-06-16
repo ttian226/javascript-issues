@@ -25,9 +25,54 @@ document.images returns a collection of the images in the current HTML document.
 *Note*
 ```document.images.length``` – property, returns the number of images on the page.
 
+##### document.scripts
+
+Returns a list of the <script> elements in the document. The returned object is an HTMLCollection.
+
+##### document.title
+
+Gets or sets the title of the document
+
+##### document.anchors
+
+anchors returns a list of all of the anchors in the document.
+
+*Note*
+the returned set of anchors only contains those anchors created with the name attribute, not those created with the id attribute
+
+```html
+<h1>Title</h1>
+<h2><a name="contents">Contents</a></h2>
+<ul id="toc"></ul>
+
+<h2><a name="plants">Plants</a></h2>
+<ol>
+    <li>Apples</li>
+    <li>Oranges</li>
+    <li>Pears</li>
+</ol>
+
+<h2><a name="veggies">Veggies</a></h2>
+<ol>
+    <li>Carrots</li>
+    <li>Celery</li>
+    <li>Beats</li>
+</ol>
+```
+
+document.anchors reutrn a array: [<a name="contents">Contents</a>, <a name="plants">Plants</a>, <a name="veggies">Veggies</a>],contain 3 items
+
+##### document.links
+
+The links property returns a collection of all <area> elements and <a> elements in a document with a value for the href attribute
+
 ##### document.location
 
 The Document.location read-only property returns a **Location** object, which contains information about the URL of the document and provides methods for changing that URL and loading another URL
+
+##### document.URL
+
+The URL read-only property of the Document interface returns the document location as a string
 
 ```javascript
 document.location = 'http://www.mozilla.org';   //Equivalent to
@@ -37,6 +82,10 @@ document.location.href = 'http://www.mozilla.org';
 ##### document.referrer
 
 Returns the [URI](http://www.w3.org/Addressing/#background) of the page that linked to this page.
+
+##### document.domain
+
+Gets/sets the domain portion of the origin of the current document, as used by the same origin policy.
 
 #### Methods
 
