@@ -6,7 +6,7 @@ The following interfaces all inherit from Node its methods and properties: ```Do
 
 #### Properties
 
-##### Node.childNodes
+##### [Node.childNodes](https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes)
 
 The Node.childNodes read-only property returns a live collection of child nodes of the given element.
 
@@ -65,7 +65,7 @@ for (var i = 0; i < len; i++) {
 ```
 
 
-##### Node.firstChild
+##### [Node.firstChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild)
 
 The Node.firstChild read-only property returns the node's first child in the tree, or null if the node is childless
 
@@ -76,7 +76,7 @@ The Node.firstChild read-only property returns the node's first child in the tre
 var pNode = document.getElementById('para-01');
 var first = pNode.firstChild;   // <span>First span</span>
 ```
-##### Node.lastChild
+##### [Node.lastChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/lastChild)
 
 The Node.lastChild read-only property returns the last child of the node. It returns null if there are no child elements
 
@@ -105,7 +105,7 @@ var first = pNode.firstChild;   //a node reference to text Node
 var last = pNode.lastChild;     //a node reference to text Node
 ```
 
-##### Node.nodeName
+##### [Node.nodeName](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeName)
 
 The Node.nodeName read-only property returns the name of the current node as a string.
 
@@ -119,7 +119,7 @@ Text|"#text"
 Element|The value of Element.tagName
 
 
-##### Node.nodeType
+##### [Node.nodeType](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType)
 
 The read-only Node.nodeType property returns an unsigned short integer representing the type of the node
 
@@ -133,7 +133,7 @@ COMMENT_NODE|8
 DOCUMENT_NODE|9
 
 
-##### Node.nodeValue
+##### [Node.nodeValue](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeValue)
 
 The Node.nodeValue property returns or sets the value of the current node. For the document itself, nodeValue returns null. For text, comment, and CDATA nodes, nodeValue returns the content of the node
 
@@ -145,7 +145,7 @@ Element|null
 Text|content of the text node
 
 
-##### Node.textContent
+##### [Node.textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
 
 ```html
 <div id="div1">some text</div>
@@ -160,7 +160,7 @@ var content = div.textContent;      //some text
 div.textContent = 'other text';     //content set to "other text"
 ```
 
-##### Node.parentNode
+##### [Node.parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode)
 
 The Node.parentNode read-only property returns the parent of the specified node in the DOM tree
 
@@ -181,9 +181,9 @@ console.log(html.nodeType);     // 1 html still ELEMENT_NODE
 console.log(html.parentNode.nodeType);      // 9 DOCUMENT_NODE
 ```
 
-##### Node.nextSibling
-
-##### Node.previousSibling
+##### [Node.nextSibling](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)
+()
+##### [Node.previousSibling](https://developer.mozilla.org/en-US/docs/Web/API/Node/previousSibling)
 
 ```html
 <div id="div1"></div><div id="div2"></div><div id="div3"></div>
@@ -196,7 +196,7 @@ var div1 = div2.previousSibling;
 
 #### Methods
 
-##### Node.appendChild()
+##### [Node.appendChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)
 
 The *Node.appendChild()* method adds a node to the end of the list of children of a specified parent node. If the given child is a reference to an existing node in the document, appendChild() moves it from its current position to the new position
 
@@ -239,7 +239,7 @@ after append, div1's position has been changed
 </body>
 ```
 
-##### Node.cloneNode()
+##### [Node.cloneNode()](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
 
 The *Node.cloneNode()* method returns a duplicate of the node on which this method was called
 
@@ -283,11 +283,11 @@ div0.appendChild(newdiv2);
 </body>
 ```
 
-##### Node.hasChildNodes()
+##### [Node.hasChildNodes()](https://developer.mozilla.org/en-US/docs/Web/API/Node/hasChildNodes)
 
 The *Node.hasChildNodes()* method returns a Boolean value indicating whether the current Node has child nodes or not.
 
-##### Node.insertBefore()
+##### [Node.insertBefore()](https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore)
 
 The Node.insertBefore() method inserts the specified node before a reference element as a child of the current node
 
@@ -323,7 +323,7 @@ after insertBefore:
 </div>
 ```
 
-##### Node.removeChild()
+##### [Node.removeChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild)
 
 The Node.removeChild() method removes a child node from the DOM. Returns removed node
 
@@ -349,7 +349,7 @@ var throwawayNode = d_top.removeChild(d_nested);
 console.log(throwawayNode === d_nested);    //true
 ```
 
-#### Node.replaceChild()
+#### [Node.replaceChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/replaceChild)
 
 The Node.replaceChild() method replaces one child node of the specified element with another
 
