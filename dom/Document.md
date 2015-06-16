@@ -193,7 +193,7 @@ console.log(ul);    //<li class="test" id="l1"></li>
 ##### document.querySelectorAll(selectors)
 Returns a list of the elements within the document (using depth-first pre-order traversal of the document's nodes) that match the specified group of selectors. The object returned is a **NodeList**.
 
-**Example**
+**Example1**
 
 ```html
 <ul>
@@ -209,8 +209,61 @@ var uls = document.querySelectorAll('.test');
 console.log(uls.length);    //5
 ```
 
-This example returns a list of all div elements within the document with a class of either "note" or "alert":
+**Example2** returns a list of all div elements within the document with a class of either "note" or "alert":
 
 ```javascript
 var matches = document.querySelectorAll("div.note, div.alert");
 ```
+
+##### document.createElement()
+
+In an HTML document, the Document.createElement() method creates the specified HTML element or an HTMLUnknownElement if the given element name isn't a known one
+
+```javascript
+var element = document.createElement(tagName);
+```
+
+* *element* is the created Element object.
+* *tagName* is a string that specifies the type of element to be created. The nodeName of the created element is initialized with the value of tagName. Don't use qualified names (like "html:a") with this method
+
+
+##### document.createTextNode()
+
+Creates a new Text node.
+
+```javascript
+var text = document.createTextNode(data);
+```
+* *text* is a Text node.
+* *data* is a string containing the data to be put in the text node.
+
+**Example**
+
+*init html is:*
+
+```html
+<div>
+    <span id="childSpan">foo bar</span>
+</div>
+```
+```javascript
+var sp1 = document.createElement('span');
+sp1.setAttribute('id', 'newSpan');
+
+var sp1_content = document.createTextNode('new replacement span element.');
+sp1.appendChild(sp1_content);
+
+var sp2 = document.getElementById('childSpan');
+var parentDiv = sp2.parentNode;
+
+parentDiv.appendChild(sp1);
+```
+*after appendChild html is:*
+
+```html
+<div>
+    <span id="childSpan">foo bar</span>
+    <span id="newSpan">new replacement span element.</span>
+</div>
+```
+
