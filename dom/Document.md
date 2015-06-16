@@ -25,3 +25,6 @@ document.images returns a collection of the images in the current HTML document.
 *Note*
 ```document.images.length``` – property, returns the number of images on the page.
 
+##### document.scripts
+
+Returns a list of the <script> elements in the document. The returned object is an HTMLCollection.
