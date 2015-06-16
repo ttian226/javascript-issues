@@ -182,7 +182,8 @@ var element = document.querySelector(selectors);
     <li class="test" id="l3"></li>
     <li class="test" id="l4"></li>
     <li class="test" id="l5"></li>
-</ul>```
+</ul>
+```
 ```javascript
 var ul = document.querySelector('.test');   // equal to "document.querySelector('#l1')"
 console.log(ul);    //<li class="test" id="l1"></li>
