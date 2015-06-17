@@ -138,6 +138,39 @@ element.setAttribute(name, value);
 * *name* is the name of the attribute as a string.
 * *value* is the desired new value of the attribute.
 
+##### [Element.removeAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute)
+
+removeAttribute removes an attribute from the specified element
+
+```javascript
+element.removeAttribute(attrName);
+```
+* *attrName* is a string that names the attribute to be removed from element.
+
+**Example**
+
+```html
+<div id="div1" align="left" width="200px"></div>
+```
+```javascript
+var div = document.getElementById('div1');
+div.removeAttribute('align');
+```
+Now html:
+
+```html
+<div id="div1" width="200px"></div>
+```
+
+##### [Element.hasAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttribute)
+
+The **Element.hasAttribute()** method returns a Boolean value indicating whether the specified element has the specified attribute or not
+
+```javascript
+var result = element.hasAttribute(attName);
+```
+* *result* holds the return value true or false.
+* *attName* is a string representing the name of the attribute
 
 ##### [Element.getElementsByClassName()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByClassName)
 
