@@ -178,3 +178,40 @@ The **Element.getElementsByClassName()** method returns a live HTMLCollection co
 
 Similarly the method [Document.getElementsByClassName()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName) acts on the whole document; it will return elements which are descendants of the specified document root element with the given class names.
 
+##### [Element.getElementsByTagName()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName)
+
+The **Element.getElementsByTagName()** method returns a live HTMLCollection of elements with the given tag name. The subtree underneath the specified element is searched, excluding the element itself.
+
+
+##### [Element.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector)
+
+Returns the first element that is a descendant of the element on which it is invoked that matches the specified group of selectors
+
+```javascript
+element = baseElement.querySelector(selectors);
+```
+* *element* and *baseElement* are element objects.
+* *selectors* is a group of selectors to match on.
+
+
+##### [Element.querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll)
+
+Returns a non-live NodeList of all elements descended from the element on which it is invoked that match the specified group of CSS selectors.
+
+```javascript
+elementList = baseElement.querySelectorAll(selectors);
+```
+* *elementList* is a non-live list of element objects.
+* *baseElement* is an element object.
+* *selectors* is a group of selectors to match on
+
+**Example**
+
+```javascript
+// This example returns a list of all the p elements in the HTML document body
+var matches = document.body.querySelectorAll('p');
+
+// This example returns a list of p children elements under a container, whose parent is a div that has the class 'highlighted':
+var el = document.querySelector('#test');
+var matches = el.querySelectorAll('div.highlighted > p');
+```
