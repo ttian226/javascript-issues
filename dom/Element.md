@@ -128,6 +128,17 @@ console.log(myattr);    //'my_val'
 console.log(style);     //'display:none'
 ```
 
+##### [Element.setAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute)
+
+Adds a new attribute or changes the value of an existing attribute on the specified element.
+
+```javascript
+element.setAttribute(name, value);
+```
+* *name* is the name of the attribute as a string.
+* *value* is the desired new value of the attribute.
+
+
 ##### [Element.getElementsByClassName()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByClassName)
 
 The **Element.getElementsByClassName()** method returns a live HTMLCollection containing all child elements which have all of the given class names. When called on the document object, the complete document is searched, including the root node.

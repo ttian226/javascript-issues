@@ -193,6 +193,25 @@ var div2 = document.getElementById('div2');
 var div3 = div2.nextSibling;
 var div1 = div2.previousSibling;
 ```
+##### [Node.ownerDocument](https://developer.mozilla.org/en-US/docs/Web/API/Node/ownerDocument)
+
+The Node.ownerDocument read-only property returns the top-level document object for this node.
+
+```html
+<body>
+    <div id="div1"></div>
+</body>
+```
+```javascript
+var div = document.getElementById('div1');
+
+// return document object
+var owner = div.ownerDocument;
+console.log(owner === document);    //true
+
+// return the root element of document <html>
+var html = owner.documentElement;
+```
 
 #### Methods
 
