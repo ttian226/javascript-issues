@@ -100,6 +100,7 @@ console.log(tagname.toLowerCase()); //'div'
 
 classList returns a token list of the class attribute of the element. It return a [DOMTokenList](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList) object.
 
+**Example**
 
 ```html
 <body>
