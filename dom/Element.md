@@ -96,6 +96,39 @@ var tagname = div.tagName;  //'DIV'
 console.log(tagname.toLowerCase()); //'div'
 ```
 
+##### [Element.classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)
+
+classList returns a token list of the class attribute of the element. It return a [DOMTokenList](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList) object.
+
+
+```html
+<body>
+    <div id="test"></div>
+</body>
+```
+```javascript
+var div = document.getElementById('test');
+
+var divClass = div.classList;
+
+// add class 'cls1'
+divClass.add('cls1');
+
+console.log(divClass.length);   //1
+
+console.log(divClass.item(0));  //'cls1' equal to divClass[0]
+
+console.log(divClass.contains('cls1')); //true
+
+// remove class 'cls1'
+divClass.remove('cls1');
+
+console.log(divClass.length);   //0
+
+console.log(divClass.contains('cls1')); //false
+```
+
+
 #### Methods
 
 ##### [Element.getAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute)
