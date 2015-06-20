@@ -78,3 +78,24 @@ var color = div.style.color;    // color is "", div.style can only get the inlin
 ```
 
 *The style property is not useful for learning about the element's style in general, since it represents only the CSS declarations set in the element's inline style attribute, not those that come from style rules elsewhere, such as style rules in the `<head>` section, or external style sheets. To get the values of all CSS properties for an element you should use window.getComputedStyle() instead*
+
+##### [HTMLElement.title](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/title)
+
+The **HTMLElement.title** property represents the title of the element, the text usually displayed in a 'tool tip' popup when the mouse is over the displayed node.
+
+**Example**
+
+```html
+<button id="btn1">button1</button>
+```
+
+```javascript
+var button1 = document.getElementById('btn1');
+button1.title = "click to refresh";
+```
+
+After set title:
+
+```html
+<button id="btn1" title="click to refresh">button1</button>
+```
