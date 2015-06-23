@@ -87,6 +87,24 @@ Returns the [URI](http://www.w3.org/Addressing/#background) of the page that lin
 
 Gets/sets the domain portion of the origin of the current document, as used by the same origin policy.
 
+##### [Document.activeElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/activeElement)
+
+Returns the currently focused element.
+
+**Example**
+
+```html
+<input type="text">
+```
+```javascript
+var input = document.querySelector('input');
+input.focus();
+console.log(document.activeElement === input);  //true
+```
+
+*Note:* after document finish load, `document.activeElement` reference to `document.body`. during document load `document.activeElement` is null.
+
+
 #### Methods
 
 ##### [Document.getElementById()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById)
@@ -281,3 +299,27 @@ parentDiv.appendChild(sp1);
 </div>
 ```
 
+##### [Document.hasFocus()](https://developer.mozilla.org/en-US/docs/Web/API/Document/hasFocus)
+
+The **Document.hasFocus()** method returns a Boolean value indicating whether the document or any element inside the document has focus. This method can be used to determine whether the active element in a document has focus.
+
+**Example**
+
+```html
+<p>Click anywhere in the document (the right frame) to get focus. If you click outside the document, it will lose focus.</p>
+
+<p id="demo"></p>
+
+```
+```javascript
+setInterval(myFunction, 1);
+
+function myFunction() {
+    var x = document.getElementById("demo");
+    if (document.hasFocus()) {
+        x.innerHTML = "The document has focus.";
+    } else {
+        x.innerHTML = "The document DOES NOT have focus.";
+    }
+}
+```
