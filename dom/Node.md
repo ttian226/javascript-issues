@@ -407,3 +407,24 @@ after replace:
 </div>
 ```
 
+#### [Node.normalize()](https://developer.mozilla.org/en-US/docs/Web/API/Node/normalize)
+
+The **Node.normalize()** method puts the specified node and all of its sub-tree into a "normalized" form. In a normalized sub-tree, no text nodes in the sub-tree are empty and there are no adjacent text nodes
+
+**Example**
+
+```javascript
+var wapper = document.createElement('div');
+wapper.appendChild(document.createTextNode('Part 1'));
+wapper.appendChild(document.createTextNode('Part 2'));
+
+var childs = wapper.childNodes;
+console.log(childs.length);     //2
+console.log(wapper.childNodes[0].textContent);  //Part 1
+console.log(wapper.childNodes[1].textContent);  //Part 2
+
+wapper.normalize();
+console.log(childs.length);     //1
+console.log(wapper.childNodes[0].textContent);  //Part 1Part 2
+```
+
