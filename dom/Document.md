@@ -2,38 +2,38 @@
 
 #### Properties
 
-##### [document.body](https://developer.mozilla.org/en-US/docs/Web/API/Document/body)
+##### [Document.body](https://developer.mozilla.org/en-US/docs/Web/API/Document/body)
 
 Returns the <body> or <frameset> node of the current document, or null if no such element exists.
 
-##### [document.documentElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement)
+##### [Document.documentElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement)
 
 The Document.documentElement read-only property returns the Element that is the root element of the document (for example, the <html> element for HTML documents).
 
-##### [document.forms](https://developer.mozilla.org/en-US/docs/Web/API/Document/forms)
+##### [Document.forms](https://developer.mozilla.org/en-US/docs/Web/API/Document/forms)
 
 forms returns a collection (an HTMLCollection) of the form elements within the current document.
 
-##### [document.head](https://developer.mozilla.org/en-US/docs/Web/API/Document/head)
+##### [Document.head](https://developer.mozilla.org/en-US/docs/Web/API/Document/head)
 
 Returns the <head> element of the current document. If there are more than one <head> elements, the first one is returned
 
-##### [document.images](https://developer.mozilla.org/en-US/docs/Web/API/Document/images)
+##### [Document.images](https://developer.mozilla.org/en-US/docs/Web/API/Document/images)
 
 document.images returns a collection of the images in the current HTML document.
 
 *Note*
 ```document.images.length``` – property, returns the number of images on the page.
 
-##### [document.scripts](https://developer.mozilla.org/en-US/docs/Web/API/Document/scripts)
+##### [Document.scripts](https://developer.mozilla.org/en-US/docs/Web/API/Document/scripts)
 
 Returns a list of the script elements in the document. The returned object is an HTMLCollection.
 
-##### [document.title](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
+##### [Document.title](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
 
 Gets or sets the title of the document
 
-##### [document.anchors](https://developer.mozilla.org/en-US/docs/Web/API/Document/anchors)
+##### [Document.anchors](https://developer.mozilla.org/en-US/docs/Web/API/Document/anchors)
 
 anchors returns a list of all of the anchors in the document.
 
@@ -62,15 +62,15 @@ the returned set of anchors only contains those anchors created with the name at
 
 document.anchors reutrn a array: [<a name="contents">Contents</a>, <a name="plants">Plants</a>, <a name="veggies">Veggies</a>],contain 3 items
 
-##### [document.links](https://developer.mozilla.org/en-US/docs/Web/API/Document/links)
+##### [Document.links](https://developer.mozilla.org/en-US/docs/Web/API/Document/links)
 
 The links property returns a collection of all <area> elements and <a> elements in a document with a value for the href attribute
 
-##### [document.location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location)
+##### [Document.location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location)
 
 The Document.location read-only property returns a **Location** object, which contains information about the URL of the document and provides methods for changing that URL and loading another URL
 
-##### [document.URL](https://developer.mozilla.org/en-US/docs/Web/API/Document/URL)
+##### [Document.URL](https://developer.mozilla.org/en-US/docs/Web/API/Document/URL)
 
 The URL read-only property of the Document interface returns the document location as a string
 
@@ -79,27 +79,27 @@ document.location = 'http://www.mozilla.org';   //Equivalent to
 document.location.href = 'http://www.mozilla.org';
 ```
 
-##### [document.referrer](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer)
+##### [Document.referrer](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer)
 
 Returns the [URI](http://www.w3.org/Addressing/#background) of the page that linked to this page.
 
-##### [document.domain](https://developer.mozilla.org/en-US/docs/Web/API/Document/domain)
+##### [Document.domain](https://developer.mozilla.org/en-US/docs/Web/API/Document/domain)
 
 Gets/sets the domain portion of the origin of the current document, as used by the same origin policy.
 
 #### Methods
 
-##### [document.getElementById()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById)
+##### [Document.getElementById()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById)
 
 Returns a reference to the element by its ID.
 * element is a reference to an **Element** object, or null if an element with the specified ID is not in the document
 * id is a case-sensitive string representing the unique ID of the element being sought
 
-##### [document.getElementsByTagName()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByTagName)
+##### [Document.getElementsByTagName()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByTagName)
 
 Returns an **HTMLCollection** of elements with the given tag name.
 
-##### [document.getElementsByName()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByName)
+##### [Document.getElementsByName()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByName)
 
 Returns a nodelist collection with a given name in the (X)HTML document.
 
@@ -122,7 +122,7 @@ console.log(names);
 // divs[0] and names[0] return a same reference to the Element of the first div
 console.log(divs[0] === names[0]);
 ```
-##### [document.getElementsByClassName()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName)
+##### [Document.getElementsByClassName()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName)
 
 Returns an array-like object(HTMLCollection) of all child elements which have all of the given class names. When called on the document object, the complete document is searched, including the root node. You may also call getElementsByClassName() on any element; it will return only elements which are descendants of the specified root element with the given class names.
 
@@ -164,7 +164,7 @@ console.log(lis.length);   //3
 console.log(lis instanceof HTMLCollection);  //true
 ```
 
-##### [document.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
+##### [Document.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
 Returns the first element within the document (using depth-first pre-order traversal of the document's nodes) that matches the specified group of selectors.
 
 ```javascript
@@ -190,7 +190,7 @@ console.log(ul);    //<li class="test" id="l1"></li>
 ```
 
 
-##### [document.querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)
+##### [Document.querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)
 Returns a list of the elements within the document (using depth-first pre-order traversal of the document's nodes) that match the specified group of selectors. The object returned is a **NodeList**.
 
 **Example1**
@@ -215,7 +215,7 @@ console.log(uls.length);    //5
 var matches = document.querySelectorAll("div.note, div.alert");
 ```
 
-##### [document.createElement()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
+##### [Document.createElement()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
 
 In an HTML document, the Document.createElement() method creates the specified HTML element or an HTMLUnknownElement if the given element name isn't a known one
 
@@ -227,7 +227,7 @@ var element = document.createElement(tagName);
 * *tagName* is a string that specifies the type of element to be created. The nodeName of the created element is initialized with the value of tagName. Don't use qualified names (like "html:a") with this method
 
 
-##### [document.createTextNode()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode)
+##### [Document.createTextNode()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode)
 
 Creates a new Text node.
 
@@ -237,7 +237,7 @@ var text = document.createTextNode(data);
 * *text* is a Text node.
 * *data* is a string containing the data to be put in the text node.
 
-##### [document.createAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createAttribute)
+##### [Document.createAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createAttribute)
 
 createAttribute creates a new attribute node, and returns it.
 
