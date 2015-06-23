@@ -129,6 +129,13 @@ console.log(divClass.length);   //0
 console.log(divClass.contains('cls1')); //false
 ```
 
+##### [ParentNode.childElementCount](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/childElementCount)
+
+##### [ParentNode.children](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children)
+
+##### [ParentNode.firstElementChild](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/firstElementChild)
+
+##### [ParentNode.lastElementChild](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/lastElementChild)
 
 #### Methods
 
