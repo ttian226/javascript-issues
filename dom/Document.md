@@ -104,6 +104,28 @@ console.log(document.activeElement === input);  //true
 
 *Note:* after document finish load, `document.activeElement` reference to `document.body`. during document load `document.activeElement` is null.
 
+##### [Document.readyState](https://developer.mozilla.org/en-US/docs/Web/API/Document/readyState)
+
+Returns "loading" while the document is loading, "interactive" once it is finished parsing but still loading sub-resources, and "complete" once it has loaded.
+
+```javascript
+document.onreadystatechange = function () {
+    if (document.readyState === 'complete') {
+        console.log('complete');
+    }
+
+    if (document.readyState === 'interactive') {
+        console.log('interactive');
+    }
+};
+
+// output
+// interactive
+// complete
+```
+
+*The [readystatechange](https://developer.mozilla.org/en-US/docs/Web/Events/readystatechange) event is fired when the readyState attribute of a document has changed*
+
 
 #### Methods
 
