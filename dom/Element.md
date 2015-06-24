@@ -188,6 +188,38 @@ div.innerHTML = html;
 document.body.innerHTML = "";
 ```
 
+##### [Element.outerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/outerHTML)
+
+The outerHTML attribute of the element DOM interface gets the serialized HTML fragment describing the element including its descendants. It can be set to replace the element with nodes parsed from the given string
+
+**Example1**
+
+```html
+<div id="d"><p>Content</p><p>Further Elaborated</p></div>
+```
+```javascript
+var d = document.getElementById("d");
+console.log(d.outerHTML);   //'<div id="d"><p>Content</p><p>Further Elaborated</p></div>'
+```
+
+**Example2**
+
+```html
+<div id="container"><div id="d">This is a div.</div></div>
+```
+```javascript
+var
+    container = document.getElementById("container"),
+    d = document.getElementById("d");
+
+d.outerHTML = "<p>This paragraph replaced the original div.</p>";
+```
+*after set outer html*
+
+```html
+<div id="container"><p>This paragraph replaced the original div.</p></div>
+```
+
 ##### [ParentNode.childElementCount](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/childElementCount)
 
 ##### [ParentNode.children](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children)
