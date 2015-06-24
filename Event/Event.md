@@ -141,3 +141,16 @@ function callback1() {
     console.log('123');
 }
 ```
+
+* click clild element, only output '123'.
+* click parent element, output 'ok'.
+
+*use `e.stopImmediatePropagation` instead of `e.stopPropagation`*
+
+```javascript
+child.addEventListener('click', function(e) {
+    e.stopImmediatePropagation();
+}, false);
+```
+* click clild element, because of stopImmediatePropagation, nothing happened.
+
