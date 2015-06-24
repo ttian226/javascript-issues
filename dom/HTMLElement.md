@@ -99,3 +99,29 @@ After set title:
 ```html
 <button id="btn1" title="click to refresh">button1</button>
 ```
+
+##### [HTMLElement.dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset)
+
+The **HTMLElement.dataset** read-only property allows access, both in reading and writing mode, to all the custom data attributes (data-*) set on the element. It is a map of DOMString, one entry for each custom data attribute.
+
+**Example**
+
+```html
+<div id="user" data-id="1234567890" data-user="johndoe" data-date-of-birth="1960-10-03">John Doe</div>
+```
+```javascript
+var el = document.querySelector('#user');
+
+// get
+console.log(el.dataset.id);
+console.log(el.dataset.user);
+console.log(el.dataset.dateOfBirth);
+
+// set
+el.dataset.dateOfBirth = '1981-08-25';
+```
+after set date-of-birth
+
+```html
+<div id="user" data-id="1234567890" data-user="johndoe" data-date-of-birth="1981-08-25">John Doe</div>
+```
