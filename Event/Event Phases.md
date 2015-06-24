@@ -158,3 +158,82 @@ div.addEventListener('click', function(e) {
 ul.addEventListener('click', callback, false);
 li.addEventListener('click', callback, false);
 ```
+
+#### Stopping Propagation
+
+Interrupting the path of the event at any point on its journey (i.e. in the capture or bubbling phase) is possible simply by calling the stopPropagation method on the event object. Then, the event will no longer call any listeners on nodes that it travels through on its way to the target and back to the document.
+
+```javascript
+child.addEventListener('click', function(event) {
+    event.stopPropagation();
+});
+
+parent.addEventListener('click', function(event) {
+    // If the child element is clicked
+    // this callback will not fire
+});
+```
+Calling `event.stopPropagation()` will not prevent any additional event listeners from being called on the current target if multiple listeners for the same event exist. If you wish to prevent any additional listeners from being called on the current node, you can use the more aggressive `event.stopImmediatePropagation()` method.
+
+```javascript
+child.addEventListener('click', function(event) {
+    event.stopImmediatePropagation();
+});
+
+child.addEventListener('click', function(event) {
+    // If the child element is clicked
+    // this callback will not fire
+});
+```
+
+**Example**
+
+```html
+<div class='overlay'>Click outside to close.</div>
+```
+
+```css
+* {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font: bold 64px/70px helvetica;
+  background: #41B7D8;
+  color: red;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; right: 0;
+  bottom: 0; left: 0;
+  height: 80%;
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  background: #FFF;
+  box-shadow: 1px 4px 40px rgba(0,0,0,0.5);
+}
+```
+
+```javascript
+var overlay = document.querySelector('.overlay');
+
+overlay.addEventListener('click', function(event) {
+    event.stopPropagation();
+});
+
+// Remove the overlay when a 'click'
+// is heard on the document (<html>) element
+document.addEventListener('click', function(event) {
+    if (overlay.parentNode) {
+        overlay.parentNode.removeChild(overlay);
+    }
+});
+```
+
+Reference to [An Introduction To DOM Events](http://www.smashingmagazine.com/2013/11/12/an-introduction-to-dom-events/)
