@@ -105,3 +105,39 @@ document.getElementById('my-checkbox').addEventListener('click', stopDefAction, 
 
 ##### [Event.stopPropagation()](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation)
 
+Prevents further propagation of the current event.
+
+*More information reference to [Event Phases](https://github.com/ttian226/javascript-issues/blob/master/Event/Event%20Phases.md)*
+
+##### [Event.stopImmediatePropagation()](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopImmediatePropagation)
+
+Prevents other listeners of the same event from being called.
+
+*Calling `Event.stopPropagation()` will not prevent any additional event listeners from being called on the current target if multiple listeners for the same event exist.*
+
+**Example**
+
+```html
+<div id="parent" style="padding:100px"><div id="child">child</div></div>
+```
+
+```javascript
+var parent = document.getElementById('parent');
+var child = document.getElementById('child');
+
+parent.addEventListener('click', callback, false);
+child.addEventListener('click', function(e) {
+    e.stopPropagation();
+}, false);
+
+child.addEventListener('click', callback1, false);
+
+
+function callback() {
+    console.log('ok');
+}
+
+function callback1() {
+    console.log('123');
+}
+```
