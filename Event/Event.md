@@ -102,3 +102,6 @@ var stopDefAction = function(e) {
 
 document.getElementById('my-checkbox').addEventListener('click', stopDefAction, false);
 ```
+
+##### [Event.stopPropagation()](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation)
+
