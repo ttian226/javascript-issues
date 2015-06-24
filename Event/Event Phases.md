@@ -98,7 +98,7 @@ The first phase is the capture phase. The event starts its journey at the root o
 
 As mentioned, you can listen to events in the capture phase by setting the third argument of addEventListener to true. 
 
-*when click li element, capture order: html > body > div > ul > li*
+* *when click li element, capture order: html > body > div > ul > li*
 
 ```javascript
 html.addEventListener('click', callback, true);
@@ -107,7 +107,7 @@ div.addEventListener('click', callback, true);
 ul.addEventListener('click', callback, true);
 li.addEventListener('click', callback, true);
 ```
-*when click li element, capture order: html > body > stop*
+* *when click li element, capture order: html > body > stop*
 
 ```javascript
 html.addEventListener('click', callback, true);
@@ -127,7 +127,7 @@ An event reaching the target is known as the target phase. The event fires on th
 
 After an event has fired on the target, it doesn’t stop there. It bubbles up (or propagates) through the DOM until it reaches the document’s root. This means that the same event is fired on the target’s parent node, followed by the parent’s parent, continuing until there is no parent to pass the event onto.
 
-*when click li element, bubble order: li > ul > div > body > html*
+* *when click li element, bubble order: li > ul > div > body > html*
 
 ```javascript
 html.addEventListener('click', callback, false);
@@ -136,7 +136,7 @@ div.addEventListener('click', callback, false);
 ul.addEventListener('click', callback, false);
 li.addEventListener('click', callback, false);
 ```
-*when click li element, nothing happened*
+* *when click li element, nothing happened*
 
 ```javascript
 html.addEventListener('click', callback, false);
@@ -147,7 +147,7 @@ li.addEventListener('click', function(e) {
     e.stopPropagation();
 }, false);
 ```
-*when click li element, bubble order: li > ul > stop*
+* *when click li element, bubble order: li > ul > stop*
 
 ```javascript
 html.addEventListener('click', callback, false);
