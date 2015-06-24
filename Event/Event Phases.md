@@ -236,4 +236,4 @@ document.addEventListener('click', function(event) {
 });
 ```
 
-Reference to [An Introduction To DOM Events](http://www.smashingmagazine.com/2013/11/12/an-introduction-to-dom-events/)
+*Reference to [An Introduction To DOM Events](http://www.smashingmagazine.com/2013/11/12/an-introduction-to-dom-events/)*
