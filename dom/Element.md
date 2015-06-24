@@ -129,6 +129,65 @@ console.log(divClass.length);   //0
 console.log(divClass.contains('cls1')); //false
 ```
 
+##### [Element.innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)
+
+The **Element.innerHTML** property sets or gets the HTML syntax describing the element's descendants.
+
+*Note: If a <div>, <span>, or <noembed> node has a child text node that includes the characters (&), (<), or (>), innerHTML returns these characters as &amp, &lt and &gt respectively. Use Node.textContent to get a correct copy of these text nodes' contents.*
+
+**Example1**
+
+```html
+<div id="test">10>1&</div>
+```
+```javascript
+var div = document.getElementById('test');
+
+console.log(div.innerHTML);     //10&gt;1&amp;
+console.log(div.textContent);   //10>1&
+```
+
+**Example2**
+
+```html
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<div id="test">some words</div>
+```
+```javascript
+var div = document.getElementById('test');
+var ul = document.querySelector('ul');
+
+// get ul inner html
+var html = ul.innerHTML;
+
+// set div inner html replace the exist content.
+div.innerHTML = html;
+```
+*after set div inner html*
+
+```html
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<div id="test">
+    <li></li>
+    <li></li>
+    <li></li>
+</div>
+```
+
+*This property provides a simple way to completely replace the contents of an element. For example, the entire contents of the document body can be deleted by:*
+
+```javascript
+document.body.innerHTML = "";
+```
+
 ##### [ParentNode.childElementCount](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/childElementCount)
 
 ##### [ParentNode.children](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children)
