@@ -65,6 +65,10 @@ Indicates whether the given event bubbles up through the DOM or not
 
 Indicates whether the event is cancelable or not
 
+##### [Event.defaultPrevented](https://developer.mozilla.org/en-US/docs/Web/API/Event/defaultPrevented)
+
+Returns a boolean indicating whether or not [event.preventDefault()](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) was called on the event
+
 #### Methods
 
 ##### [Event.preventDefault()](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
