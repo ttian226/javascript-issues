@@ -57,6 +57,14 @@ ul.addEventListener('click', function(e) {
 
 Returns a string containing the type of event.
 
+##### [Event.bubbles](https://developer.mozilla.org/en-US/docs/Web/API/Event/bubbles)
+
+Indicates whether the given event bubbles up through the DOM or not
+
+##### [Event.cancelable](https://developer.mozilla.org/en-US/docs/Web/API/Event/cancelable)
+
+Indicates whether the event is cancelable or not
+
 #### Methods
 
 ##### [Event.preventDefault()](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
