@@ -69,6 +69,10 @@ Indicates whether the event is cancelable or not
 
 Returns a boolean indicating whether or not [event.preventDefault()](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) was called on the event
 
+##### [Event.timeStamp](https://developer.mozilla.org/en-US/docs/Web/API/Event/timeStamp)
+
+Returns the time (in milliseconds since the epoch) at which the event was created.
+
 #### Methods
 
 ##### [Event.preventDefault()](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
