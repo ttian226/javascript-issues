@@ -21,7 +21,7 @@ The **hasOwnProperty()** method returns a boolean indicating whether the object 
 
 `obj.hasOwnProperty(prop)`
 
-*prop* The name of the property to test
+* *prop* The name of the property to test
 
 **Example1**
 
@@ -48,3 +48,29 @@ for (var name in o) {
     }
 }
 ```
+
+**Example3**
+
+```javascript
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+Person.prototype.sayName = function() {
+    return this.name;
+};
+
+
+var p = new Person('wangxu', 34);
+
+p.hasOwnProperty('name');       //true
+p.hasOwnProperty('sayName');    //false
+
+Person.prototype.hasOwnProperty('name');    //false
+Person.prototype.hasOwnProperty('sayName'); //true
+```
+
+##### [Object.prototype.isPrototypeOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isPrototypeOf)
+
+The **isPrototypeOf()** method tests for an object in another object's prototype chain
