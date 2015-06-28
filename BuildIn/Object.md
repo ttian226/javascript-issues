@@ -74,3 +74,5 @@ Person.prototype.hasOwnProperty('sayName'); //true
 ##### [Object.prototype.isPrototypeOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isPrototypeOf)
 
 The **isPrototypeOf()** method tests for an object in another object's prototype chain
+
+`prototypeObj.isPrototypeOf(obj)`
