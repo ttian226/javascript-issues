@@ -237,13 +237,14 @@ var arr = re.exec(str);
 console.log(arr);   //['a']
 ```
 
-##### 预定义类
+*匹配集合中的`.`*
 
-Character | Meaning
-----------|--------
-`.`|matches any single character except the newline character.
-
-`.`匹配除了回车和换行之外的所有字符，等价于[^\r\n]
+```javascript
+var re = /[a-z.]+/;     //或 var re = /[\w.]+/
+var str = 'test.i.ng';
+var arr = re.exec(str);
+console.log(arr);   //['test.i.ng']
+```
 
 ##### 量词
 
