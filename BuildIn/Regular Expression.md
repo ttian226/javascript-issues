@@ -122,6 +122,53 @@ console.log(re.lastIndex);  //0
 
 使用全局模式g匹配时，如果使用`.test()`或`.exec()`方法匹配时，每次匹配到一个字符串后，`lastIndex`值会被更新，如果不使用g匹配，索引值`lastIndex`不会更新。
 
+```javascript
+var re = /abc/;
+var str = 'abc123abc456abc';
+
+//未使用全局匹配时，只匹配到了第一个abc即终止
+var arr = re.exec(str);
+
+console.log(arr);   //['abc']
+console.log(re.lastIndex);  //0
+```
+
+```javascript
+var re = /abc/g;
+var str = 'abc123abc456abc';
+
+//使用全局匹配时，只匹配到了第一个abc即终止
+var arr = re.exec(str);
+
+console.log(arr);   //['abc']
+console.log(re.lastIndex);  //3，此时lastIndex指向字符串中的'1'
+```
+
+*遍历所有匹配*
+
+```javascript
+var re = /abc/g;
+var str = 'abc123abc456abc';
+var arr, list = [];
+
+while ( (arr = re.exec(str)) ) {
+    console.log(arr);
+    console.log(re.lastIndex);
+    list.push(arr[0]);
+}
+
+console.log(list);
+
+// output
+// ['abc']
+// 3
+// ['abc']
+// 9
+// ['abc']
+// 15
+// ['abc', 'abc', 'abc']
+```
+
 #### Special characters in regular expressions
 
 Character | Meaning
