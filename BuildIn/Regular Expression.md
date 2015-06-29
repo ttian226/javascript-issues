@@ -218,9 +218,9 @@ Character | Meaning
 [xyz]|Character set.
 [^xyz]|A negated or complemented character set.
 
-[xyz] 包含x,y,z任意一个字符的集合
-[a-d] 等价于[abcd]，或[a-zA-Z0-9]匹配a-z,A-Z,0-9
-[^xyz] 不包含x,y,z任意一个字符
+* [xyz] 包含x,y,z任意一个字符的集合
+* [a-d] 等价于[abcd]，或[a-zA-Z0-9]匹配a-z,A-Z,0-9
+* [^xyz] 不包含x,y,z任意一个字符
 
 ```javascript
 var re = /[xyz]/;
@@ -240,6 +240,14 @@ console.log(arr);   //['a']
 
 Character | Meaning
 ----------|--------
-**.**|matches any single character except the newline character.
+`.`|matches any single character except the newline character.
 
-**.**匹配除了回车和换行之外的所有字符，等价于[^\r\n]
+`.`匹配除了回车和换行之外的所有字符，等价于[^\r\n]
+
+##### 量词
+
+Character | Meaning
+----------|--------
+`?`|Matches the preceding character 0 or 1 time. Equivalent to {0,1}.
+`+`|Matches the preceding character 1 or more times. Equivalent to {1,}.
+`*`|Matches the preceding character 0 or more times. Equivalent to {0,}.
