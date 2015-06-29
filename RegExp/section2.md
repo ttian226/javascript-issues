@@ -13,3 +13,10 @@ Character | Meaning
 `.`匹配除了回车和换行之外的所有字符，等价于[^\r\n]
 
 
+##### 边界
+
+Character | Meaning
+----------|--------
+`^`|Matches beginning of input.
+`$`|Matches end of input.
+

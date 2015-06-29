@@ -169,6 +169,28 @@ console.log(list);
 // ['abc', 'abc', 'abc']
 ```
 
+*使用String.prototype.match()*
+
+如果使用全局匹配`g`，`String.prototype.match()`会返回匹配的所有子串组成的数组
+
+```javascript
+var re = /abc/g;
+var str = 'abc123abc456abc';
+
+var arr = str.match(re);
+
+console.log(arr);   //['abc', 'abc', 'abc']
+```
+
+```javascript
+var re = /[bcf]at/gi;
+var str = 'a bat ,a Cat,a fAt bat ,a faT cat';
+
+var arr = str.match(re);
+
+console.log(arr);   //[ "bat", "Cat", "fAt", "bat", "faT", "cat" ]
+```
+
 #### Special characters in regular expressions
 
 ##### 预定义特殊字符
@@ -244,6 +266,14 @@ var re = /[a-z.]+/;     //或 var re = /[\w.]+/
 var str = 'test.i.ng';
 var arr = re.exec(str);
 console.log(arr);   //['test.i.ng']
+```
+
+```javascript
+/[d-z]/.test('g');      //true
+/[d-z]/.test('gg');     //true 匹配到第一个'g'立即停止匹配
+/[^abc]/.test('g');     //true
+/[^abc]/.test('gg');    //true 匹配到第一个'g'立即停止匹配
+/[^abc]/.test('ga');    //true 匹配到第一个'g'立即停止匹配
 ```
 
 ##### 量词
