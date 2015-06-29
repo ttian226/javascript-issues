@@ -76,3 +76,19 @@ Person.prototype.hasOwnProperty('sayName'); //true
 The **isPrototypeOf()** method tests for an object in another object's prototype chain
 
 `prototypeObj.isPrototypeOf(obj)`
+
+* *prototypeObj* An object to be tested against each link in the prototype chain of the object argument.
+* *obj* The object whose prototype chain will be searched. 
+
+**Example**
+
+```javascript
+function Rectangle() {
+
+}
+
+var rec = new Rectangle();
+
+Rectangle.prototype.isPrototypeOf(rec); //true
+```
+
