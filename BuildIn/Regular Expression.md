@@ -144,7 +144,7 @@ console.log(arr);   //['abc']
 console.log(re.lastIndex);  //3，此时lastIndex指向字符串中的'1'
 ```
 
-*遍历所有匹配*
+*遍历所有匹配：*
 
 ```javascript
 var re = /abc/g;
@@ -171,6 +171,8 @@ console.log(list);
 
 #### Special characters in regular expressions
 
+##### 预定义特殊字符
+
 Character | Meaning
 ----------|--------
 \t|Matches a tab
@@ -178,4 +180,66 @@ Character | Meaning
 \n|Matches a line feed(换行)
 
 
+*匹配水平制表符*
 
+```javascript
+var re = /\t/;
+var str = 'abc\tdef';
+
+var res = re.test(str);
+var arr = re.exec(str);
+
+console.log(res);   //true
+console.log(arr);   //['       ']
+```
+
+*匹配回车*
+
+```javascript
+var re = /\r/;
+var str = 'abc\rdef';
+
+var res = re.test(str); //true
+```
+
+*匹配换行*
+
+```javascript
+var re = /\n/;
+var str = 'abc\ndef';
+
+var res = re.test(str); //true
+```
+
+##### 集合
+
+Character | Meaning
+----------|--------
+[xyz]|Character set.
+[^xyz]|A negated or complemented character set.
+
+[xyz] 包含x,y,z任意一个字符的集合
+[a-d] 等价于[abcd]，或[a-zA-Z0-9]匹配a-z,A-Z,0-9
+[^xyz] 不包含x,y,z任意一个字符
+
+```javascript
+var re = /[xyz]/;
+var str = 'ax';
+var arr = re.exec(str);
+console.log(arr);   //['x']
+```
+
+```javascript
+var re = /[^xyz]/;
+var str = 'ax';
+var arr = re.exec(str);
+console.log(arr);   //['a']
+```
+
+##### 预定义类
+
+Character | Meaning
+----------|--------
+**.**|matches any single character except the newline character.
+
+**.**匹配除了回车和换行之外的所有字符，等价于[^\r\n]
