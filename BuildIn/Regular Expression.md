@@ -6,6 +6,9 @@ g|Global search
 i|Case-insensitive search
 m|Multi-line search
 
+* *g 全局搜索，默认搜索到第一个匹配立刻停止*
+* *i 忽略大小写，默认大小写敏感*
+
 To include a flag with the regular expression, use this syntax:
 
 `var re = /pattern/flags;`
