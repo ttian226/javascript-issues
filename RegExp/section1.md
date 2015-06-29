@@ -255,6 +255,64 @@ Character | Meaning
 {n}|Matches exactly n occurrences of the preceding character. N must be a positive integer.
 {n,m}|Matches at least n and at most m occurrences of the preceding character.When m is omitted, it's treated as ∞.
 
+* `{n}`匹配n次
+* `{n,m}`匹配n到m次
+* `{n,}`最少匹配n次
+* `{,m}`最多匹配m次
+
+*关于{n}的例子：*
+
+```javascript
+var re = /a{2}/;
+var str = 'a';
+
+//由于'a'只出现1次，所以无法匹配exec返回null
+var arr = re.exec(str);
+
+console.log(arr);   // null
+```
+
+```javascript
+var re = /a{2}/;
+var str = 'aa';
+
+//'a'连续出现两次，匹配'aa'
+var arr = re.exec(str);
+
+console.log(arr);   // ['aa']
+```
+
+```javascript
+var re = /a{2}/;
+var str = 'aaa';
+
+//'a'连续出现3次，也只能匹配两个'a'
+var arr = re.exec(str);
+
+console.log(arr);   // ['aa']
+```
+
+*关于{n,m}的例子*
+
+```javascript
+var re = /a{2,5}/;
+var str1 = 'a';
+var str2 = 'aa';
+var str3 = 'aaaaa';
+var str4 = 'aaaaaa';
+
+var arr1 = re.exec(str1);   //匹配不到
+var arr2 = re.exec(str2);   //可以匹配到'aa'
+var arr3 = re.exec(str3);   //可以匹配到'aaaaa'
+var arr4 = re.exec(str4);   //最多只能匹配到5个a
+
+console.log(arr1);  //null
+console.log(arr2);  //['aa']
+console.log(arr3);  //['aaaaa']
+console.log(arr4);  //['aaaaa']
+```
+
+
 *匹配0或1个a*
 
 ```javascript
