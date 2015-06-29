@@ -12,6 +12,14 @@ Character | Meaning
 
 `.`匹配除了回车和换行之外的所有字符，等价于[^\r\n]
 
+*返回用空白符分隔的字符串组成的数组：*
+
+```javascript
+var re = /\S+/g;
+var str = 'abc def ghi';
+var arr = str.match(re);
+console.log(arr);   //['abc', 'def', 'ghi']
+```
 
 ##### 边界
 
