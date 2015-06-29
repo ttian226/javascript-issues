@@ -221,6 +221,7 @@ Character | Meaning
 * [xyz] 包含x,y,z任意一个字符的集合
 * [a-d] 等价于[abcd]，或[a-zA-Z0-9]匹配a-z,A-Z,0-9
 * [^xyz] 不包含x,y,z任意一个字符
+* [a-z.] 如果方括号中包含`.`，仅仅匹配一个`.`而不是量词的`.`
 
 ```javascript
 var re = /[xyz]/;
@@ -251,3 +252,147 @@ Character | Meaning
 `?`|Matches the preceding character 0 or 1 time. Equivalent to {0,1}.
 `+`|Matches the preceding character 1 or more times. Equivalent to {1,}.
 `*`|Matches the preceding character 0 or more times. Equivalent to {0,}.
+{n}|Matches exactly n occurrences of the preceding character. N must be a positive integer.
+{n,m}|Matches at least n and at most m occurrences of the preceding character.When m is omitted, it's treated as ∞.
+
+*匹配0或1个a*
+
+```javascript
+var re = /a?/;
+var str = 'a';
+
+// 匹配到了1个'a'
+var res = re.test(str);
+var arr = re.exec(str);
+
+console.log(res);   // true
+console.log(arr);   // ['a']
+```
+
+```javascript
+var re = /a?/;
+var str = '';
+
+// 匹配到了0个'a'
+var res = re.test(str);
+var arr = re.exec(str);
+
+console.log(res);   // true
+console.log(arr);   // ['']
+```
+
+```javascript
+var re = /a+/;
+var str = 'aaabc';
+
+// 最多匹配1个'a'
+var arr = re.exec(str);
+
+console.log(arr);   // ['a']
+```
+
+*匹配1或多个a*
+
+```javascript
+var re = /a+/;
+var str = 'abc';
+
+// 匹配到了1个'a'
+var arr = re.exec(str);
+
+console.log(arr);   // ['a']
+```
+
+```javascript
+var re = /a+/;
+var str = 'aaabc';
+
+// 匹配到了多个'a'
+var arr = re.exec(str);
+
+console.log(arr);   // ['aaa']
+```
+
+*集合+量词*
+
+```javascript
+var re = /[a-z]?/;
+var str = 'aaabc';
+
+// 匹配到了一个'a'
+var arr = re.exec(str);
+
+console.log(arr);   // ['a']
+```
+
+```javascript
+var re = /[a-z]+/;
+var str = 'aaabc';
+
+// 匹配整个字符串
+var arr = re.exec(str);
+
+console.log(arr);   // ['aaabc']
+```
+
+```javascript
+var re = /[a-z]?/;
+var str = 'ABCdef';
+
+// 匹配0或1次集合中字符，由于第一个字符不在集合中，所以匹配到了空字符（0个）
+var arr = re.exec(str);
+
+console.log(arr);   // ['']
+```
+
+```javascript
+var re = /[a-z]?/;
+var str = 'abcABCdef';
+
+// 匹配0或1次集合中字符，由于第一个字符在集合中，所以最多匹配了一个字符'a'
+var arr = re.exec(str);
+
+console.log(arr);   // ['a']
+```
+
+```javascript
+var re = /[a-z]+/;
+var str = 'ABCdefGHijk';
+
+// 匹配1或多次集合中字符，在字符串中找到了最先出现的匹配'def'
+// 优先匹配多个字符'def'，而不是1个字符'd'
+var arr = re.exec(str);
+
+console.log(arr);   // ['def']
+```
+
+```javascript
+var re = /[a-z]+/;
+var str = 'aABCdefGHijk';
+
+// 匹配1或多次集合中字符，在字符串中找到了最先出现的匹配'a'
+// 由于接下来的是'A'所以停止匹配
+var arr = re.exec(str);
+
+console.log(arr);   // ['a']
+```
+
+```javascript
+var re = /[a-z]*/;
+var str = 'ABCdefGHijk';
+
+// 匹配0或多次集合中字符，由于第一个字符不在集合中，所以匹配到了空字符（0个）
+var arr = re.exec(str);
+
+console.log(arr);   // ['']
+```
+
+```javascript
+var re = /[a-z]*/;
+var str = 'abcABCdefGHijk';
+
+// 匹配0或多次集合中字符，由于前面的3个字符'abc'在集合中，所以匹配到了'abc'
+var arr = re.exec(str);
+
+console.log(arr);   // ['abc']
+```
