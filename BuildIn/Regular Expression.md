@@ -18,16 +18,7 @@ To include a flag with the regular expression, use this syntax:
 `var re = new RegExp("pattern", "flags");`
 
 
-#### Special characters in regular expressions
-
-Character | Meaning
-----------|--------
-\t|Matches a tab
-\r|Matches a carriage return(回车)
-\n|Matches a line feed(换行)
-
-
-*Example1*
+*javascript创建正则表达式两种方式*
 
 ```javascript
 var re1 = new RegExp('abc', 'g');
@@ -38,7 +29,7 @@ var re2 = /abc/g;
 console.log(re2 instanceof RegExp); //true
 ```
 
-*Example2*
+*完全匹配：*
 
 ```javascript
 var re = /abc/;
@@ -51,7 +42,7 @@ console.log(res);   //true
 console.log(arr);   //['abc']
 ```
 
-*Example3*
+*匹配字符串中的一部分：*
 
 ```javascript
 var re = /abc/;
@@ -64,7 +55,7 @@ console.log(res);   //true
 console.log(arr);   //['abc']
 ```
 
-*Example4*
+*找不到匹配：*
 
 ```javascript
 var re = /abc/;
@@ -77,7 +68,67 @@ console.log(res);   //false
 console.log(arr);   //null
 ```
 
+*不使用i匹配，默认大小写敏感：*
 
+```javascript
+var re = /abc/;
+var str = 'ABC';
+
+var res = re.test(str);
+var arr = re.exec(str);
+
+console.log(res);   //false
+console.log(arr);   //null
+```
+
+*使用i匹配，忽略大小写：*
+
+```javascript
+var re = /abc/i;
+var str = 'ABC';
+
+var res = re.test(str);
+var arr = re.exec(str);
+
+console.log(res);   //true
+console.log(arr);   //['ABC']
+```
+
+*使用g匹配：*
+
+```javascript
+var re = /abc/g;
+var str = 'abc';
+
+console.log(re.lastIndex);  //0
+
+var res = re.test(str); //or re.exec(str)
+
+console.log(re.lastIndex);  //3
+```
+
+*不使用g匹配：*
+
+```javascript
+var re = /abc/;
+var str = 'abc';
+
+console.log(re.lastIndex);  //0
+
+var res = re.test(str); //or re.exec(str)
+
+console.log(re.lastIndex);  //0
+```
+
+使用全局模式g匹配时，如果使用`.test()`或`.exec()`方法匹配时，每次匹配到一个字符串后，`lastIndex`值会被更新，如果不使用g匹配，索引值`lastIndex`不会更新。
+
+#### Special characters in regular expressions
+
+Character | Meaning
+----------|--------
+\t|Matches a tab
+\r|Matches a carriage return(回车)
+\n|Matches a line feed(换行)
 
 
 
