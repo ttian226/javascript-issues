@@ -1,4 +1,4 @@
-##### 预定义类
+#### 预定义类
 
 Character | Meaning
 ----------|--------
@@ -47,7 +47,7 @@ console.log(arr);   //['abc', 'def', 'ghi']
 /\|/.test('|');        //true
 ```
 
-##### 边界
+#### 边界
 
 Character | Meaning
 ----------|--------
@@ -84,7 +84,7 @@ var arr2 = '-12w-eefd&efrew'.match(/\b[\w-]+\b/g);
 console.log(arr2);   //["12w-eefd", "efrew"]
 ```
 
-##### 贪婪模式和惰性模式
+#### 贪婪模式和惰性模式
 
 * 惰性模式匹配是在量词后面加`?`
 
@@ -104,7 +104,26 @@ console.log(arr2);   //["12w-eefd", "efrew"]
 'abbbcbbb'.match(/.*?bbb/g); //["abbb", "cbbb"]
 ```
 
-##### 分组匹配
+#### 或
+
+Character | Meaning
+----------|--------
+`x|y`|Matches either 'x' or 'y'.
+
+```javascript
+/a|b/.test('a');    //true 只匹配a或b任一个字符
+/a|b/.test('c');    //false
+```
+
+```javascript
+/[a|b]/.test('|');  //true 在集合中'|'不代表或，只代表字符'|'
+```
+
+```javascript
+/(a|b|c)+/.test('a');   //true 可以在分组中使用'|'
+```
+
+#### 分组匹配
 
 Character | Meaning
 ----------|--------
@@ -165,23 +184,37 @@ Character | Meaning
 // 第二个参数为最后一次匹配的分组'dad'
 'baddad'.match(/([bd]ad?)*/);   //["baddad", "dad"]
 'baddad'.match(/([bd]ad?)*/g);  //["baddad", ""]
+
+// 匹配到了ab，第1个元素为最外层分组'ab'，第2个元素为内层分组'b'
+'ab'.match(/(a(b)?)/);  //['ab', 'ab', 'b']
 ```
 
-##### 或
+#### 反向引用
 
-Character | Meaning
-----------|--------
-`x|y`|Matches either 'x' or 'y'.
+* 使用`RegExp.$n`
 
 ```javascript
-/a|b/.test('a');    //true 只匹配a或b任一个字符
-/a|b/.test('c');    //false
+/(foo){3}/.exec('foofoofoo');   //["foofoofoo", "foo"]
+console.log(RegExp.$1);     //'foo'
+
+/(foo){1}(bar){2}/.exec('foobarbar');   //["foobarbar", "foo", "bar"]
+console.log(RegExp.$1);     //'foo'
+console.log(RegExp.$2);     //'bar'
 ```
+* 在正则表达式中使用`\`
 
 ```javascript
-/[a|b]/.test('|');  //true 在集合中'|'不代表或，只代表字符'|'
+/(foo)/.exec('foofoo');    //['foo', 'foo']
+
+// 因为'\1'='foo'，所以'/(foo)\1/'等价于'/(foo)foo/'
+/(foo)\1/.exec('foofoo');      //['foofoo', 'foo']，匹配到了'foofoo'     
 ```
+* 在`String.prototype.replace()`中使用反向引用
 
 ```javascript
-/(a|b|c)+/.test('a');   //true 可以在分组中使用'|'
+var re = /(\w+)\s(\w+)/;
+var str = 'John Smith';
+str.match(re);  //["John Smith", "John", "Smith"]
+var newstr = str.replace(re, '$2, $1');
+console.log(newstr);    //Smith, John
 ```

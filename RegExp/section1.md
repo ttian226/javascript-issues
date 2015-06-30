@@ -193,7 +193,7 @@ console.log(arr);   //[ "bat", "Cat", "fAt", "bat", "faT", "cat" ]
 
 #### Special characters in regular expressions
 
-##### 预定义特殊字符
+#### 预定义特殊字符
 
 Character | Meaning
 ----------|--------
@@ -233,7 +233,7 @@ var str = 'abc\ndef';
 var res = re.test(str); //true
 ```
 
-##### 集合
+#### 集合
 
 Character | Meaning
 ----------|--------
@@ -277,7 +277,7 @@ console.log(arr);   //['test.i.ng']
 /[^abc]/.test('ga');    //true 匹配到第一个'g'立即停止匹配
 ```
 
-##### 量词
+#### 量词
 
 Character | Meaning
 ----------|--------
