@@ -144,6 +144,29 @@ Character | Meaning
 'abc123abcabc456abc'.match(/(abc)+/g);   //["abc", "abcabc", "abc"]
 ```
 
+分组匹配的一些例子：
+
+```javascript
+'a'.match(/(a)?/);  //['a', 'a']，匹配到了'a'
+'a'.match(/(a)?/g); //['a', '']，匹配到了'a'和''
+'aa'.match(/(a)?/); //['a', 'a']，匹配到了第一个'a'
+'aa'.match(/(a)?/g);//['a', 'a', '']，匹配到了第一个'a'，第二个'a'，和''
+
+'a'.match(/(a)+/);  //['a', 'a']，匹配到了'a'
+'a'.match(/(a)+/g); //['a']，只匹配到了'a'
+'aa'.match(/(a)+/); //['aa', 'a']，匹配了'aa'
+'aa'.match(/(a)+/g);//['aa']，只匹配到了'aa'
+
+'a'.match(/(a)*/);  //['a', 'a']，匹配到了'a'
+'a'.match(/(a)*/g); //['a', '']，匹配到了'a'和''
+'aa'.match(/(a)*/); //['aa', 'a']，匹配了'aa'
+'aa'.match(/(a)*/g);//['aa', '']，匹配到了'aa'和''
+
+// 第二个参数为最后一次匹配的分组'dad'
+'baddad'.match(/([bd]ad?)*/);   //["baddad", "dad"]
+'baddad'.match(/([bd]ad?)*/g);  //["baddad", ""]
+```
+
 ##### 或
 
 Character | Meaning
