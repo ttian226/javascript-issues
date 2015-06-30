@@ -115,7 +115,7 @@ console.log(arr2);   //["12w-eefd", "efrew"]
 "<p></p>".match(/<(.|\s)*?>/g); //["<p>", "</p>"]
 
 // 替换所有的<p>标签，只保留文本
-"<p>hello world</p>".replace(/<(.|\s)*?>/g, '');
+"<p>hello world</p>".replace(/<(.|\s)*?>/g, '');    //'hello world'
 ```
 
 #### 或
@@ -259,3 +259,46 @@ Character | Meaning
 'abc'.match(/(?:\w){3}/);   //["abc"]
 ```
 
+```javascript
+// 正常情况下两个分组信息都捕获
+'12345.123'.match(/^(\d)+.(\d){3}$/g);
+
+console.log(RegExp.$1); //5
+console.log(RegExp.$2); //3
+
+// 第一个分组使用非捕获
+'12345.123'.match(/^(?:\d)+.(\d){3}$/g);
+
+console.log(RegExp.$1); //3
+console.log(RegExp.$2); //不存在
+```
+
+#### 前瞻捕获
+
+Character | Meaning
+----------|--------
+`x(?=y)`|Matches 'x' only if 'x' is followed by 'y'. This is called a lookahead.
+`x(?!y)`|Matches 'x' only if 'x' is not followed by 'y'. This is called a negated lookahead.
+
+* 正向前瞻匹配`x(?=y)`，x后面如果紧跟着y，则可以匹配到x，否则匹配不到
+* 逆向前瞻匹配`x(?!y)`，x后面如果不是y，则可以匹配到x，反之则匹配不到
+
+```javascript
+'abc123'.match(/abc(123)/);     //["abc123", "123"]
+
+// 正向前瞻匹配，只有当'?='后面的内容是123时才能匹配到abc
+// 由于这里字符串abc后面是123，所以匹配到了abc
+'abc123'.match(/abc(?=123)/);   //["abc"]
+
+// 由于要匹配的字符串abc后面是123，而不是456，所以匹配不到abc
+'abc123'.match(/abc(?=456)/);   //null
+```
+
+```javascript
+// 逆向前瞻匹配，只有当'?!'后面的内容不是123时，才能匹配到abc
+// 由于这里字符串abc后面是456，而不是123，所以匹配到了abc
+'abc456'.match(/abc(?!123)/);   //["abc"]
+
+// 由于要匹配的字符串abc后面是123，所以匹配不到abc
+'abc123'.match(/abc(?!123)/);   //null
+```
