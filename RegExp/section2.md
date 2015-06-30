@@ -104,6 +104,20 @@ console.log(arr2);   //["12w-eefd", "efrew"]
 'abbbcbbb'.match(/.*?bbb/g); //["abbb", "cbbb"]
 ```
 
+```javascript
+// 贪婪匹配，同时匹配了2个p
+"<p></p>".match(/<(.|\s)*>/);   //["<p></p>", "p"]
+
+// 惰性匹配，只匹配了第一个p
+"<p></p>".match(/<(.|\s)*?>/);  //["<p>", "p"]
+
+// 通过惰性+全局，匹配每个html标签
+"<p></p>".match(/<(.|\s)*?>/g); //["<p>", "</p>"]
+
+// 替换所有的<p>标签，只保留文本
+"<p>hello world</p>".replace(/<(.|\s)*?>/g, '');
+```
+
 #### 或
 
 Character | Meaning
@@ -163,6 +177,16 @@ Character | Meaning
 'abc123abcabc456abc'.match(/(abc)+/g);   //["abc", "abcabc", "abc"]
 ```
 
+**虽然使用`g`匹配，match的结果没有保存分组信息，但实际上还是捕获到了分组信息，如：**
+
+```javascript
+'foobarbar'.match(/(foo){1}(bar){2}/g);     //["foobarbar"]
+
+// 通过反向引用查看捕获的分组信息
+console.log(RegExp.$1);     //'foo'
+console.log(RegExp.$2);     //'bar'
+```
+
 分组匹配的一些例子：
 
 ```javascript
@@ -201,7 +225,7 @@ console.log(RegExp.$1);     //'foo'
 console.log(RegExp.$1);     //'foo'
 console.log(RegExp.$2);     //'bar'
 ```
-* 在正则表达式中使用`\`
+* 在正则表达式中使用`\n`
 
 ```javascript
 /(foo)/.exec('foofoo');    //['foo', 'foo']
@@ -218,3 +242,20 @@ str.match(re);  //["John Smith", "John", "Smith"]
 var newstr = str.replace(re, '$2, $1');
 console.log(newstr);    //Smith, John
 ```
+
+#### 非捕获性分组
+
+不记录分组信息，不能创建反向引用的匹配，格式为`(?:x)`
+
+Character | Meaning
+----------|--------
+`(?:x)`|Matches 'x' but does not remember the match.
+
+```javascript
+// 正常情况下为捕获性分组，匹配字符串'abc'，捕获分组字符串'c'
+'abc'.match(/(\w){3}/);     //["abc", "c"]
+
+// 使用非捕获性分组，匹配字符串'abc'，未捕获到分组字符串
+'abc'.match(/(?:\w){3}/);   //["abc"]
+```
+
