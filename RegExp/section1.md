@@ -244,6 +244,7 @@ Character | Meaning
 * [a-d] 等价于[abcd]，或[a-zA-Z0-9]匹配a-z,A-Z,0-9
 * [^xyz] 不包含x,y,z任意一个字符
 * [a-z.] 如果方括号中包含`.`，仅仅匹配一个`.`而不是量词的`.`
+* [\u4e00-\u9fa5] 匹配单个汉字
 
 ```javascript
 var re = /[xyz]/;

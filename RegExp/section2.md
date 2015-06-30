@@ -21,6 +21,26 @@ var arr = str.match(re);
 console.log(arr);   //['abc', 'def', 'ghi']
 ```
 
+* 使用`\.`匹配`.`例如：
+
+```javascript
+/[a-z]\.[0-9]/.test('a.9');     //true
+```
+
+* 使用`\/`匹配`/`例如：
+
+```javascript
+/\//.test('/');     //true
+/\/+/.test('//');   //true
+```
+
+* 使用`\\`匹配`\`例如：
+
+```javascript
+/\\/.test('\\');        //true 匹配一个'\'
+/^\\{2}$/.test('\\\\');   //true 匹配两个'\'
+```
+
 ##### 边界
 
 Character | Meaning
@@ -28,3 +48,13 @@ Character | Meaning
 `^`|Matches beginning of input.
 `$`|Matches end of input.
 
+
+```javascript
+/abc/.test('123abc');    //true 匹配到abc
+/^abc/.test('123abc');   //false 在字符串起始位置未匹配到
+/abc/.test('abc123');    //true 匹配到abc
+
+/abc/.test('abc123');   //true  
+/abc$/.test('abc123');  //false
+/abc$/.test('123abc');  //true
+```
