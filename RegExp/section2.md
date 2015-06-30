@@ -41,6 +41,12 @@ console.log(arr);   //['abc', 'def', 'ghi']
 /^\\{2}$/.test('\\\\');   //true 匹配两个'\'
 ```
 
+* 使用`\|`匹配`|`例如：
+
+```javascript
+/\|/.test('|');        //true
+```
+
 ##### 边界
 
 Character | Meaning
@@ -80,7 +86,7 @@ console.log(arr2);   //["12w-eefd", "efrew"]
 
 ##### 贪婪模式和惰性模式
 
-惰性模式匹配是在量词后面加`?`
+* 惰性模式匹配是在量词后面加`?`
 
 ```javascript
 // 默认情况下为贪婪匹配，{3,5}优先从最大值5匹配
@@ -96,4 +102,63 @@ console.log(arr2);   //["12w-eefd", "efrew"]
 
 // 惰性匹配，当匹配到第一个'bbb'即停止匹配
 'abbbcbbb'.match(/.*?bbb/g); //["abbb", "cbbb"]
+```
+
+##### 分组匹配
+
+Character | Meaning
+----------|--------
+`(x)`|Matches 'x' and remembers the match
+
+使用`()`进行分组匹配
+
+```javascript
+/(foo){3}/.test('foofoofoo');   //true 连续匹配'foo'3次
+```
+
+* 使用`exec()`，返回的数组的第0个元素存储匹配的字符串，从第1个元素开始依次存储分组字符串
+
+```javascript
+// 第0个元素为匹配后的字符串"foofoofoo"，第1个元素存储分组字符串"foo"
+/(foo){3}/.exec('foofoofoo');   //["foofoofoo", "foo"]
+
+// 第1，2个元素分别存储'foo','bar'
+/(foo){1}(bar){2}/.exec('foobarbar');   //["foobarbar", "foo", "bar"]
+```
+
+* 使用`String.prototype.match()`
+
+不使用`g`匹配，返回的数组的第0个元素存储匹配的字符串，从第1个元素开始依次存储分组字符串，同`exec()`的返回结果
+
+```javascript
+'foobarbar'.match(/(foo){1}(bar){2}/);  //["foobarbar", "foo", "bar"]
+
+'abc123abcabc456abc'.match(/(abc)+/);   //["abc", "abc"]
+```
+
+使用`g`匹配，match返回的数组只存储匹配的字符串
+
+```javascript
+'foobarbar'.match(/(foo){1}(bar){2}/g);  //["foobarbar"]
+
+'abc123abcabc456abc'.match(/(abc)+/g);   //["abc", "abcabc", "abc"]
+```
+
+##### 或
+
+Character | Meaning
+----------|--------
+`x|y`|Matches either 'x' or 'y'.
+
+```javascript
+/a|b/.test('a');    //true 只匹配a或b任一个字符
+/a|b/.test('c');    //false
+```
+
+```javascript
+/[a|b]/.test('|');  //true 在集合中'|'不代表或，只代表字符'|'
+```
+
+```javascript
+/(a|b|c)+/.test('a');   //true 可以在分组中使用'|'
 ```
