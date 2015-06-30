@@ -47,6 +47,8 @@ Character | Meaning
 ----------|--------
 `^`|Matches beginning of input.
 `$`|Matches end of input.
+\b|Matches a word boundary
+\B|Matches a non-word boundary
 
 
 ```javascript
@@ -58,3 +60,21 @@ Character | Meaning
 /abc$/.test('abc123');  //false
 /abc$/.test('123abc');  //true
 ```
+
+`\b`匹配单词边界，指[A-Za-z0-9_]之外的字符
+`\B`匹配非单词边界
+
+```javascript
+// 不使用边界\b匹配
+var arr1 = '-12w-eefd&efrew'.match(/[\w-]+/g);
+
+// 由于[\w-]包含'-'，所以匹配出的第一个字符串为'-12w-eefd'
+console.log(arr1);   //["-12w-eefd", "efrew"]
+
+// 使用边界\b匹配
+var arr2 = '-12w-eefd&efrew'.match(/\b[\w-]+\b/g);
+
+// 从第一个[A-Za-z0-9_]之外的字符开始匹配，即从'-'作为起始点匹配，所以第一个匹配出的字符串不包含'-'，为'12w-eefd'
+console.log(arr2);   //["12w-eefd", "efrew"]
+```
+
