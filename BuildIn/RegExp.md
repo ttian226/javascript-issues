@@ -8,7 +8,7 @@ The **exec()** method executes a search for a match in a specified string. Retur
 
 The **test()** method executes a search for a match between a regular expression and a specified string. Returns true or false.
 
-1. use global flag, `re.lastIndex` has changed.
+* use global flag, `re.lastIndex` has changed.
 
 ```javascript
 var re = /quick\s(brown).+?(jumps)/ig;
@@ -25,7 +25,7 @@ console.log(arr);
 // ["Quick Brown Fox Jumps", "Brown", "Jumps", index: 4, input: "The Quick Brown Fox Jumps Over The Lazy Dog"]
 ```
 
-2. not use global flag, `re.lastIndex` not change always 0.
+* not use global flag, `re.lastIndex` not change always 0.
 
 ```javascript
 var re = /quick\s(brown).+?(jumps)/i;
@@ -39,3 +39,25 @@ console.log(re.lastIndex);
 // 0
 // 0
 ```
+
+**Example:** Finding successive matches
+
+```javascript
+var myRe = /ab*/g;
+var str = 'abbcdefabh';
+
+var list = [], arr;
+while ((arr = myRe.exec(str))) {
+    var msg = 'Found ' + arr[0] + '. ';
+    msg += 'Next match starts at ' + myRe.lastIndex;
+    console.log(msg);
+    list.push(arr[0]);
+}
+console.log(list);
+
+// output
+// Found abb. Next match starts at 3
+// Found ab. Next match starts at 9
+// ["abb", "ab"]
+```
+
