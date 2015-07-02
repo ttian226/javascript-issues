@@ -92,3 +92,44 @@ var rec = new Rectangle();
 Rectangle.prototype.isPrototypeOf(rec); //true
 ```
 
+##### [Object.prototype.toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString)
+
+The **toString()** method returns a string representing object.
+
+**Example:** Using toString() to detect object class
+
+```javascript
+var toString = Object.prototype.toString;
+
+toString.call(new Date);    // [object Date]
+toString.call(new String);  // [object String]
+toString.call(Math);        // [object Math]
+```
+##### [Object.prototype.valueOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf)
+
+The **valueOf()** method returns the primitive value of the specified object.
+
+Some difference from `toString` and `valueOf`:
+
+```javascript
+var o = {
+    str: 'hello',
+    val: 10,
+    toString: function() {
+        return this.str;
+    },
+    valueOf: function() {
+        return this.val;
+    }
+};
+
+// o.toString()
+alert(o);   //'hello'
+var str = ['abc', o].join(','); 
+alert(str); //'abc,hello'
+
+// o.valueOf()
+alert("o=" + o);    //'o=10'
+alert('20' + o);    //'2010'
+alert(20 + o);      //30
+```
