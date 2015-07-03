@@ -50,7 +50,6 @@ console.log(re.lastIndex);
 // 0
 ```
 
-
 * use global flag, `re.lastIndex` has changed.
 
 ```javascript
@@ -72,10 +71,10 @@ The property list:
 
 Property | Description | Example
 ---------|-------------|--------
-[0]|The full string of characters matched|Quick Brown Fox Jumps
-[1], ...[n]|The parenthesized substring matches, if any. |[1]=Brown,[2]=Jumps
+[0]|The full string of characters matched|'Quick Brown Fox Jumps'
+[1], ...[n]|The parenthesized substring matches, if any. |[1]='Brown',[2]='Jumps'
 index|The 0-based index of the match in the string.|4
-input|The original string.|The Quick Brown Fox Jumps Over The Lazy Dog
+input|The original string.|'The Quick Brown Fox Jumps Over The Lazy Dog'
 
 
 **Example:** Finding successive matches
