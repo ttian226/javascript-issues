@@ -56,8 +56,8 @@ function complete(e) {
 }
 ```
 
-*使用`document.body.addEventListener('load', complete, false)`确不能触发load事件，原因？*
-*实际上`window.onload`和`body.onload`是不建议使用的，因为它需要等待所有元素都加载完成才会触发的*
+* *使用`document.body.addEventListener('load', complete, false)`确不能触发load事件，原因？*
+* *实际上`window.onload`和`body.onload`是不建议使用的，因为它需要等待所有元素都加载完成才会触发的*
 
 * 判断图片完全加载完成
 
