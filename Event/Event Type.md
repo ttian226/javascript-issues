@@ -57,6 +57,7 @@ function complete(e) {
 ```
 
 *使用`document.body.addEventListener('load', complete, false)`确不能触发load事件，原因？*
+*实际上`window.onload`和`body.onload`是不建议使用的，因为它需要等待所有元素都加载完成才会触发的*
 
 * 判断图片完全加载完成
 
@@ -84,3 +85,4 @@ function imgLoad(e) {
     console.log('img loaded!');
 }
 ```
+*经过在firefox39和chrome43上测试，发现load只是属于Event类型的事件，而不是其它Event的派生类。但api中写着load属于UIEvent类型的事件*
