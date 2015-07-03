@@ -3,10 +3,6 @@
 
 This property is set only if the regular expression used the "g" flag to indicate a global search. The following rules apply:
 
-1. If lastIndex is greater than the length of the string, test() and exec() fail, then lastIndex is set to 0.
-2. If lastIndex is equal to the length of the string and if the regular expression matches the empty string, then the regular expression matches input starting at lastIndex.
-3. If lastIndex is equal to the length of the string and if the regular expression does not match the empty string, then the regular expression mismatches input, and lastIndex is reset to 0.
-4. Otherwise, lastIndex is set to the next position following the most recent match.
 
 ##### [RegExp.prototype.test()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)
 

@@ -158,6 +158,9 @@ Character | Meaning
 
 // 第1，2个元素分别存储'foo','bar'
 /(foo){1}(bar){2}/.exec('foobarbar');   //["foobarbar", "foo", "bar"]
+
+// 如果分组匹配到了空字符，捕获的分组为undefined
+/(foo)?/.exec('');  //["", undefined]
 ```
 
 * 使用`String.prototype.match()`
