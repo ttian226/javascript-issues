@@ -25,6 +25,7 @@ isArray({});    //false
 * `Array.prototype.pop()`
 * `Array.prototype.shift()`
 * `Array.prototype.unshift()`
+* `Array.prototype.reverse()`
 
 ##### [Array.prototype.push()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push)
 
@@ -86,4 +87,17 @@ var tot = arr.unshift(0);
 
 console.log(arr);   //[0, 1, 2]
 console.log(tot);   //3
+```
+
+##### [Array.prototype.reverse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)
+
+翻转数组，使数组最后一个元素变成第一个元素，第一个元素变成最后一个元素。并返回这个数组的引用
+
+```javascript
+var myArray = ['one', 'two', 'three'];
+var newArr = myArray.reverse();
+
+console.log(myArray);   // ['three', 'two', 'one']
+console.log(newArr);    // ['three', 'two', 'one']
+console.log(newArr === myArray);    //true
 ```
