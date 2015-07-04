@@ -20,6 +20,12 @@ isArray({});    //false
 
 返回数组长度
 
+**以下这些方法可以改变数组本身，包括：**
+* `Array.prototype.push()`
+* `Array.prototype.pop()`
+* `Array.prototype.shift()`
+* `Array.prototype.unshift()`
+
 ##### [Array.prototype.push()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push)
 
 从数组的尾部添加一个或多个元素，并返回这个数组的新的长度
