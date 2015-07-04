@@ -10,7 +10,7 @@ function complete(e) {
 }
 ```
 
-##### load
+##### load事件
 
 页面上所有元素加载完成后触发，包括Dom树，样式，图片，frame等。
 
