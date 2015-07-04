@@ -22,7 +22,7 @@ isArray({});    //false
 
 ##### [Array.prototype.push()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push)
 
-从数组的尾部添加一个或多个元素，并返回这个新数组的长度
+从数组的尾部添加一个或多个元素，并返回这个数组的新的长度
 
 例1：向数组添加新的元素
 
@@ -58,3 +58,26 @@ console.log(myFish); // ['angel', 'clown', 'mandarin' ]
 console.log(popped); // 'sturgeon'
 ```
 
+##### [Array.prototype.shift()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift)
+
+从数组中删除第一个元素，并返回这个元素
+
+```javascript
+var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+var shifted = myFish.shift(); 
+
+console.log(myFish);    //['clown', 'mandarin', 'surgeon'];
+console.log(shifted);   //'angel'
+```
+
+##### [Array.prototype.unshift()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift)
+
+从数组的头部添加一个或多个元素，并返回这个数组的新的长度
+
+```javascript
+var arr = [1, 2];
+var tot = arr.unshift(0);
+
+console.log(arr);   //[0, 1, 2]
+console.log(tot);   //3
+```
