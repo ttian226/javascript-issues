@@ -123,6 +123,11 @@ scores.sort();
 console.log(scores); //[ 1, 10, 2, 21 ]
 ```
 
+比较函数`compareFunction(a, b)`定义如下：
+* 如果`compareFunction(a, b)`返回值小于0，则a要排在b的前面
+* 如果`compareFunction(a, b)`返回值大于0，则b要排在a的前面
+* 如果`compareFunction(a, b)`返回值等于0，则a,b的排序没有变化
+
 例：按照数组中数字由小到大排序
 
 ```javascript
@@ -145,4 +150,42 @@ numbers.sort(function(a, b) {
 });
 
 console.log(numbers);   //[ 5, 4, 3, 2, 1 ]
+```
+
+例：对数组中对象按照不同属性进行排序
+
+```javascript
+var items = [
+    { name: 'Edward', value: 21 },
+    { name: 'Sharpe', value: 37 },
+    { name: 'And', value: 45 },
+    { name: 'The', value: -12 },
+    { name: 'Magnetic', value: 28 },
+    { name: 'Zeros', value: 37 }
+];
+
+// 按照name的unicode值由小到大排序
+var compareByName = function(a, b) {
+    if (a.name > b.name) {
+        return 1;
+    }
+    if (a.name < b.name) {
+        return -1;
+    }
+    return 0;
+};
+
+// 按照value的值由小到大排序
+var compareByValue = function(a, b) {
+    if (a.value > b.value) {
+        return 1;
+    }
+    if (a.value < b.value) {
+        return -1;
+    }
+    return 0;
+};
+
+items.sort(compareByName);
+items.sort(compareByValue);
 ```
