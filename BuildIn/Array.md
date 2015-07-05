@@ -101,3 +101,48 @@ console.log(myArray);   // ['three', 'two', 'one']
 console.log(newArr);    // ['three', 'two', 'one']
 console.log(newArr === myArray);    //true
 ```
+
+##### [Array.prototype.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+
+给数组中的元素重新排序，并返回这个数组
+
+`arr.sort([compareFunction])`
+
+`sort`接受一个排序函数，如果为空则按照数组中的元素的Unicode值进行排序。
+
+例：参数为空时
+
+```javascript
+var fruit = ['cherries', 'apples', 'bananas'];
+fruit.sort();
+console.log(fruit);  //[ "apples", "bananas", "cherries" ]
+
+var scores = [1, 10, 2, 21];
+scores.sort();
+// 结果并不是按照数字的大小排序，而是按照Unicode值由小到大排序。
+console.log(scores); //[ 1, 10, 2, 21 ]
+```
+
+例：按照数组中数字由小到大排序
+
+```javascript
+var numbers = [4, 2, 5, 1, 3];
+
+numbers.sort(function(a, b) {
+    return a - b;
+});
+
+console.log(numbers);   //[ 1, 2, 3, 4, 5 ]
+```
+
+例：按照数组中数字由大到小排序
+
+```javascript
+var numbers = [4, 2, 5, 1, 3];
+
+numbers.sort(function(a, b) {
+    return b - a;
+});
+
+console.log(numbers);   //[ 5, 4, 3, 2, 1 ]
+```
