@@ -254,6 +254,14 @@ removed = myFish.splice(0, 2, 'parrot', 'anemone', 'blue');
 console.log(myFish);    //[ "parrot", "anemone", "blue", "mandarin", "surgeon" ]
 ```
 
+**以下这些方法不会改变数组本身，会返回新的数组表现，如字符串，新数组，位置等**
+* `Array.prototype.join()`
+* `Array.prototype.concat()`
+* `Array.prototype.slice()`
+* `Array.prototype.toString()`
+* `Array.prototype.indexOf()`
+* `Array.prototype.lastIndexOf()`
+
 ##### [Array.prototype.join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
 
 把数组中的元素用分隔符连接起来，并返回一个字符串。
