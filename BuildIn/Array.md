@@ -454,7 +454,7 @@ function callback(value, index, array) {
 
 测试数组中每个元素的值是否满足条件，如果全部满足条件则返回true，如果有一个不满足条件则返回false
 
-例：检查数组中的所有元素是否大于10，如果全部大于10返回true，有一个不大于10返回false
+例：检查数组中的每个元素是否大于等于10
 
 ```javascript
 var arr1 = [12, 5, 8, 130, 44];
