@@ -422,3 +422,30 @@ array.lastIndexOf(2, -2); // 0
 array.lastIndexOf(2, -1); // 3
 ```
 
+##### [Array.prototype.forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+
+迭代数组中的元素
+
+`arr.forEach(callback[, thisArg])`
+
+- `callback` 每个回调函数都包含以下3个参数
+    - `currentValue` 数组中元素值
+    - `index` 数组中元素索引
+    - `array` 数组本身
+
+```javascript
+var arr = ['a', 'b', 'c', 'd', 'e'];
+
+arr.forEach(callback);
+
+function callback(value, index, array) {
+    console.log(value);
+}
+
+// 输出
+// "value is a and index is 0"
+// "value is b and index is 1"
+// "value is c and index is 2"
+// "value is d and index is 3"
+// "value is e and index is 4"
+```
