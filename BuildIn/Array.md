@@ -351,12 +351,18 @@ console.log(myVar);     //"Jan,Feb,Mar,Apr"
 
 ##### [Array.prototype.indexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)
 
-返回指定元素的第一个索引值，如果没有找到指定元素返回-1
+返回指定元素在数组中的第一个索引值，如果没有找到指定元素返回-1
 
 `arr.indexOf(searchElement[, fromIndex = 0])`
 
 * `searchElement` 要查找的元素
-* `fromIndex` 起始索引
+* `fromIndex` 起始索引，默认为0
+
+```javascript
+var array = [2, 5, 9, 2];
+// 由于数组元素2第一个出现的位置是0，所以indexOf返回0
+array.indexOf(2);   //0
+```
 
 ```javascript
 var array = [2, 5, 9];
@@ -379,4 +385,32 @@ array.indexOf(2, -3); // 0
 
 ##### [Array.prototype.lastIndexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf)
 
+返回指定元素在数组中最后一个索引值，如果没有找到指定元素返回-1。**从索引位置反向查找元素**
+
+`arr.lastIndexOf(searchElement[, fromIndex = arr.length - 1])`
+
+* `searchElement` 要查找的元素
+* `fromIndex` 起始索引，默认为arr.length - 1
+
+```javascript
+var array = [2, 5, 9, 2];
+
+// 从默认索引位置3反向查找元素2，由于数组元素2最后一个出现的位置是3，所以lastIndexOf返回3
+array.lastIndexOf(2);     //3
+
+// 从默认索引位置3反向查找元素7，未找到元素7，返回-1
+array.lastIndexOf(7);     // -1
+
+// 从位置3反向查找元素2
+array.lastIndexOf(2, 3);  // 3
+
+// 从位置2反向查找元素2
+array.lastIndexOf(2, 2);  // 0
+
+// 从位置-2反向查找元素2
+array.lastIndexOf(2, -2); // 0
+
+// 从位置-1反向查找元素2
+array.lastIndexOf(2, -1); // 3
+```
 
