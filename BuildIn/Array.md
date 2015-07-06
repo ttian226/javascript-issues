@@ -273,7 +273,7 @@ var myVar3 = a.join('');    //"WindRainFire"
 
 ##### [Array.prototype.concat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
 
-合并数组，并返回一个新数组
+合并多个数组，并返回一个新数组
 
 `var new_array = old_array.concat(value1[, value2[, ...[, valueN]]])`
 
@@ -298,4 +298,85 @@ var num1 = [1, 2, 3],
 var nums = num1.concat(num2, num3);
 console.log(nums); //[1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
+
+##### [Array.prototype.slice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
+
+取得数组中的一部分元素，并返回这些元素组成的新的数组。
+
+`arr.slice([begin[, end]])`
+
+```javascript
+var fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
+
+// 从数组第一个索引的元素开始截取直到第3个索引位置
+var citrus = fruits.slice(1, 3);
+console.log(citrus);    //[ "Orange", "Lemon" ]
+```
+
+例：把类数组对象转化为数组
+
+```javascript
+var slice = Array.prototype.slice;
+var arr1 = [1, 2, 3, 4, 5];
+
+var arr2 = slice.call(arr1, 0, 3);
+console.log(arr2);  //[1, 2, 3]
+
+// arr3是个类数组对象
+var arr3 = {0: "a", 1: "b", 2: "c", length: 3, o: "other"};
+var arr4 = slice.call(arr3);
+console.log(arr4);  //['a', 'b', 'c']
+```
+
+```javascript
+var slice = Array.prototype.slice;
+
+function list() {
+    return slice.call(arguments, 0);
+}
+
+var list1 = list(1, 2, 3);
+console.log(list1); // [1, 2, 3]
+```
+
+##### [Array.prototype.toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString)
+
+返回数组的字符串形式
+
+```javascript
+var monthNames = ['Jan', 'Feb', 'Mar', 'Apr'];
+var myVar = monthNames.toString();
+console.log(myVar);     //"Jan,Feb,Mar,Apr"
+```
+
+##### [Array.prototype.indexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)
+
+返回指定元素的第一个索引值，如果没有找到指定元素返回-1
+
+`arr.indexOf(searchElement[, fromIndex = 0])`
+
+* `searchElement` 要查找的元素
+* `fromIndex` 起始索引
+
+```javascript
+var array = [2, 5, 9];
+
+// 从默认索引位置0查找元素2，找到元素返回元素索引位置
+array.indexOf(2);     // 0
+
+// 从默认索引位置0查找元素7，找不到元素返回-1
+array.indexOf(7);     // -1
+
+// 从索引位置2查找元素9
+array.indexOf(9, 2);  // 2
+
+// 从索引位置-1查找元素2，-1位置是数组最右的一个元素，相当于array.indexOf(2, 2)
+array.indexOf(2, -1); // -1
+
+// 从索引位置-3查找元素2，-3位置是数组的第一个元素，相当于array.indexOf(2, 0)
+array.indexOf(2, -3); // 0
+```
+
+##### [Array.prototype.lastIndexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf)
+
 
