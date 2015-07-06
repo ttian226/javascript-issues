@@ -26,6 +26,7 @@ isArray({});    //false
 * `Array.prototype.shift()`
 * `Array.prototype.unshift()`
 * `Array.prototype.reverse()`
+* `Array.prototype.sort()`
 
 ##### [Array.prototype.push()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push)
 
@@ -188,4 +189,65 @@ var compareByValue = function(a, b) {
 
 items.sort(compareByName);
 items.sort(compareByValue);
+```
+
+##### [Array.prototype.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
+
+改变数组，删除一个数组中已经存在的元素或增加新的元素。
+
+`array.splice(start, deleteCount[, item1[, item2[, ...]]])`
+
+* `start`改变数组的起始索引，从0开始。
+* `deleteCount`要删除的元素个数
+
+例：删除元素
+
+```javascript
+var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+
+// 从索引1位置开始删除2个元素，即'clown'和'mandarin'
+myFish.splice(1, 2);
+console.log(myFish);    //[ "angel", "surgeon" ]
+```
+
+```javascript
+var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+
+// 第二个参数为0，不删除任何元素
+myFish.splice(1, 0);
+console.log(myFish);    //[ "angel", "clown", "mandarin", "surgeon" ]
+```
+
+```javascript
+var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+
+// 第二个参数如果大于等于剩余长度（这里>=3），删除余下的所有元素
+myFish.splice(1, 3);
+console.log(myFish);    //[ "angel" ]
+```
+
+例：增加新元素
+
+```javascript
+var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+
+// 从索引位置2插入一个元素'drum'，原来从索引2开始的元素依次向后移动
+myFish.splice(2, 0, 'drum');
+console.log(myFish);    //[ "angel", "clown", "drum", "mandarin", "surgeon" ]
+```
+
+```javascript
+var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+
+// 从位置2删除一个元素'mandarin'，并在位置2插入一个新元素'trumpet'
+removed = myFish.splice(2, 1, 'trumpet');
+console.log(myFish);    //[ "angel", "clown", "trumpet", "surgeon" ]
+```
+
+```javascript
+var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+
+// 从位置0删除两个元素'angel','clown'，并在位置0插入3个新元素'parrot', 'anemone', 'blue'
+removed = myFish.splice(0, 2, 'parrot', 'anemone', 'blue');
+console.log(myFish);    //[ "parrot", "anemone", "blue", "mandarin", "surgeon" ]
 ```
