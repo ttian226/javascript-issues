@@ -253,3 +253,51 @@ var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
 removed = myFish.splice(0, 2, 'parrot', 'anemone', 'blue');
 console.log(myFish);    //[ "parrot", "anemone", "blue", "mandarin", "surgeon" ]
 ```
+
+##### [Array.prototype.concat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
+
+##### [Array.prototype.join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
+
+把数组中的元素用分隔符连接起来，并返回一个字符串。
+
+`str = arr.join([separator = ','])`
+
+*如果不指定参数，默认为','*
+
+```javascript
+var a = ['Wind', 'Rain', 'Fire'];
+
+// 参数为空，默认使用','连接
+var myVar1 = a.join();  //"Wind,Rain,Fire"
+var myVar2 = a.join(', ');  //"Wind, Rain, Fire"
+var myVar3 = a.join('');    //"WindRainFire"
+```
+
+##### [Array.prototype.concat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
+
+合并数组，并返回一个新数组
+
+`var new_array = old_array.concat(value1[, value2[, ...[, valueN]]])`
+
+
+```javascript
+var alpha = ['a', 'b', 'c'],
+    numeric = [1, 2, 3];
+
+var alphaNumeric = alpha.concat(numeric);
+console.log(alphaNumeric);  //[ "a", "b", "c", 1, 2, 3 ]
+
+// 不会改变原有数组
+console.log(alpha);     //['a', 'b', 'c']
+console.log(numeric);   //[1, 2, 3]
+```
+
+```javascript
+var num1 = [1, 2, 3],
+    num2 = [4, 5, 6],
+    num3 = [7, 8, 9];
+
+var nums = num1.concat(num2, num3);
+console.log(nums); //[1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
