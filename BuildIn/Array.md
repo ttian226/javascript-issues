@@ -27,6 +27,7 @@ isArray({});    //false
 * `Array.prototype.unshift()`
 * `Array.prototype.reverse()`
 * `Array.prototype.sort()`
+* `Array.prototype.splice()`
 
 ##### [Array.prototype.push()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push)
 
@@ -197,8 +198,9 @@ items.sort(compareByValue);
 
 `array.splice(start, deleteCount[, item1[, item2[, ...]]])`
 
-* `start`改变数组的起始索引，从0开始。
-* `deleteCount`要删除的元素个数
+* `start` 改变数组的起始索引，从0开始。
+* `deleteCount` 要删除的元素个数
+* `itemN` 要增加的元素
 
 例：删除元素
 
