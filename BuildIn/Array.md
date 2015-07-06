@@ -254,8 +254,6 @@ removed = myFish.splice(0, 2, 'parrot', 'anemone', 'blue');
 console.log(myFish);    //[ "parrot", "anemone", "blue", "mandarin", "surgeon" ]
 ```
 
-##### [Array.prototype.concat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
-
 ##### [Array.prototype.join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
 
 把数组中的元素用分隔符连接起来，并返回一个字符串。
