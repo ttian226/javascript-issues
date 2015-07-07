@@ -492,4 +492,72 @@ arr2.some(isBigEnough);     //true
 ```
 
 ##### [Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+根据条件过滤数组的元素，返回一个新的数组。
 
+例：过滤数组只保留大于10的元素
+
+```javascript
+function isBigEnough(value) {
+    return value >= 10;
+}
+
+var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+console.log(filtered);  //[12, 130, 44]
+```
+例子：过滤数组，只保留元素中包含id属性，并且id值是数字的元素
+
+```javascript
+var arr = [
+  { id: 15 },
+  { id: -1 },
+  { id: 0 },
+  { id: 3 },
+  { id: 12.2 },
+  { },
+  { id: null },
+  { id: NaN },
+  { id: 'undefined' }
+];
+
+function filterByID(obj) {
+    if ('id' in obj && typeof(obj.id) === 'number' && !isNaN(obj.id)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+var arrByID = arr.filter(filterByID);
+console.log(arrByID);   // [{ id: 15 }, { id: -1 }, { id: 0 }, { id: 3 }, { id: 12.2 }]
+```
+
+##### [Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+
+例：返回一个新的数组，新数组中的每个元素是原有数组的每个元素乘以2。
+
+```javascript
+var numbers = [1, 4, 9];
+
+var doubles = numbers.map(function(value) {
+    return value * 2;
+});
+console.log(doubles);   //[2, 8, 18]
+```
+例：返回一个新的数组，数组中的元素为原有数组元素的平方
+
+```javascript
+var numbers = [1, 4, 9];
+var roots = numbers.map(Math.sqrt);
+console.log(roots); //[1, 2, 3]
+```
+例：返回一个新的数组，元素的属性为key值，值为value值。
+
+```javascript
+var kvArray = [{key:1, value:10}, {key:2, value:20}, {key:3, value: 30}];
+var reformattedArray = kvArray.map(function(obj) { 
+    var rObj = {};
+    rObj[obj.key] = obj.value;
+    return rObj;
+});
+console.log(reformattedArray);  //[{1:10}, {2:20}, {3:30}]
+```
