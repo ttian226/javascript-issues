@@ -425,6 +425,8 @@ array.lastIndexOf(2, -1); // 3
 **数组的迭代方法**
 * `Array.prototype.forEach()`
 * `Array.prototype.every()`
+* `Array.prototype.some()`
+* `Array.prototype.filter()`
 
 ##### [Array.prototype.forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 
@@ -471,3 +473,23 @@ function isBigEnough(value, index, array) {
 arr1.every(isBigEnough);    //false
 arr2.every(isBigEnough);    //true
 ```
+##### [Array.prototype.some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
+
+测试数组中每个元素的值是否满足条件，如果全不满足条件则返回false，如果有一个满足条件则返回true
+
+例：检查数组中的元素是否有大于10的数字
+
+```javascript
+var arr1 = [2, 5, 8, 1, 4];
+var arr2 = [12, 5, 8, 1, 4];
+
+function isBigEnough(value, index, array) {
+    return value >= 10;
+}
+
+arr1.some(isBigEnough);     //false
+arr2.some(isBigEnough);     //true
+```
+
+##### [Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+
