@@ -427,6 +427,8 @@ array.lastIndexOf(2, -1); // 3
 * `Array.prototype.every()`
 * `Array.prototype.some()`
 * `Array.prototype.filter()`
+* `Array.prototype.map()`
+* `Array.prototype.reduce()`
 
 ##### [Array.prototype.forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 
@@ -533,6 +535,8 @@ console.log(arrByID);   // [{ id: 15 }, { id: -1 }, { id: 0 }, { id: 3 }, { id: 
 
 ##### [Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 
+返回一个新的数组，新数组中的每个元素是原有元素按照一定的规则映射而成。
+
 例：返回一个新的数组，新数组中的每个元素是原有数组的每个元素乘以2。
 
 ```javascript
@@ -560,4 +564,33 @@ var reformattedArray = kvArray.map(function(obj) {
     return rObj;
 });
 console.log(reformattedArray);  //[{1:10}, {2:20}, {3:30}]
+```
+
+##### [Array.prototype.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+
+迭代数组中的元素（从左向右），依次计算相邻的两个元素，并返回一个新值。
+
+- `callback` 每个回调函数都包含以下4个参数
+    - `previousValue` 前一个元素
+    - `currentValue` 当前元素
+    - `index` 数组中元素索引
+    - `array` 数组本身
+
+例子：对数组中的元素求和
+
+```javascript
+var tot = [0, 1, 2, 3, 4].reduce(function(a, b) {
+    return a + b;
+});
+
+console.log(tot);   //10
+```
+例子：合并数组中的数组
+
+```javascript
+var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
+    return a.concat(b);
+});
+
+console.log(flattened); //[0, 1, 2, 3, 4, 5]
 ```
