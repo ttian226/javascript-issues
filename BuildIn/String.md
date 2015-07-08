@@ -1,0 +1,84 @@
+### [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+
+#### 属性
+
+##### [String.length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length)
+
+返回字符串的长度
+
+```javascript
+var x = 'Mozilla';
+var empty = '';
+
+console.log('Mozilla is ' + x.length + ' code units long');
+/* "Mozilla is 7 code units long" */
+
+console.log('The empty string has a length of ' + empty.length);
+/* "The empty string has a length of 0" */
+```
+
+#### 方法
+
+##### [String.prototype.charAt()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt)
+
+返回字符串中指定的字符
+
+`str.charAt(index)`
+
+* `index`为从0开始的索引值，字符串最后一个字符的索引为`str.length-1`，如果索引值超界则返回空。
+
+```javascript
+var anyString = 'Brave new world';
+
+console.log("The character at index 0   is '" + anyString.charAt(0)   + "'");
+console.log("The character at index 1   is '" + anyString.charAt(1)   + "'");
+console.log("The character at index 2   is '" + anyString.charAt(2)   + "'");
+console.log("The character at index 3   is '" + anyString.charAt(3)   + "'");
+console.log("The character at index 4   is '" + anyString.charAt(4)   + "'");
+console.log("The character at index 999 is '" + anyString.charAt(999) + "'");
+
+// The character at index 0   is 'B'
+// The character at index 1   is 'r'
+// The character at index 2   is 'a'
+// The character at index 3   is 'v'
+// The character at index 4   is 'e'
+// The character at index 999 is ''
+```
+
+##### [String.prototype.concat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/concat)
+
+合并字符串，并返回一个新的字符串
+
+`str.concat(string2, string3[, ..., stringN])`
+
+* `string2...stringN`为要合并的字符串
+
+```javascript
+var hello = 'Hello, ';
+console.log(hello.concat('Kevin', ' have a nice day.'));
+
+/* Hello, Kevin have a nice day. */
+```
+
+##### [String.prototype.indexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf)
+
+返回要查询字符串的第一个索引值（从左向右），如果找不到则返回-1
+
+`str.indexOf(searchValue[, fromIndex])`
+
+* `searchValue` 要检索的字符串
+* `fromIndex` 检索的起始位置（默认为0），如果`fromIndex >= str.length`则返回-1（除非要检索的字符串为空，这时返回字符串的长度）
+
+```javascript
+'Blue Whale'.indexOf('Blue');     // returns  0
+'Blue Whale'.indexOf('Blute');    // returns -1
+'Blue Whale'.indexOf('Whale', 0); // returns  5
+'Blue Whale'.indexOf('Whale', 5); // returns  5
+
+// 检索字符串为空，起始索引小于字符串长度，返回起始索引，这里返回9
+'Blue Whale'.indexOf('', 9);      // returns  9
+
+// 起始索引大于等于字符串长度，并且检索字符串为空，这时返回字符串长度10
+'Blue Whale'.indexOf('', 10);     // returns 10
+'Blue Whale'.indexOf('', 11);     // returns 10
+```
