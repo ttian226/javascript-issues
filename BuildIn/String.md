@@ -62,7 +62,7 @@ console.log(hello.concat('Kevin', ' have a nice day.'));
 
 ##### [String.prototype.indexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf)
 
-返回要查询字符串的第一个索引值（从左向右），如果找不到则返回-1
+查找字符串第一次出现的位置（从左向右），如果找不到则返回-1
 
 `str.indexOf(searchValue[, fromIndex])`
 
@@ -81,4 +81,27 @@ console.log(hello.concat('Kevin', ' have a nice day.'));
 // 起始索引大于等于字符串长度，并且检索字符串为空，这时返回字符串长度10
 'Blue Whale'.indexOf('', 10);     // returns 10
 'Blue Whale'.indexOf('', 11);     // returns 10
+```
+
+##### [String.prototype.lastIndexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/lastIndexOf)
+
+逆向查找字符串第一次出现的位置（从右向左），如果找不到则返回-1
+
+`str.lastIndexOf(searchValue[, fromIndex])`
+
+* `searchValue` 要检索的字符串
+* `fromIndex` 检索的起始位置（默认为str.length）
+
+```javascript
+// 从字符串的尾部从右向左查找'a',如果查到则返回，第一个出现'a'的位置是3
+'canal'.lastIndexOf('a');     // returns 3
+
+// 从位置2'n'向左查找'a'，第一个出现'a'的位置是1
+'canal'.lastIndexOf('a', 2);  // returns 1
+
+// 从位置0'c'向左查找'a'，找不到'a'则返回-1
+'canal'.lastIndexOf('a', 0);  // returns -1
+
+// 从字符串的尾部从右向左查找'x'，没有找到返回-1
+'canal'.lastIndexOf('x');     // returns -1
 ```
