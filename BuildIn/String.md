@@ -105,3 +105,34 @@ console.log(hello.concat('Kevin', ' have a nice day.'));
 // 从字符串的尾部从右向左查找'x'，没有找到返回-1
 'canal'.lastIndexOf('x');     // returns -1
 ```
+
+##### [String.prototype.match()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match)
+
+执行正则匹配
+
+`str.match(regexp)`
+
+* `regexp` 正则表达式
+* 返回值，包括匹配结果的一个数组，如果匹配不到返回null
+
+例：
+
+```javascript
+var str = 'For more information, see Chapter 3.4.5.1';
+var re = /(chapter \d+(\.\d)*)/i;
+var found = str.match(re);
+
+// 第2，3个元素为捕获的分组信息
+console.log(found);     //["Chapter 3.4.5.1", "Chapter 3.4.5.1", ".1"]
+```
+
+例：全局匹配，忽略大小写
+
+```javascript
+var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+var regexp = /[A-E]/gi;
+var matches_array = str.match(regexp);
+
+console.log(matches_array);
+// ['A', 'B', 'C', 'D', 'E', 'a', 'b', 'c', 'd', 'e']
+```
