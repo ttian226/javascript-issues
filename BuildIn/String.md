@@ -136,3 +136,56 @@ var matches_array = str.match(regexp);
 console.log(matches_array);
 // ['A', 'B', 'C', 'D', 'E', 'a', 'b', 'c', 'd', 'e']
 ```
+
+##### [String.prototype.replace()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
+
+替换字符串
+
+`str.replace(regexp|substr, newSubStr|function[, flags])`
+
+* `regexp`正则表达式
+* `substr`子字符串
+* `newSubStr`要替换的新字符串，或者是包含分组信息（参考反向引用的例子）
+
+例：替换字符串
+
+```javascript
+var newstr = 'hello world!'.replace('world', 'javascript');
+console.log(newstr);    //hello javascript!
+```
+
+例：用正则表达式替换匹配的字符串
+
+```javascript
+var re = /apples/gi;
+var str = 'Apples are round, and apples are juicy.';
+var newstr = str.replace(re, 'oranges');
+console.log(newstr);    // oranges are round, and oranges are juicy.
+```
+例：使用反向引用
+
+```javascript
+var re = /(\w+)\s(\w+)/;
+var str = 'John Smith';
+// $1,$2为对应的分组信息
+var newstr = str.replace(re, '$1, $2');
+console.log(newstr);
+```
+
+例子：第二个参数为回调函数
+
+* `match`正则表达式匹配到的字符串
+* `p1-p3`捕获的分组字符串
+* `offset`匹配到的字符串的第一个索引
+* `string`原字符串
+
+```javascript
+'0123abc12345#$*%'.replace(/([^\d]+)(\d*)([^\w]*)/, replacer);
+
+// 这里匹配到的字符串是'abc12345#$*%',offset是4，因为匹配的字符串的第一个字符'a'所在字符串的索引是4
+function replacer(match, p1, p2, p3, offset, string) {
+    console.log(arguments);
+}
+
+//["abc12345#$*%", "abc", "12345", "#$*%", 4, "0123abc12345#$*%"]
+```
