@@ -172,7 +172,7 @@ var newstr = str.replace(re, '$1, $2');
 console.log(newstr);
 ```
 
-例子：第二个参数为回调函数
+例：第二个参数为回调函数
 
 * `match`正则表达式匹配到的字符串
 * `p1-p3`捕获的分组字符串
@@ -189,3 +189,77 @@ function replacer(match, p1, p2, p3, offset, string) {
 
 //["abc12345#$*%", "abc", "12345", "#$*%", 4, "0123abc12345#$*%"]
 ```
+
+##### [String.prototype.search()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search)
+
+字符串搜索，参数为一个正则表达式，如果查找到返回第一个匹配的字符串的索引值，否则返回-1
+
+`str.search(regexp)`
+
+```javascript
+var re = /apples/gi;
+var str = 'Apples are round, and apples are juicy.';
+var r = str.search(re);
+console.log(r);     //0 第一个查找匹配的'apple'的索引为0
+```
+
+例：检测字符串中是否包含匹配的子字符串
+
+```javascript
+function testinput(re, str) {
+    var midstring;
+    if (str.search(re) !== -1) {
+        midstring = ' contains ';
+    } else {
+        midstring = ' does not contain ';
+    }
+    console.log(str + midstring + re);
+}
+
+var str = 'Apples are round, and apples are juicy.';
+var re = /apples/gi;
+testinput(re, str);
+```
+
+##### [String.prototype.slice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice)
+
+切割字符串，返回一个新的字符串
+
+`str.slice(beginSlice[, endSlice])`
+
+* `beginSlice`起始位置
+* `endSlice`结束位置，不设置就截取到字符串的结尾
+
+```javascript
+var str1 = 'The morning is upon us.';
+
+// 省略endSlice参数，截取从位置4开始到字符串结尾的字符串
+var str2 = str1.slice(4);
+console.log(str2);  //morning is upon us.
+```
+
+```javascript
+var str1 = 'The morning is upon us.';
+
+// 截取从位置4开始到位置11的字符串
+var str2 = str1.slice(4, 11);
+console.log(str2);  //morning
+```
+
+```javascript
+var str1 = 'The morning is upon us.';
+
+// -1位置是字符串最后一个字符的位置
+var str2 = str1.slice(4, -1);
+console.log(str2);  //morning is upon us
+```
+
+```javascript
+var str1 = 'The morning is upon us.';
+
+// -2位置是字符串倒数第二字符的位置
+var str2 = str1.slice(4, -2);
+console.log(str2);  //morning is upon u
+```
+
+
