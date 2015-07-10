@@ -271,6 +271,8 @@ console.log(str2);  //morning is upon u
 * `start`起始位置
 * `length`截取长度
 
+例：
+
 ```javascript
 var str = 'abcdefghij';
 
@@ -292,4 +294,23 @@ str.substr(-20, 2); //ab
 // 由于20>str.length，字符串返回空
 str.substr(20, 2);  //''
 ```
+
+##### [String.prototype.toLowerCase()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase)
+
+字符串大写转换成小写
+
+```javascript
+var str = 'ALPHABET'.toLowerCase();
+console.log(str);   //alphabet
+```
+
+##### [String.prototype.toUpperCase()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase)
+
+字符串小写转换成大写
+
+```javascript
+var str = 'alphabet'.toUpperCase();
+console.log(str);   //ALPHABET
+```
+
 
