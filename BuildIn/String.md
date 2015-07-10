@@ -45,6 +45,26 @@ console.log("The character at index 999 is '" + anyString.charAt(999) + "'");
 // The character at index 999 is ''
 ```
 
+##### [String.prototype.charCodeAt()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt)
+
+返回字符串中指定位置字符的Unicode的十进制值
+
+```javascript
+// 'A'的UNICODE编码十进制值是65  
+'ABC'.charCodeAt(0); // returns 65
+
+// 如果index超出范围，返回NaN
+'ABC'.charCodeAt(-1); // returns NaN
+'ABC'.charCodeAt(10); // returns NaN
+
+// 参数可以转换为数值，'0'转换为0
+'ABC'.charCodeAt('0'); // returns 65
+
+// 参数不能转换为数值，参数默认为0。这里'b'不能转换为数值，按0处理
+'ABC'.charCodeAt('b'); // returns 65
+```
+
+
 ##### [String.prototype.concat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/concat)
 
 合并字符串，并返回一个新的字符串
