@@ -313,4 +313,29 @@ var str = 'alphabet'.toUpperCase();
 console.log(str);   //ALPHABET
 ```
 
+##### [String.prototype.toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toString)
 
+把字符串对象转换为字符串
+
+```javascript
+var str = new String('hello world');
+console.log(str.toString());    //hello world
+```
+
+##### [String.prototype.valueOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/valueOf)
+
+返回字符串对象的原始值，这个值等于`String.prototype.toString()`返回的值
+
+```javascript
+var x = new String('Hello world');
+console.log(x.valueOf()); // Displays 'Hello world'
+```
+
+##### [String.prototype.trim()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim)
+
+去除字符串两端的空白
+
+```javascript
+var orig = '   foo  ';
+console.log(orig.trim()); // 'foo'
+```
