@@ -262,4 +262,34 @@ var str2 = str1.slice(4, -2);
 console.log(str2);  //morning is upon u
 ```
 
+##### [String.prototype.substr()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr)
+
+返回字符串的一部分
+
+`str.substr(start[, length])`
+
+* `start`起始位置
+* `length`截取长度
+
+```javascript
+var str = 'abcdefghij';
+
+// 从位置1截取2个字符
+str.substr(1, 2);  //bc
+
+// 从倒数第3个字符开始截取2个字符
+str.substr(-3, 2);  //hi
+
+// 从倒数第3个字符开始截取到字符串的末尾
+str.substr(-3);     //hij
+
+// 从位置1截取到字符串的末尾
+str.substr(1);      //bcdefghij
+
+// 由于20>str.length，-20从位置0开始截取2个字符
+str.substr(-20, 2); //ab
+
+// 由于20>str.length，字符串返回空
+str.substr(20, 2);  //''
+```
 
