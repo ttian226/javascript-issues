@@ -359,3 +359,43 @@ console.log(x.valueOf()); // Displays 'Hello world'
 var orig = '   foo  ';
 console.log(orig.trim()); // 'foo'
 ```
+
+##### [String.prototype.split()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split)
+
+把字符串分割成字符串数组
+
+`str.split([separator[, limit]])`
+
+* `separator`分隔字符串或正则表达式
+* `limit`限制返回数组的最大长度
+
+例：用空格分隔字符串
+
+```javascript
+var str = 'Oh brave new world that has such people in it.';
+var arr = str.split(' ');
+console.log(arr);   //["Oh", "brave", "new", "world", "that", "has", "such", "people", "in", "it."]
+```
+
+例：用逗号分隔字符串
+
+```javascript
+var str = 'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec';
+var arr = str.split(',');
+console.log(arr);   //["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+```
+例：用正则表达式分隔字符串
+
+```javascript
+var str = 'Harry Trump ;Fred Barney; Helen Rigby ; Bill Abel ;Chris Hand ';
+var arr = str.split(/\s*;\s*/);
+console.log(arr);   //["Harry Trump", "Fred Barney", "Helen Rigby", "Bill Abel", "Chris Hand "]
+```
+
+例：使用第二个参数限制限制数组长度
+
+```javascript
+var str = 'Oh brave new world that has such people in it.';
+var arr = str.split(' ', 3);
+console.log(arr);   //["Oh", "brave", "new"]
+```
