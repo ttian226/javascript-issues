@@ -315,6 +315,35 @@ str.substr(-20, 2); //ab
 str.substr(20, 2);  //''
 ```
 
+##### [String.prototype.substring()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring)
+
+返回字符串的一部分
+
+`str.substring(indexA[, indexB])`
+
+* `indexA`从0到str.length之间的整数
+* `indexB`从0到str.length之间的整数
+
+说明：
+
+1. 如果indexA = indexB，返回空字符串
+2. 如果indexB省略，返回到字符串的末尾
+3. 如果任一参数小于0或NaN，把这个参数作为0处理
+4. 如果任一参数大于字符串长度，把这个参数作为str.length处理
+5. 如果indexB大于indexA，按照`str.substring(indexB, indexA)`处理
+
+```javascript
+var anyString = 'Mozilla';
+
+console.log(anyString.substring(0, 3));     //'Moz'
+// indexB大于indexA，按照anyString.substring(0, 3)处理
+console.log(anyString.substring(3, 0));     //'Moz'
+
+console.log(anyString.substring(0, 7));     //'Mozilla'
+// 10大于字符串长度，按照最大长度7处理
+console.log(anyString.substring(0, 10));    //'Mozilla'
+```
+
 ##### [String.prototype.toLowerCase()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase)
 
 字符串大写转换成小写
