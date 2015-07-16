@@ -22,6 +22,11 @@ console.log((function(a, b)    {}).length); /* 2 etc. */
 
 `bind`会创建一个新的函数，`bind`的第一个参数作为这个新函数中this指向的对象。
 
+`fun.bind(thisArg[, arg1[, arg2[, ...]]])`
+
+* `thisArg`作为返回的函数中this指向的对象
+* `arg1, arg2, ...`作为返回函数的参数
+
 例子1：
 
 ```javascript
@@ -65,6 +70,40 @@ var x2 = getX();    //9
 // 通过bind方法，返回一个函数，函数中的this指向bind参数中的对象。这里为module对象
 var boundGetX = getX.bind(module);
 var x = boundGetX();    //81
+```
+
+例子3：bind带参数
+
+```javascript
+window.x = 9;
+
+var add = function(y, z) {
+    return this.x + y + z;
+}
+
+var obj = {x: 81};
+
+var addY = add.bind(obj, 10, 20);
+var sum = addY();   //81+10+20=111
+
+// 等价于
+var addY = add.bind(obj);
+var sum = addY(10, 20); //111
+```
+
+例子4：
+
+```javascript
+function list() {
+    return Array.prototype.slice.call(arguments);
+}
+
+var arr1 = list(1, 2, 3);    //[1, 2, 3]
+
+var nlist = list.bind(undefined, 10);
+
+var arr2 = nlist(); //[10] 等价nlist(10);
+var arr3 = nlist(4, 5, 6);  //[10, 4, 5, 6] 等价nlist(10, 4, 5, 6)
 ```
 
 ##### [Function.prototype.toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/toString)
