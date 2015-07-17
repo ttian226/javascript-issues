@@ -106,6 +106,27 @@ var arr2 = nlist(); //[10] 等价nlist(10);
 var arr3 = nlist(4, 5, 6);  //[10, 4, 5, 6] 等价nlist(10, 4, 5, 6)
 ```
 
+例子5：
+
+```javascript
+var obj = {
+    name: 'wangxu'
+};
+
+function getName(a, b, c, d) {
+    var arr = [a, b, c, d];
+    console.log(this.name);
+    console.log(arr);
+}
+
+var func = getName.bind(obj, 1, 2);
+func(3, 4);
+
+// output
+// 'wangxu'
+// [1, 2, 3, 4]
+```
+
 ##### [Function.prototype.toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/toString)
 
 返回函数的字符串形式。*`toString()`重写了`Object.prototype.toString()`函数*
