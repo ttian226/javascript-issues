@@ -11,6 +11,9 @@ Allows the addition of properties to all objects of type Object.
 
 #### Methods of the Object constructor
 
+##### [Object.defineProperty()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+
+##### [Object.defineProperties()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties)
 
 #### Object instances and Object prototype object
 
