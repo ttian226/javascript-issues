@@ -2,7 +2,7 @@
 2. 执行npm install会根据json下载相应的文件到项目目录下
 
 
-package.json:
+#### package.json:
 
 ```json
 {
@@ -20,7 +20,12 @@ package.json:
 }
 ```
 
-Gruntfile.js
+* `grunt-contrib-concat`js文件合并
+* `grunt-contrib-jshint`jshint插件
+* `grunt-contrib-uglify`js混淆加密
+* `grunt-contrib-watch`文件监控
+
+#### Gruntfile.js
 
 ```javascript
 module.exports = function (grunt) {
@@ -99,3 +104,33 @@ module.exports = function (grunt) {
 };
 ```
 
+#### 使用watch
+
+Gruntfile.js，使用时先执行命令`grunt watch`,这样当src目录下的js文件变化时，会自动执行uglify任务(这里是自动加密js代码)
+
+```javascript
+module.exports = function (grunt) {
+    // 项目配置
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        uglify: {
+            // uglify的任务target1
+            target1: {
+                src: 'src/1.js',
+                dest: 'dest/1.min.js'
+            }
+        },
+        // 加入watch，监控src文件夹下的js文件，当js文件变化时立即执行uglify任务
+        watch: {
+            files: ['src/*.js'],
+            tasks: ['uglify']
+        }
+    });
+
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+
+    // 先执行uglify任务，再执行concat任务
+    grunt.registerTask('default', ['uglify']);
+};
+```
