@@ -12,18 +12,19 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-cssmin": "^0.13.0",
     "grunt-contrib-jshint": "^0.11.2",
     "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1"
   }
-}
-```
+}```
 
 * `grunt-contrib-concat`js文件合并
 * `grunt-contrib-jshint`jshint插件
 * `grunt-contrib-uglify`js混淆加密
 * `grunt-contrib-watch`文件监控
+* `grunt-contrib-cssmin`css文件压缩合并
 
 #### Gruntfile.js
 
@@ -91,6 +92,17 @@ module.exports = function (grunt) {
                 files: {
                     'dest/c.js': ['src/a.js', 'src/b.js'],   //把a.js,b.js合并成c.js
                     'dest/f.js': ['src/d.js', 'src/e.js']    //把d.js,e.js合并成f.js
+                }
+            }
+        },
+        cssmin: {
+            options: {
+                shorthandCompacting: false,
+                roundingPrecision: -1
+            },
+            target1: {
+                files: {
+                    'output.css': ['foo.css', 'bar.css']
                 }
             }
         }
