@@ -18,7 +18,8 @@
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1"
   }
-}```
+}
+```
 
 * `grunt-contrib-concat`js文件合并
 * `grunt-contrib-jshint`jshint插件

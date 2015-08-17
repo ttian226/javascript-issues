@@ -93,11 +93,12 @@ var form1 = forms[0];   //取得第一个form元素
 返回当前文档的`<head>`元素，如果文档中大于一个`<head>`元素，返回第一个元素。
 
 Notes:
+
     这个属性是只读的，试图给这个属性赋值都会出错。
 
 ##### [Document.images](https://developer.mozilla.org/en-US/docs/Web/API/Document/images)
 
-document.images returns a collection of the images in the current HTML document.
+返回当前文档image元素的集合
 
 *Note*
 ```document.images.length``` – property, returns the number of images on the page.
