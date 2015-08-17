@@ -100,8 +100,22 @@ Notes:
 
 返回当前文档image元素的集合
 
-*Note*
-```document.images.length``` – property, returns the number of images on the page.
+例子：
+
+```javascript
+var ilist = document.images;
+
+for(var i = 0; i < ilist.length; i++) {
+    if(ilist[i].src == "banner.gif") {
+        // found the banner
+    }
+}
+```
+
+Notes:
+
+    `document.images.length`返回当前页面的图片数
+    `document.images`它是html dom的一部分，只在html中存在
 
 ##### [Document.scripts](https://developer.mozilla.org/en-US/docs/Web/API/Document/scripts)
 
