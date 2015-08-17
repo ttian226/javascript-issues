@@ -90,7 +90,10 @@ var form1 = forms[0];   //取得第一个form元素
 
 ##### [Document.head](https://developer.mozilla.org/en-US/docs/Web/API/Document/head)
 
-Returns the <head> element of the current document. If there are more than one <head> elements, the first one is returned
+返回当前文档的`<head>`元素，如果文档中大于一个`<head>`元素，返回第一个元素。
+
+Notes:
+    这个属性是只读的，试图给这个属性赋值都会出错。
 
 ##### [Document.images](https://developer.mozilla.org/en-US/docs/Web/API/Document/images)
 
