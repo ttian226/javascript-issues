@@ -55,6 +55,7 @@ for (var i = 0; i < firstTier.length; i++) {
 ```
 
 Notes：
+
     * 这个属性可以很方便的获取文档的直接子元素
     * html文档只包含一个子节点`<html>`，xml文档通常会包含多个子节点。
     * 通常要使用`document.documentElement`而不是`document.firstChild`去获取根节点元素
