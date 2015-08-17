@@ -62,7 +62,31 @@ Notes：
 
 ##### [Document.forms](https://developer.mozilla.org/en-US/docs/Web/API/Document/forms)
 
-forms returns a collection (an HTMLCollection) of the form elements within the current document.
+返回当前文档中form元素的集合（一个HTMLCollection对象）
+
+例：
+
+```html
+<body>
+<form id="robby">
+    <input type="button" onclick="alert(document.forms[0].id);" value="robby's form" />
+</form>
+
+<form id="dave">
+    <input type="button" onclick="alert(document.forms[1].id);" value="dave's form" />
+</form>
+
+<form id="paul">
+    <input type="button" onclick="alert(document.forms[2].id);" value="paul's form" />
+</form>
+</body>
+```
+
+```javascript
+var forms = document.forms;
+alert(forms.length);    //3
+var form1 = forms[0];   //取得第一个form元素
+```
 
 ##### [Document.head](https://developer.mozilla.org/en-US/docs/Web/API/Document/head)
 
