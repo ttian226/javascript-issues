@@ -39,7 +39,25 @@ alert(document.body.id);    //"newBodyElement"
 
 ##### [Document.documentElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement)
 
-The Document.documentElement read-only property returns the Element that is the root element of the document (for example, the <html> element for HTML documents).
+它是一个只读属性，返回文档的根节点元素（例如对于html文档来说，返回的是`<html>`元素）
+
+例：
+
+```javascript
+var rootElement = document.documentElement;
+var firstTier = rootElement.childNodes;
+
+// 遍历根节点的直接子元素
+for (var i = 0; i < firstTier.length; i++) {
+   // 对每一个直接子元素做些事情
+   // as firstTier[i]
+}
+```
+
+Notes：
+    * 这个属性可以很方便的获取文档的直接子元素
+    * html文档只包含一个子节点`<html>`，xml文档通常会包含多个子节点。
+    * 通常要使用`document.documentElement`而不是`document.firstChild`去获取根节点元素
 
 ##### [Document.forms](https://developer.mozilla.org/en-US/docs/Web/API/Document/forms)
 
