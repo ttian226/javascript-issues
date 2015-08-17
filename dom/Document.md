@@ -3,6 +3,7 @@
 每个在浏览器中加载的页面都有一个`document`对象。通过`document`对象可以访问页面的内容（比如dom树，和内部的元素）
 
 `document`对象可以由以下几种方法获取
+
     1. 通常情况下直接使用`document`或`window.document`取得`document`对象
     2. 通过iframe的`contentDocument`属性获取
     3. The responseXML of an XMLHttpRequest object
