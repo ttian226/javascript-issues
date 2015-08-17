@@ -1,5 +1,15 @@
 #### [Document](https://developer.mozilla.org/en-US/docs/Web/API/document)
 
+每个在浏览器中加载的页面都有一个`document`对象。通过`document`对象可以访问页面的内容（比如dom树，和内部的元素）
+
+`document`对象可以由以下几种方法获取
+    1. 通常情况下直接使用`document`或`window.document`取得`document`对象
+    2. 通过iframe的`contentDocument`属性获取
+    3. The responseXML of an XMLHttpRequest object
+    4. 通过`node`或`element`对象的`ownerDocument`属性获取
+
+所有的`document`对象都是通过`Document`接口实现的
+
 #### Properties
 
 ##### [Document.body](https://developer.mozilla.org/en-US/docs/Web/API/Document/body)

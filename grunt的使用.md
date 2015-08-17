@@ -110,9 +110,10 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     
     // 先执行uglify任务，再执行concat任务
-    grunt.registerTask('default', ['uglify', 'concat']);
+    grunt.registerTask('default', ['uglify', 'concat', 'cssmin']);
 };
 ```
 
