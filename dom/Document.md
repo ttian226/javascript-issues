@@ -15,7 +15,27 @@
 
 ##### [Document.body](https://developer.mozilla.org/en-US/docs/Web/API/Document/body)
 
-Returns the <body> or <frameset> node of the current document, or null if no such element exists.
+返回当前文档的`<body>`或`<frameset>`元素，如果元素不存在则返回null
+
+```html
+<body id="oldBodyElement"></body>
+```
+
+例（在页面加载完成后执行）：
+
+```javascript
+alert(document.body.id);    //'oldBodyElement'
+
+// 创建一个新的body元素
+var aNewBodyElement = document.createElement("body");
+aNewBodyElement.id = "newBodyElement";
+
+// 把创建好的body元素赋给document.body
+document.body = aNewBodyElement;
+alert(document.body.id);    //"newBodyElement"
+```
+
+*给文档设置一个新的body需要先删除已经存在的`<body>`元素*
 
 ##### [Document.documentElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement)
 
