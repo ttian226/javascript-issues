@@ -114,8 +114,8 @@ for(var i = 0; i < ilist.length; i++) {
 
 Notes:
 
-    `document.images.length`返回当前页面的图片数
-    `document.images`它是html dom的一部分，只在html中存在
+    * document.images.length返回当前页面的图片数
+    * document.images它是html dom的一部分，只工作在html中
 
 ##### [Document.scripts](https://developer.mozilla.org/en-US/docs/Web/API/Document/scripts)
 
