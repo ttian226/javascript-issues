@@ -119,40 +119,64 @@ Notes:
 
 ##### [Document.scripts](https://developer.mozilla.org/en-US/docs/Web/API/Document/scripts)
 
-Returns a list of the script elements in the document. The returned object is an HTMLCollection.
+返回文档的script元素列表（是一个HTMLCollection对象）
+
+例子：
+
+```javascript
+var scripts = document.scripts;
+
+if (scripts.length) {
+    alert("This page has scripts!");
+}
+```
 
 ##### [Document.title](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
 
-Gets or sets the title of the document
+获取或设置文档的标题
+
+例子：
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hello World!</title> 
+</head>
+<body>
+
+<script>
+alert(document.title); // displays "Hello World!"
+document.title = "Goodbye World!";
+alert(document.title); // displays "Goodbye World!"
+</script>
+
+</body>
+</html>
+```
 
 ##### [Document.anchors](https://developer.mozilla.org/en-US/docs/Web/API/Document/anchors)
 
-anchors returns a list of all of the anchors in the document.
+返回文档中的锚点列表
 
-*Note*
-the returned set of anchors only contains those anchors created with the name attribute, not those created with the id attribute
+例子：
 
 ```html
 <h1>Title</h1>
 <h2><a name="contents">Contents</a></h2>
-<ul id="toc"></ul>
-
 <h2><a name="plants">Plants</a></h2>
-<ol>
-    <li>Apples</li>
-    <li>Oranges</li>
-    <li>Pears</li>
-</ol>
-
 <h2><a name="veggies">Veggies</a></h2>
-<ol>
-    <li>Carrots</li>
-    <li>Celery</li>
-    <li>Beats</li>
-</ol>
 ```
 
-document.anchors reutrn a array: [<a name="contents">Contents</a>, <a name="plants">Plants</a>, <a name="veggies">Veggies</a>],contain 3 items
+```javascript
+// document.anchors返回一个数组包含3个值，[<a name="contents">Contents</a>, <a name="plants">Plants</a>, <a name="veggies">Veggies</a>]
+alert(document.anchors.length); //3
+```
+
+Notes:
+
+    返回的锚点集合中只包含带有name属性的<a>，并不包含使用id属性创建的锚点（<a>标签的name属性在html5已经不支持，html5推荐使用id属性来设置锚点）
+
 
 ##### [Document.links](https://developer.mozilla.org/en-US/docs/Web/API/Document/links)
 
