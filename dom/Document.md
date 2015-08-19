@@ -181,10 +181,21 @@ Notes:
 ##### [Document.links](https://developer.mozilla.org/en-US/docs/Web/API/Document/links)
 
 The links property returns a collection of all <area> elements and <a> elements in a document with a value for the href attribute
+links属性返回文档中带`href`属性的`<area>`元素和`<a>`元素的集合
+
+```html
+<a href="http://baidu.com">baidu</a>
+<a href="http://taobao.com">taobao</a>
+<area shape="" coords="" href="" alt=""/>
+```
+
+```javascript
+alert(document.links.length);     //3
+```
 
 ##### [Document.location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location)
 
-The Document.location read-only property returns a **Location** object, which contains information about the URL of the document and provides methods for changing that URL and loading another URL
+`Document.location`是一个只读属性，返回一个`Location`对象，它包含了当前文档URL的信息以及提供了一些方法来改变URL地址或者是加载另一个URL
 
 ##### [Document.URL](https://developer.mozilla.org/en-US/docs/Web/API/Document/URL)
 
