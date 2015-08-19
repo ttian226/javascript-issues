@@ -47,7 +47,7 @@ public function getData() {
 
 当我们正常地请求一个JSON数据的时候，服务端返回的是一串JSON类型的数据，而我们使用JSONP模式来请求数据的时候，服务端返回的是一段可执行的JavaScript代码，所以我们可见服务器代码最后一行:
 
-    `$_GET['callback']).'('. json_encode(array('msg'=>'hello')) .')`
+    $_GET['callback']. '(' . json_encode(array('msg'=>'hello')) . ')'
 
 
 
