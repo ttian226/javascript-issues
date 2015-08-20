@@ -20,6 +20,7 @@ jsonp 的核心则是动态添加`<script>`标签来调用服务器提供的js�
     <meta charset="UTF-8">
     <title></title>
     <script>
+        // 定义回调函数jsonpCallback
         function jsonpCallback(data) {
             console.log(data);
         }
@@ -50,4 +51,59 @@ public function getData() {
     $_GET['callback']. '(' . json_encode(array('msg'=>'hello')) . ')'
 
 
+实例二：
+
+使用`$.ajax()`
+
+```javascript
+var url = 'http://example2.com/test/getdata';
+
+$.ajax({
+    url: url,
+    dataType: 'jsonp',
+    success: function (data) {
+        console.log(data);
+    }
+});
+```
+上面通过jsonp请求的路径为：
+`http://example2.com/test/getdata?callback=jQuery21407163675976917148_1440034042647&_=1440034042648`
+
+回调方法名是一个随机的字符串`jQuery21407163675976917148_1440034042647`
+
+
+如果设置了`jsonp`属性，如下`jsonp: 'callbackparam'`将会使用`callbackparam`替代默认的`callback`
+即请求路径变为`http://example2.com/test/getdata?callbackparam=jQuery21407163675976917148_1440034042647&_=1440034042648`
+
+```javascript
+var url = 'http://example2.com/test/getdata';
+
+$.ajax({
+    url: url,
+    dataType: 'jsonp',
+    jsonp: 'callbackparam',
+    success: function (data) {
+        console.log(data);
+    }
+});
+```
+
+如果设置了`jsonpCallback`属性，请求地址变为:`http://example2.com/test/getdata?callbackparam=callbackparam&_=1440034042648`
+就是把`jsonpCallback`属性替换成一个随机字符串
+
+```javascript
+var url = 'http://example2.com/test/getdata';
+
+$.ajax({
+    url: url,
+    dataType: 'jsonp',
+    jsonp: 'callbackparam',
+    jsonpCallback: 'callbackfunc',
+    success: function (data) {
+        console.log(data);
+    }
+});
+```
+
+但实际的成功回调还是走`success`方法，而不是`callbackfunc`？？
 
