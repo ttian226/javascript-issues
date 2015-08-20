@@ -107,3 +107,16 @@ $.ajax({
 
 但实际的成功回调还是走`success`方法，而不是`callbackfunc`？？
 
+实例三
+
+使用`getJSON`。如果使用`getJSON`处理jsonp跨域时，一定要加上`callback=?`。这样jquery会认为你是处理jsonp请求，否则会失败。
+它的请求路径如下`http://example2.com/test/getdata?callback=jQuery21408563048718497157_1440035840946&_=1440035840947`
+
+```javascript
+var url = 'http://example2.com/test/getdata?callback=?';
+
+$.getJSON(url, function(data) {
+    console.log(data);
+});
+```
+
