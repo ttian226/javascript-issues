@@ -88,7 +88,7 @@ $.ajax({
 });
 ```
 
-如果设置了`jsonpCallback`属性，请求地址变为:`http://example2.com/test/getdata?callbackparam=callbackparam&_=1440034042648`
+如果设置了`jsonpCallback`属性，请求地址变为:`http://example2.com/test/getdata?callbackparam=callbackfunc&_=1440034042648`
 就是把`jsonpCallback`属性替换成一个随机字符串
 
 ```javascript
