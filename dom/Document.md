@@ -258,7 +258,7 @@ document.onreadystatechange = function () {
 
 ##### [Document.getElementById()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById)
 
-Returns a reference to the element by its ID.
+通过元素id返回元素的引用
 * element is a reference to an **Element** object, or null if an element with the specified ID is not in the document
 * id is a case-sensitive string representing the unique ID of the element being sought
 
