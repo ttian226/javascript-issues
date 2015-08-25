@@ -1,5 +1,7 @@
 #### [JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)
 
+JSON不支持IE6，IE7
+
 ##### [JSON.stringify()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
 
 把js对象转换为json字符串

@@ -71,3 +71,28 @@ var jsonstr = localStorage.getItem('key');
 var val = JSON.parse(jsonstr);
 ```
 
+说明：
+
+    1. localstorage最大字符为500多万（5M）各个手机有所差异，但是不会太大，所以使用localstorage一定要记得清理，不清理可能导致读取localstorage效率下降，localstorage满了会引发业务逻辑错误
+    2. localstorage读取文件，所以其性能没有内存读取快，firefox更是会一次性将数据导入内存
+    3. localstorage不被爬虫识别，所以与SEO相关的关键信息需要避免使用localstorage
+
+在safari浏览器某些版本中，或者隐私模式中`setitem()`会报异常。无法使用本地存储功能，所以事先需要判断浏览器是否支持
+
+判断浏览器是否支持本地存储：
+
+```javascript
+function isLocalStorageNameSupported() {
+    var testKey = 'test', storage = window.sessionStorage;
+    try
+    {
+        storage.setItem(testKey, '1');
+        storage.removeItem(testKey);
+        return true;
+    }
+    catch (error)
+    {
+        return false;
+    }
+}
+```
