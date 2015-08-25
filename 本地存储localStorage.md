@@ -79,7 +79,7 @@ var val = JSON.parse(jsonstr);
 
 在safari浏览器某些版本中，或者隐私模式中`setitem()`会报异常。无法使用本地存储功能，所以事先需要判断浏览器是否支持
 
-判断浏览器是否支持本地存储：
+检查浏览器是否支持本地存储：
 
 ```javascript
 function isLocalStorageNameSupported() {
