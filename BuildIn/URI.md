@@ -44,6 +44,6 @@ decodeURI(encodeUrl);   //'http://baidu.com&a=123 abc'
 
 encodeURIComponent和encodeURI的区别：
 
-    * encodeURI()和encodeURIComponent()方法可以对URI (Uniform ResourceIdentifiers,通用资源标识符)进行编码，以便发送给浏览器。有效的URI中不能包含某些字符，例如空格。而这URI编码方法就可以对URI进行编码，它们用特殊的UTF-8编码替换所有无效的字符，从而让浏览器能够接受和理解。
-    * 其中encodeURI()主要用于整个URI，而encodeURIComponent()主要用于对URI中的某一段进行编码。它们的主要区别在于，encodeURI()不会对本身属于URI的特殊字符进行编码，例如冒号、正斜杠、问号和井字号；而encodeURIComponent()则会对它发现的任何非标准字符进行编码。
-    * 一般来说,我们使用encodeURIComponent()方法的时候要比使用encodeURI()更多，因为在实践中更常见的是对查询字符串参数而不是对基础URL进行编码。
+1. `encodeURI()`和`encodeURIComponent()`方法可以对URI (Uniform ResourceIdentifiers,通用资源标识符)进行编码，以便发送给浏览器。有效的URI中不能包含某些字符，例如空格。而这URI编码方法就可以对URI进行编码，它们用特殊的UTF-8编码替换所有无效的字符，从而让浏览器能够接受和理解。
+2. 其中`encodeURI()`主要用于整个URI，而`encodeURIComponent()`主要用于对URI中的某一段进行编码。它们的主要区别在于，`encodeURI()`不会对本身属于URI的特殊字符进行编码，例如冒号、正斜杠、问号和井字号；而`encodeURIComponent()`则会对它发现的任何非标准字符进行编码。
+3. 一般来说,我们使用`encodeURIComponent()`方法的时候要比使用`encodeURI()`更多，因为在实践中更常见的是对查询字符串参数而不是对基础URL进行编码。
