@@ -121,52 +121,42 @@ document.getElementById('my-checkbox').addEventListener('click', stopDefAction, 
 
 ##### [Event.stopPropagation()](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation)
 
-Prevents further propagation of the current event.
+阻止当前事件的冒泡
 
-*More information reference to [Event Phases](https://github.com/ttian226/javascript-issues/blob/master/Event/Event%20Phases.md)*
-
-##### [Event.stopImmediatePropagation()](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopImmediatePropagation)
-
-Prevents other listeners of the same event from being called.
-
-*Calling `Event.stopPropagation()` will not prevent any additional event listeners from being called on the current target if multiple listeners for the same event exist.*
-
-**Example**
+例子：
 
 ```html
 <div id="parent" style="padding:100px"><div id="child">child</div></div>
 ```
 
 ```javascript
+// 以下代码需要在DOMContentLoaded事件后执行
 var parent = document.getElementById('parent');
 var child = document.getElementById('child');
 
 parent.addEventListener('click', callback, false);
-child.addEventListener('click', function(e) {
-    e.stopPropagation();
-}, false);
-
 child.addEventListener('click', callback1, false);
 
-
+// 父节点事件函数
 function callback() {
-    console.log('ok');
+    console.log('parent event');
 }
 
-function callback1() {
-    console.log('123');
+// 子节点事件函数
+function callback1(e) {
+    e.stopPropagation();    //阻止冒泡
+    console.log('child event');
 }
 ```
 
-* click clild element, only output '123'.
-* click parent element, output 'ok'.
+* 点击子元素，由于在子元素中阻止事件冒泡，只会触发子元素事件。
+* 如果不阻止事件冒泡会先触发子元素事件，然后会触发父元素事件。
 
-*use `e.stopImmediatePropagation` instead of `e.stopPropagation`*
+*更多参考 [事件的三个阶段](https://github.com/ttian226/javascript-issues/blob/master/Event/Event%20Phases.md)*
 
-```javascript
-child.addEventListener('click', function(e) {
-    e.stopImmediatePropagation();
-}, false);
-```
-* click clild element, because of stopImmediatePropagation, nothing happened.
+##### [Event.stopImmediatePropagation()](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopImmediatePropagation)
+
+除了阻止事件冒泡，而且还阻止了当前元素的同类事件
+
+
 
