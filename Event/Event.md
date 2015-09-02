@@ -158,5 +158,47 @@ function callback1(e) {
 
 除了阻止事件冒泡，而且还阻止了当前元素的同类事件
 
+例子：
 
+```html
+<div>
+    <p>paragraph</p>
+</div>
+```
+```css
+p { height: 30px; width: 150px; background-color: #ccf; }
+div {height: 30px; width: 150px; background-color: #cfc; }
+```
+```javascript
+document.addEventListener('DOMContentLoaded', complete, false);
+
+function complete(e) {
+    var p = document.querySelector('p');
+    var div = document.querySelector('div');
+
+    p.addEventListener("click", function (event) {
+        console.log("我是p元素上被绑定的第一个监听函数");
+    }, false);
+
+    p.addEventListener("click", function (event) {
+        console.log("我是p元素上被绑定的第二个监听函数");
+        event.stopImmediatePropagation();
+        //执行stopImmediatePropagation方法,阻止click事件冒泡,并且阻止p元素上绑定的其他click事件的事件监听函数的执行.
+    }, false);
+
+    p.addEventListener("click", function (event) {
+        console.log("我是p元素上被绑定的第三个监听函数");
+        //该监听函数排在上个函数后面,该函数不会被执行.
+    }, false);
+
+    div.addEventListener("click", function (event) {
+        console.log("我是div元素,我是p元素的上层元素");
+        //p元素的click事件没有向上冒泡,该函数不会被执行.
+    }, false);
+}
+```
+
+* 元素p同时绑定了3个click事件
+* 在第二个监听函数上如果使用`stopPropagation()`会依次触发3个监听函数。事件不会冒泡
+* 在第二个监听函数上如果使用`stopImmediatePropagation()`，会阻止p元素上绑定的其他click事件的事件监听函数的执行（第一个监听函数被执行，因为它位于第二个监听函数的前面）
 
