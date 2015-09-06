@@ -93,3 +93,93 @@ data.append('age', 3);
 // send接受这个FormData对象
 xhr.send(data);
 ```
+
+老版本XMLHttpRequest的缺点：
+
+    * 只支持文本数据的传送，无法用来读取和上传二进制文件。
+    * 传送和接收数据时，没有进度信息，只能提示有没有完成。
+    * 受到"同域限制"（Same Origin Policy），只能向同一域名的服务器请求数据。
+
+
+#### 新版本XMLHttpRequest
+
+针对老版本XMLHttpRequest做了如下改进：
+
+    * 可以设置HTTP请求的时限。
+    * 可以使用FormData对象管理表单数据。
+    * 可以上传文件。
+    * 可以请求不同域名下的数据（跨域请求）。
+    * 可以获取服务器端的二进制数据。
+    * 可以获得数据传输的进度信息
+
+1. HTTP请求超时：
+
+有时，ajax操作很耗时，而且无法预知要花多少时间。如果网速很慢，用户可能要等很久。
+新版本的`XMLHttpRequest`对象，增加了`timeout`属性，可以设置HTTP请求的时限
+
+```javascript
+xhr.timeout = 3000;
+```
+
+上面的语句，将最长等待时间设为3000毫秒。过了这个时限，就自动停止HTTP请求。与之配套的还有一个`ontimeout`事件，用来指定回调函数。
+
+```javascript
+xhr.ontimeout = function() {
+    alert('请求超时');
+};
+```
+
+2. FormData对象
+
+```javascript
+// 创建FormData对象
+var data = new FormData();
+
+// 通过append方法给FormData对象赋值
+data.append('name', 'ttian226');
+data.append('age', 3);
+
+// send接受这个FormData对象
+xhr.send(data);
+```
+
+FormData对象也可以用来获取网页表单的值。
+
+例子:
+
+```html
+<form action="http://localhost/test.php" method="post">
+    <p>First name: <input type="text" name="fname" /></p>
+    <p>Last name: <input type="text" name="lname" /></p>
+    <input id="btn" type="submit" value="Submit" />
+</form>
+```
+
+```javascript
+document.addEventListener('DOMContentLoaded', complete, false);
+
+function complete() {
+    var btn = document.getElementById('btn');
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        post();
+    }, false);
+}
+
+function post() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(JSON.parse(xhr.responseText));
+        }
+    };
+
+    // 取得表单元素的引用
+    var form = document.querySelector('form');
+    // 用表单元素初始化FormData对象
+    var data = new FormData(form);
+    xhr.open('POST', form.action);
+    xhr.send(data);
+}
+```
+
