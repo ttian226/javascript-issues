@@ -1,14 +1,15 @@
 #### [Event](https://developer.mozilla.org/en-US/docs/Web/API/Event)
 
-The **Event** interface represents any event of the DOM. It contains common properties and methods to any event.
 
 #### Properties
 
 ##### [Event.target](https://developer.mozilla.org/en-US/docs/Web/API/Event/target)
 
-A reference to the object that dispatched the event. It is different than [event.currentTarget](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget) when the event handler is called during the bubbling or capturing phase of the event.
+返回事件触发时的节点。
 
-**Example**
+例：
+
+点击任一个`<li>`节点，都会打印出当前`<li>`节点的引用
 
 ```html
 <ul>
@@ -25,15 +26,16 @@ ul.addEventListener('click', function(e) {
     console.log(e.target);
 });
 
-// e.target reference to the ul element or li element that has been clicked(ul or li element)
 ```
 
 
 ##### [Event.currentTarget](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget)
 
-Identifies the current target for the event, as the event traverses the DOM. It always refers to the element the event handler has been attached to as opposed to event.target which identifies the element on which the event occurred.
+返回绑定事件的节点（而不是触发事件的节点）
 
-**Example**
+例：
+
+当点击任意的`<li>`时，都会打印出`<ul>`节点的引用
 
 ```html
 <ul>
@@ -49,41 +51,38 @@ var ul = document.querySelector('ul');
 ul.addEventListener('click', function(e) {
     console.log(e.currentTarget);
 });
-
-// when click li element e.currentTarget always reference to ul element
 ```
 
 ##### [Event.type](https://developer.mozilla.org/en-US/docs/Web/API/Event/type)
 
-Returns a string containing the type of event.
+返回事件的类型
 
 ##### [Event.bubbles](https://developer.mozilla.org/en-US/docs/Web/API/Event/bubbles)
 
-Indicates whether the given event bubbles up through the DOM or not
+检查指定的事件是否可以冒泡（并不是所有类型的事件都可以冒泡）
 
 ##### [Event.cancelable](https://developer.mozilla.org/en-US/docs/Web/API/Event/cancelable)
 
-Indicates whether the event is cancelable or not
+指示事件是否是可取消的（cancelable）
 
 ##### [Event.defaultPrevented](https://developer.mozilla.org/en-US/docs/Web/API/Event/defaultPrevented)
 
-Returns a boolean indicating whether or not [event.preventDefault()](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) was called on the event
+返回一个布尔值，指示事件[event.preventDefault()](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)是否被调用
 
 ##### [Event.timeStamp](https://developer.mozilla.org/en-US/docs/Web/API/Event/timeStamp)
 
-Returns the time (in milliseconds since the epoch) at which the event was created.
+返回发生事件时的时间戳
 
 #### Methods
 
 ##### [Event.preventDefault()](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
 
-Cancels the event if it is cancelable, without stopping further propagation of the event.
+取消事件的默认行为（如果它是cancelable的）
 
-The browser has default behaviors that will respond when certain events occur in the document. The most common event is a link being clicked. When a click event occurs on an <a> element, it will bubble up to the document level of the DOM, and the browser will interpret the href attribute and reload the window at the new address.
 
-In Web applications, developers usually want to manage the navigation themselves, without causing the page to refresh. To do this, we need to prevent the browser’s default response to clicks and instead do our own thing. To do this, we call event.preventDefault().
+例子1：
 
-**Example1**
+点击`<a>`的默认行为是跳转到href指向的链接，如果使用`preventDefault()`，会阻止默认行为。
 
 ```html
 <a href="http://smashingmagazine.com">Go to Smashing Magazine</a>
@@ -98,7 +97,9 @@ a.addEventListener('click', function(e) {
 });
 ```
 
-**Example2**
+例子2：
+
+阻止了点击checkbox的默认行为，点击后无法选择上。
 
 ```html
 <body>
