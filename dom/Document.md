@@ -199,7 +199,7 @@ alert(document.links.length);     //3
 
 ##### [Document.URL](https://developer.mozilla.org/en-US/docs/Web/API/Document/URL)
 
-The URL read-only property of the Document interface returns the document location as a string
+返回当前文档的url
 
 ```javascript
 document.location = 'http://www.mozilla.org';   //Equivalent to
@@ -208,7 +208,7 @@ document.location.href = 'http://www.mozilla.org';
 
 ##### [Document.referrer](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer)
 
-Returns the [URI](http://www.w3.org/Addressing/#background) of the page that linked to this page.
+返回链接到当前文档的url（之前link过来的路径）
 
 ##### [Document.domain](https://developer.mozilla.org/en-US/docs/Web/API/Document/domain)
 
