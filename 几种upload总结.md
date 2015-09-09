@@ -72,3 +72,48 @@ if ($res) {
 * iframe上传属于异步上传，网页不会锁死（表单提交后会在iframe中打开，所以不会对父html产生影响。）
 * form的target属性要和iframe的name属性相同。
 * php中script脚本是运行在iframe中的，所以要通过`window.top`或`window.parent`调用父层的js的回调函数
+
+#### XMLHttpRequest上传文件
+
+```html
+<input type="file" name="filedata" accept="image/*">
+<progress min="0" max="100" value="0">0% complete</progress>
+```
+
+```javascript
+function uploadFiles(url, file, name) {
+    var progressBar = document.querySelector('progress');
+
+    var formData = new FormData();
+    formData.append(name, file);
+
+    var xhr = new XMLHttpRequest();
+    xhr.upload.onprogress = function(e) {
+        if (e.lengthComputable) {
+            progressBar.value = (e.loaded / e.total) * 100;
+            progressBar.textContent = progressBar.value;
+        }
+    };
+    xhr.open('POST', url);
+    xhr.onload = function(e) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log('上传成功');
+        }
+    };
+    xhr.send(formData);
+}
+
+document.querySelector('input[type="file"]').addEventListener('change', function(e) {
+    uploadFiles('http://localhost/test.php', this.files[0], this.name);
+}, false);
+```
+
+```php
+$fileInfo = pathinfo($_FILES['filedata']['name']);
+$extension = strtolower( $fileInfo['extension'] );
+$tmppath = '/tmp';
+$tmpname = date("YmdHis") . mt_rand(10000,99999) . '.' . $extension;
+//保存到服务器的路径
+$fullpath = $tmppath . '/' . $tmpname;
+move_uploaded_file($_FILES['filedata']['tmp_name'], $fullpath);
+```
