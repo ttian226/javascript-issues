@@ -115,5 +115,9 @@ $tmppath = '/tmp';
 $tmpname = date("YmdHis") . mt_rand(10000,99999) . '.' . $extension;
 //保存到服务器的路径
 $fullpath = $tmppath . '/' . $tmpname;
-move_uploaded_file($_FILES['filedata']['tmp_name'], $fullpath);
+$res = move_uploaded_file($_FILES['filedata']['tmp_name'], $fullpath);
+if ($res) {
+    echo 'move file ok';
+}
 ```
+使用`XMLHttpRequest`上传文件不会触发页面提交动作。也就没有办法在服务端通知前端js是否完成拷贝文件的操作。
