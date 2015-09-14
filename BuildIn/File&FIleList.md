@@ -2,13 +2,13 @@
 
 属性
 
-#### length
+##### length
 
 文件列表的长度
 
 方法
 
-#### item(index)
+##### item(index)
 
 返回指定索引的文件对象(File)
 
@@ -30,3 +30,23 @@ document.getElementById('fileitem').addEventListener('change', function(e) {
     console.dir(file);
 }, false);
 ```
+
+#### [File](https://developer.mozilla.org/en-US/docs/Web/API/File)
+
+File接口提供了一些关于文件的信息，允许用户去访问它的内容。File对象通常是由FileList结果集中返回的。
+
+属性
+
+##### File.lastModifiedDate
+
+最后一次修改的日期时间
+
+##### File.name
+
+文件名
+
+
+#### [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob)
+
+file 对象只是 blob 对象的一个更具体的版本，blob 存储着大量的二进制数据，并且 blob 的 size 和 type 属性，都会被 file 对象所继承
+
