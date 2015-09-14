@@ -1,3 +1,7 @@
+#### drag
+
+在拖拽期间内连续触发（每隔几百毫秒一次）
+
 #### dragstart
 
 当用户开始拖拽元素时触发
@@ -85,7 +89,7 @@ document.addEventListener("dragleave", function( event ) {
 ```javascript
 var dragged;
 
-/* events fired on the draggable target */
+// 在拖拽期间内连续触发
 document.addEventListener("drag", function( event ) {
 
 }, false);
