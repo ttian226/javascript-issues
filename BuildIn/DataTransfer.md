@@ -76,3 +76,71 @@ document.addEventListener("drop", function( event ) {
 </script>
 </html>
 ```
+
+例子：从操作系统拖拽到页面的指定区域预览图片
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #demo2 {
+            margin: 20px;
+        }
+
+        #demo2 .preview {
+            height: 300px;
+            background: #ddd;
+        }
+
+        #demo2 li {
+            float: left;
+            margin-left: 40px;
+        }
+
+        #demo2 img {
+            max-height: 150px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="demo2">
+    <ul class="preview"></ul>
+</div>
+</body>
+<script>
+    var doc = document;
+    var preview = doc.querySelector('#demo2 .preview');
+
+    preview.addEventListener('dragover', function (e) {
+        e.preventDefault();
+    }, false);
+
+    preview.addEventListener('drop', function (e) {
+        // 操作系统拖放文件到浏览器需要取消默认行为
+        e.preventDefault();
+
+        [].forEach.call(e.dataTransfer.files, function(file) {
+            if (file && file.type.match('image.*')) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    var img = doc.createElement('img');
+                    img.src = e.target.result;
+                    var li = doc.createElement('li');
+                    li.appendChild(img);
+                    preview.appendChild(li);
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+
+    }, false);
+
+</script>
+</html>
+```

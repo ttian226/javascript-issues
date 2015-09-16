@@ -145,3 +145,12 @@ document.addEventListener("drop", function( event ) {
 
 }, false);
 ```
+
+在火狐浏览器上必须在`dragstart`事件上增加`event.dataTransfer.setData`才能实现拖拽，例如：
+
+```javascript
+document.addEventListener("dragstart", function( event ) {
+    // 不需要传输数据，第二个参数设置null即可，但这句一定要加上。
+    event.dataTransfer.setData('text/plain', null);
+}, false);
+```
