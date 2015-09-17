@@ -213,17 +213,22 @@ function previewfile(file) {
     }
 }
 
-// 读取文件files是FileList类型
+// 读取文件，files是FileList类型
 function readfiles(files) {
+    // 创建FormData对象
     var formData = tests.formdata ? new FormData() : null;
+
+    // 遍历filelist，把file加入到formData中
     for (var i = 0; i < files.length; i++) {
         if (tests.formdata) {
             formData.append('afile', files[i]);  //这里只能传1张图片，所以key为固定的一个值
         }
+        // 预览本地图片
         previewfile(files[i]);
     }
 
     if (tests.formdata) {
+        // 创建xhr对象
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'http://localhost/test.php');
         xhr.onload = function() {
@@ -260,6 +265,7 @@ if (tests.dnd) {
     holder.ondrop = function (e) {
         e.preventDefault();
         this.className = '';
+        // 取dataTransfer.files，它是FileList类型的
         readfiles(e.dataTransfer.files);
     }
 } else {
