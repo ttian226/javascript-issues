@@ -129,6 +129,9 @@ if ($res) {
 
 #### 拖拽上传
 
+1. 这里没有借助`<input type="file">`来上传文件，而是使用任意的元素来作为拖拽图片的目标区域通过`dataTransfer.files`来获取文件对象。
+2. 传统的上传文件是：提交文件到服务器->服务器接受到文件并从临时目录拷贝到指定的目录->拷贝完毕后通知前端来显示图片。这里预览文件和拷贝文件则是异步的。也就是预览的文件是本地文件（通过FileReader接口）。通过xhr level2来上传文件。
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -200,15 +203,21 @@ var holder = document.getElementById('holder'),
 // 预览本地图片
 function previewfile(file) {
     if (tests.filereader === true && acceptedTypes[file.type] === true) {
+        // 创建FileReader对象
         var reader = new FileReader();
 
+        // 读取完毕后触发的事件
         reader.onload = function (e) {
+            // e.target为FileReader对象
             var image = new Image();
+
+            // e.target.result为文件内容
             image.src = e.target.result;
             image.width = 250;
             holder.appendChild(image);
         };
 
+        // readAsDataURL用来读取Blob或File文件的内容，读取完毕后onload会被触发
         reader.readAsDataURL(file);
     }
 }
