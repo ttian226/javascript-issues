@@ -107,7 +107,7 @@ $.ajax({
 });
 ```
 
-但实际的成功回调还是走`success`方法，而不是`callbackfunc`？？
+但实际的成功回调还是走`success`方法，而不是`callbackfunc`
 
 实例三
 
