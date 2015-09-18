@@ -72,10 +72,6 @@
 ```
 
 ```javascript
-/**
- * Created by wangxu on 9/17/15.
- */
-
 var $ = function (id) {
         return document.getElementById(id);
     },
