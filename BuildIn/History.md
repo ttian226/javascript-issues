@@ -29,7 +29,13 @@
 
 `popstate`事件是设计出来和前面的2个方法搭配使用的。一般只有在通过前面2个方法设置了同一站点的多条历史记录，并在其之间导航（前进或后退）时，才会触发这个事件。同时，前面2个方法所设置的状态对象（第1个参数），也会在这个时候通过事件的event.state返还回来
 
-例子：
+#### 一个完整的例子
+
+    * 依次点击<a>会调用history.pushState会push当前状态到历史记录中，同时页面上url会根据pushState的第三个参数来变化。
+    * 通过reportData函数，页面上同步显示当前的data数据。
+    * 在popstate事件中通过event.state获取之前存储的数据（通过pushState的第一个参数来设置），使用reportData函数来显示当前的data数据。
+    * 例如依次点击first，second，third，fourth四个链接。使用回退按钮时会触发popstate事件，并同步显示data数据。
+    * 当点击other链接时调用history.replaceState()，例如依次点击first，second，third，fourth，other链接时，other的数据会覆盖fourth的数据（实际顺序就应该是first->second->third->other）。这时点击回退按钮会的链接为third->second->first
 
 ```html
 <!DOCTYPE html>
@@ -139,7 +145,7 @@ window.addEventListener('popstate', function (e) {
     reportData(data || { url: "unknown", name: "undefined", location: "undefined" });
 }, false);
 
-// 记录当前data数据
+// 页面显示当前data数据
 function reportData(data) {
     output.innerHTML = template.replace(/(\{(.*?)\})/g, function (a,b,c) {
         return data[c];
@@ -151,3 +157,6 @@ function reportEvent(e) {
     lastevent.innerHTML = e.type;
 }
 ```
+
+#### History API通常使用的场景
+
