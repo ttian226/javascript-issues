@@ -35,6 +35,7 @@ jsonp 的核心则是动态添加`<script>`标签来调用服务器提供的js�
 在域名`example2.com`下。服务端的的test.php文件
 
 ```php
+<?
 public function getData() {
     // get过来的回调函数名
     $callback = $_GET['callback'];
@@ -44,6 +45,7 @@ public function getData() {
 
     echo $callback . "($result)";
 }
+?>
 ```
 
 当我们正常地请求一个JSON数据的时候，服务端返回的是一串JSON类型的数据，而我们使用JSONP模式来请求数据的时候，服务端返回的是一段可执行的JavaScript代码，所以我们可见服务器代码最后一行:

@@ -210,6 +210,33 @@ function replacer(match, p1, p2, p3, offset, string) {
 //["abc12345#$*%", "abc", "12345", "#$*%", 4, "0123abc12345#$*%"]
 ```
 
+例：正则匹配多个字符串替换
+
+```javascript
+var template = '<p>URL: <strong>{url}</strong>, name: <strong>{name}</strong>, location: <strong>{location}</strong></p>';
+var reg = /(\{(.*?)\})/g;
+
+// 由于匹配到了3个位置，replace会执行3次
+var replace = function (a, b, c) {
+    // 三个参数分别是：a匹配到的字符串{url},{name},{location},b匹配到的第一个分组{url},{name},{location},c匹配到的第二个分组url,name, location
+    console.log(c);
+
+    // 这里返回c(匹配到的第二个分组url,name, location)
+    return c;
+};
+
+// 对于每个匹配到的位置会执行一次replace回调函数
+var str = template.replace(reg, replace);
+// 返回值是由c（匹配到的第二个分组url,name, location）分别替换匹配匹配的位置组成的字符串
+console.log(str);
+
+// 输出
+// url
+// name
+// location
+// <p>URL: <strong>url</strong>, name: <strong>name</strong>, location: <strong>location</strong></p>
+```
+
 ##### [String.prototype.search()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search)
 
 字符串搜索，参数为一个正则表达式，如果查找到返回第一个匹配的字符串的索引值，否则返回-1
