@@ -8,7 +8,7 @@ The following interfaces all inherit from Node its methods and properties: ```Do
 
 ##### [Node.childNodes](https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes)
 
-The Node.childNodes read-only property returns a live collection of child nodes of the given element.
+返回指定元素子节点的集合（它是NodeList对象）
 
 **Example1**
 
@@ -22,7 +22,7 @@ var node = nodes[0];        //first node
 var type = node.nodeType;   //3 TEXT_NODE 
 var name = node.nodeName;   //'#text'
 ```
-*Note:* Whitespace inside elements is considered as text
+注：在元素中间空白符作为text类型的节点
 
 **Example2**
 
@@ -37,7 +37,7 @@ var name = node.nodeName;   //'#text'
     <script src="test.js"></script>
 </body>
 ```
-After dom loaded, run script:
+DOM加载完成后执行以下脚本:
 
 ```javascript
 var nodes = document.body.childNodes;
@@ -48,7 +48,7 @@ for (var i = 0; i < len; i++) {
     console.log('nodeName:' + name + ' nodeType:' + type);
 }
 
-// output
+// 控制台输出：
 // nodeName:#text nodeType:3
 // nodeName:#comment nodeType:8     comment
 // nodeName:#text nodeType:3
@@ -67,7 +67,7 @@ for (var i = 0; i < len; i++) {
 
 ##### [Node.firstChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild)
 
-The Node.firstChild read-only property returns the node's first child in the tree, or null if the node is childless
+返回指定元素的第一个子节点，如果没有子节点返回null
 
 ```html
 <p id="para-01"><span>First span</span><span>Middle span</span><span>Last span</span></p>
@@ -78,7 +78,7 @@ var first = pNode.firstChild;   // <span>First span</span>
 ```
 ##### [Node.lastChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/lastChild)
 
-The Node.lastChild read-only property returns the last child of the node. It returns null if there are no child elements
+返回指定元素的最后一个子节点，如果没有子节点返回null
 
 ```html
 <p id="para-01"><span>First span</span><span>Middle span</span><span>Last span</span></p>
@@ -88,7 +88,7 @@ var pNode = document.getElementById('para-01');
 var last = pNode.lastChild;   // <span>Last span</span>
 ```
 
-*Note:* If the Node contains whitespace, the firstNode or lastNode return a text node
+注：如果元素包含空白，firstNode或lastNode返回文本节点
 
 **Example**
 
@@ -107,23 +107,23 @@ var last = pNode.lastChild;     //a node reference to text Node
 
 ##### [Node.nodeName](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeName)
 
-The Node.nodeName read-only property returns the name of the current node as a string.
+返回节点名字
 
-*The returned values for different types of nodes are:*
+*不同类型的节点返回的名字如下:*
 
-interface | nodeName value
+节点类型 | nodeName值
 ----------|---------------
 Comment|"#comment"
 Document|"#document"
 Text|"#text"
-Element|The value of Element.tagName
+Element|Element.tagName（元素返回tagName的值）
 
 
 ##### [Node.nodeType](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType)
 
-The read-only Node.nodeType property returns an unsigned short integer representing the type of the node
+返回节点的类型（无符号短整型）
 
-*type is an unsigned short with one of the following values:*
+*不同类型节点的值如下:*
 
 Name | Value
 -----|------
@@ -135,7 +135,7 @@ DOCUMENT_NODE|9
 
 ##### [Node.nodeValue](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeValue)
 
-The Node.nodeValue property returns or sets the value of the current node. For the document itself, nodeValue returns null. For text, comment, and CDATA nodes, nodeValue returns the content of the node
+返回或设置当前节点的值，对于document自身返回null，对于Text和Comment类型返回节点内容
 
 Attr | value of attribute
 -----|-------------------
@@ -147,22 +147,24 @@ Text|content of the text node
 
 ##### [Node.textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
 
+显示节点的文本内容
+
 ```html
 <div id="div1">some text</div>
 ```
 ```javascript
 var div = document.getElementById('div1');
 
-// get the text content
+// 获取节点的文本内容
 var content = div.textContent;      //some text
 
-// set content
+// 设置文本内容
 div.textContent = 'other text';     //content set to "other text"
 ```
 
 ##### [Node.parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode)
 
-The Node.parentNode read-only property returns the parent of the specified node in the DOM tree
+返回指定节点的父节点
 
 ```html
 <html>
@@ -177,13 +179,17 @@ var div0 = div1.parentNode;     // reference to div0
 var body = div0.parentNode;     // reference to body
 var html = body.parentNode;     // reference to html
 
-console.log(html.nodeType);     // 1 html still ELEMENT_NODE
-console.log(html.parentNode.nodeType);      // 9 DOCUMENT_NODE
+console.log(html.nodeType);     // 1 html节点仍然是元素类型，ELEMENT_NODE
+console.log(html.parentNode.nodeType);      // 9 html的父节点是DOCUMENT_NODE
 ```
 
 ##### [Node.nextSibling](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling)
 
+返回指定节点的下一个同级节点
+
 ##### [Node.previousSibling](https://developer.mozilla.org/en-US/docs/Web/API/Node/previousSibling)
+
+返回指定节点的上一个同级节点
 
 ```html
 <div id="div1"></div><div id="div2"></div><div id="div3"></div>
@@ -195,7 +201,7 @@ var div1 = div2.previousSibling;
 ```
 ##### [Node.ownerDocument](https://developer.mozilla.org/en-US/docs/Web/API/Node/ownerDocument)
 
-The Node.ownerDocument read-only property returns the top-level document object for this node.
+返回指定节点的所属文档节点。
 
 ```html
 <body>
@@ -205,11 +211,11 @@ The Node.ownerDocument read-only property returns the top-level document object 
 ```javascript
 var div = document.getElementById('div1');
 
-// return document object
+// 返回文档对象
 var owner = div.ownerDocument;
 console.log(owner === document);    //true
 
-// return the root element of document <html>
+// documentElement返回的是文档的根html节点，而不是document文档节点。
 var html = owner.documentElement;
 ```
 
