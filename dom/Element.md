@@ -331,44 +331,45 @@ var result = element.hasAttribute(attName);
 
 ##### [Element.getElementsByClassName()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByClassName)
 
-The **Element.getElementsByClassName()** method returns a live HTMLCollection containing all child elements which have all of the given class names. When called on the document object, the complete document is searched, including the root node.
+根据指定的类名获取节点的集合（一个动态的HTMLCollection对象）
 
-Similarly the method [Document.getElementsByClassName()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName) acts on the whole document; it will return elements which are descendants of the specified document root element with the given class names.
+[Document.getElementsByClassName()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName) 它是作用在整个的document上; 它返回的是整个文档匹配的class元素的集合。
 
 ##### [Element.getElementsByTagName()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName)
 
-The **Element.getElementsByTagName()** method returns a live HTMLCollection of elements with the given tag name. The subtree underneath the specified element is searched, excluding the element itself.
-
+根据指定的标签名获取节点的集合（一个动态的HTMLCollection对象）
 
 ##### [Element.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector)
 
-Returns the first element that is a descendant of the element on which it is invoked that matches the specified group of selectors
+通过匹配css选择器，返回第一个匹配的元素。
+
+返回
 
 ```javascript
 element = baseElement.querySelector(selectors);
 ```
-* *element* and *baseElement* are element objects.
-* *selectors* is a group of selectors to match on.
+* *element* 和 *baseElement* 是元素对象。
+* *selectors* 是一组匹配的选择器。
 
 
 ##### [Element.querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll)
 
-Returns a non-live NodeList of all elements descended from the element on which it is invoked that match the specified group of CSS selectors.
+通过匹配css选择器返回NodeList对象
 
 ```javascript
 elementList = baseElement.querySelectorAll(selectors);
 ```
-* *elementList* is a non-live list of element objects.
-* *baseElement* is an element object.
-* *selectors* is a group of selectors to match on
+* *elementList* 是一个非动态的元素列表
+* *baseElement* 指定的元素（基于这个元素进行查找）
+* *selectors* css选择器
 
 **Example**
 
 ```javascript
-// This example returns a list of all the p elements in the HTML document body
+// 返回body中所有的p元素
 var matches = document.body.querySelectorAll('p');
 
-// This example returns a list of p children elements under a container, whose parent is a div that has the class 'highlighted':
+// 返回一个p元素的列表，它的父节点是一个div带有class名为'highlighted'
 var el = document.querySelector('#test');
 var matches = el.querySelectorAll('div.highlighted > p');
 ```
