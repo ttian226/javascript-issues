@@ -4,7 +4,7 @@
 
 ##### [Element.attributes](https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes)
 
-The **Element.attributes** property returns a live collection of all attribute nodes registered to the specified node. It is a [NamedNodeMap](https://developer.mozilla.org/en-US/docs/Web/API/NamedNodeMap), not an Array, so it has no Array methods and the Attr nodes' indexes may differ among browsers. To be more specific, attributes is a key/value pair of strings that represents any information regarding that attribute.
+**Element.attributes**属性返回一个节点属性的动态集合。它是一个[NamedNodeMap](https://developer.mozilla.org/en-US/docs/Web/API/NamedNodeMap)对象。它是一个类数组对象。
 
 **Example**
 
@@ -14,18 +14,18 @@ The **Element.attributes** property returns a live collection of all attribute n
 ```javascript
 var div = document.getElementById('div1');
 
-// attrs is a NamedNodeMap object, is array like, each item is Attr object
+// attrs是NamedNodeMap类型对象, 它是类数组对象，每一项都是Attr对象
 var attrs = div.attributes;
 
-// iterator attrs
+// 迭代attrs
 for (var i = 0; i < attrs.length; i++) {
-    // one is Attr object
+    // one是Attr对象
     var one = attrs[i],
 
-        // get it's attr name
+        // 获取attr名字
         name = one.name,
 
-        // get it's attr value
+        // 获取attr的值
         value = one.value;
     console.log('name:' + name + ' value:' + value);
 }
@@ -39,7 +39,7 @@ for (var i = 0; i < attrs.length; i++) {
 
 ##### [Element.className](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)
 
-className gets and sets the value of the class attribute of the specified element.
+获取或设置元素的class属性
 
 **Example**
 
@@ -59,7 +59,7 @@ div.className = 'cls2'; //div's classname has been set to 'cls2'
 
 ##### [Element.id](https://developer.mozilla.org/en-US/docs/Web/API/Element/id)
 
-The Element.id property represents the element's identifier, reflecting the id global attribute.
+获取或设置元素的id
 
 **Example**
 
@@ -79,9 +79,9 @@ div.id = 'div2'; //div's id has been set to 'div2'
 
 ##### [Element.tagName](https://developer.mozilla.org/en-US/docs/Web/API/Element/tagName)
 
-Returns the name of the element
+返回元素的标签名字
 
-*Note:* tagName returns the element name in the uppercase form, The value of tagName is the same as that of nodeName.
+注：`tagName`是以大写字母来返回的，它的值等同于`Node.nodeName`
 
 **Example**
 
@@ -98,7 +98,18 @@ console.log(tagname.toLowerCase()); //'div'
 
 ##### [Element.classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)
 
-classList returns a token list of the class attribute of the element. It return a [DOMTokenList](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList) object.
+classList返回元素的class属性的一个集合，它返回的是[DOMTokenList](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList)对象。
+
+**Example**
+
+```html
+<div id="div1" name="test1" class="cls1 cls2 cls3" myattr="my_val"></div>
+```
+```javascript
+var div = document.getElementById('div1');
+var clslist = div.classList;
+console.log(clslist.length);   //div包含3个class，所以为3
+```
 
 **Example**
 
@@ -110,18 +121,19 @@ classList returns a token list of the class attribute of the element. It return 
 ```javascript
 var div = document.getElementById('test');
 
+// divClass为DOMTokenList对象
 var divClass = div.classList;
 
-// add class 'cls1'
+// 调用DOMTokenList对象的add方法，给元素增加一个class
 divClass.add('cls1');
 
 console.log(divClass.length);   //1
 
-console.log(divClass.item(0));  //'cls1' equal to divClass[0]
+console.log(divClass.item(0));  //'cls1'等价于divClass[0]
 
 console.log(divClass.contains('cls1')); //true
 
-// remove class 'cls1'
+// 调用DOMTokenList对象的remove方法，给元素删除指定的class
 divClass.remove('cls1');
 
 console.log(divClass.length);   //0
