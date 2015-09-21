@@ -1,43 +1,43 @@
 #### [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement)
 
-The **HTMLElement** interface represents any HTML element. Some elements directly implement this interface, others implement it via an interface that inherits it.
+**HTMLElement**继承了Element
 
 #### Properties
 
-Inherits properties from its parent, [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element), and implements those from GlobalEventHandlers and TouchEventHandlers.
+一部分属性继承自[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)
 
 ##### HTMLElement.draggable
 
-Is a Boolean indicating if the element can be dragged.
+指示元素是否可以被拖拽，当元素有draggable="true"属性时返回true，否则返回false
 
 ##### HTMLElement.hidden
 
-Is a Boolean indicating if the element is hidden or not.
+指示元素是否隐藏
 
 ##### [HTMLElement.style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)
 
-The **HTMLElement.style** property returns a [CSSStyleDeclaration](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration) object that represents the element's style attribute.
+style属性返回一个[CSSStyleDeclaration](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration)对象，用来描述元素style属性。
 
-Setting style:
+设置style:
 
 ```html
 <div id="test">test</div>
 ```
 
 ```javascript
-elt.style.color = "blue";  // Directly
+elt.style.color = "blue";  // 直接设置
 
 var st = elt.style;
-st.color = "blue";  // Indirectly
+st.color = "blue";  // 间接设置
 ```
 
-After set style:
+设置之后html为:
 
 ```html
 <div id="test" style="color:blue">test</div>
 ```
 
-*It is generally better to use the style property than to use elt.setAttribute('style', '...'), since using the style property will not overwrite other CSS properties that may be specified in the style attribute.*
+*通常来说使用`style`属性要比使用`elt.setAttribute('style', '...')`要好，因为使用`style`属性不会覆盖在style节点的样式*
 
 Getting style:
 
@@ -74,14 +74,14 @@ color = st.color;
 var div = document.getElementById('test');
 
 // get div's color
-var color = div.style.color;    // color is "", div.style can only get the inline style
+var color = div.style.color;    // color 为 "", div.style 只能获取内联样式
 ```
 
-*The style property is not useful for learning about the element's style in general, since it represents only the CSS declarations set in the element's inline style attribute, not those that come from style rules elsewhere, such as style rules in the `<head>` section, or external style sheets. To get the values of all CSS properties for an element you should use window.getComputedStyle() instead*
+*因为style属性无法读取在style标签内的css样式（只能获取元素的内联样式），要想获取元素全部的css属性需要使用window.getComputedStyle()来替代*
 
 ##### [HTMLElement.title](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/title)
 
-The **HTMLElement.title** property represents the title of the element, the text usually displayed in a 'tool tip' popup when the mouse is over the displayed node.
+设置或读取元素的title属性
 
 **Example**
 
@@ -94,7 +94,7 @@ var button1 = document.getElementById('btn1');
 button1.title = "click to refresh";
 ```
 
-After set title:
+设置title属性之后:
 
 ```html
 <button id="btn1" title="click to refresh">button1</button>
@@ -102,7 +102,7 @@ After set title:
 
 ##### [HTMLElement.dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset)
 
-The **HTMLElement.dataset** read-only property allows access, both in reading and writing mode, to all the custom data attributes (data-*) set on the element. It is a map of DOMString, one entry for each custom data attribute.
+获取或设置自定义属性(data-*)的值
 
 **Example**
 
@@ -112,15 +112,15 @@ The **HTMLElement.dataset** read-only property allows access, both in reading an
 ```javascript
 var el = document.querySelector('#user');
 
-// get
+// 读取属性值
 console.log(el.dataset.id);
 console.log(el.dataset.user);
 console.log(el.dataset.dateOfBirth);
 
-// set
+// 设置属性值
 el.dataset.dateOfBirth = '1981-08-25';
 ```
-after set date-of-birth
+设置完成之后：
 
 ```html
 <div id="user" data-id="1234567890" data-user="johndoe" data-date-of-birth="1981-08-25">John Doe</div>
