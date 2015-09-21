@@ -255,13 +255,13 @@ d.outerHTML = "<p>This paragraph replaced the original div.</p>";
 
 ##### [Element.getAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute)
 
-getAttribute() returns the value of a specified attribute on the element. If the given attribute does not exist, the value returned will either be null or "" (the empty string); see Notes for details
+`getAttribute()`返回元素指定属性的值。如果给定的属性不存在，返回null或""
 
 ```javascript
 var attribute = element.getAttribute(attributeName);
 ```
-* *attribute* is a string containing the value of *attributeName*.
-* *attributeName* is the name of the attribute whose value you want to get
+* *attribute* 获取的属性值
+* *attributeName* 属性名
 
 **Example**
 
@@ -285,22 +285,22 @@ console.log(style);     //'display:none'
 
 ##### [Element.setAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute)
 
-Adds a new attribute or changes the value of an existing attribute on the specified element.
+给指定元素添加新的属性或改变原有的属性值
 
 ```javascript
 element.setAttribute(name, value);
 ```
-* *name* is the name of the attribute as a string.
-* *value* is the desired new value of the attribute.
+* *name* 要设置的属性名
+* *value* 要设置的属性值
 
 ##### [Element.removeAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute)
 
-removeAttribute removes an attribute from the specified element
+删除指定元素的属性
 
 ```javascript
 element.removeAttribute(attrName);
 ```
-* *attrName* is a string that names the attribute to be removed from element.
+* *attrName* 要删除的属性名
 
 **Example**
 
@@ -309,9 +309,11 @@ element.removeAttribute(attrName);
 ```
 ```javascript
 var div = document.getElementById('div1');
+
+// 删除div节点的align属性
 div.removeAttribute('align');
 ```
-Now html:
+现在html:
 
 ```html
 <div id="div1" width="200px"></div>
@@ -319,13 +321,13 @@ Now html:
 
 ##### [Element.hasAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttribute)
 
-The **Element.hasAttribute()** method returns a Boolean value indicating whether the specified element has the specified attribute or not
+检查节点是否存在指定的属性。
 
 ```javascript
 var result = element.hasAttribute(attName);
 ```
-* *result* holds the return value true or false.
-* *attName* is a string representing the name of the attribute
+* *result* 布尔值，真或假
+* *attName* 要检查的属性名
 
 ##### [Element.getElementsByClassName()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByClassName)
 
