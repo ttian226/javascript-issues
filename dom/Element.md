@@ -143,9 +143,9 @@ console.log(divClass.contains('cls1')); //false
 
 ##### [Element.innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)
 
-The **Element.innerHTML** property sets or gets the HTML syntax describing the element's descendants.
+**Element.innerHTML**属性设置或读取指定元素内的html
 
-*Note: If a `<div>`, `<span>`, or `<noembed>` node has a child text node that includes the characters (&), (<), or (>), innerHTML returns these characters as &amp, &lt and &gt respectively. Use Node.textContent to get a correct copy of these text nodes' contents.*
+*注：如果在`<div>`, `<span>`, `<noembed>`元素内包含字符(&), (<), (>)时，innerHTML返回转义字符&amp, &lt, &gt。使用，如果要返回字符本身要使用`Node.textContent`*
 
 **Example1**
 
@@ -155,7 +155,10 @@ The **Element.innerHTML** property sets or gets the HTML syntax describing the e
 ```javascript
 var div = document.getElementById('test');
 
+// innerHTML返回转移的字符串
 console.log(div.innerHTML);     //10&gt;1&amp;
+
+// textContent返回原始的字符串
 console.log(div.textContent);   //10>1&
 ```
 
@@ -173,13 +176,13 @@ console.log(div.textContent);   //10>1&
 var div = document.getElementById('test');
 var ul = document.querySelector('ul');
 
-// get ul inner html
+// 获取ul节点内的html
 var html = ul.innerHTML;
 
-// set div inner html replace the exist content.
+// 设置div内部的html替换原有的内容
 div.innerHTML = html;
 ```
-*after set div inner html*
+*执行之后html如下：*
 
 ```html
 <ul>
@@ -194,7 +197,7 @@ div.innerHTML = html;
 </div>
 ```
 
-*This property provides a simple way to completely replace the contents of an element. For example, the entire contents of the document body can be deleted by:*
+*这个属性提供了一个简单的方法来替换元素里的内容，例如通过以下的方法来替换body元素里的内容:*
 
 ```javascript
 document.body.innerHTML = "";
@@ -204,29 +207,37 @@ document.body.innerHTML = "";
 
 The outerHTML attribute of the element DOM interface gets the serialized HTML fragment describing the element including its descendants. It can be set to replace the element with nodes parsed from the given string
 
+和`innerHTML`相比，`outerHTML`除了获取元素内部的html还包含当前元素的html。
+
 **Example1**
 
 ```html
-<div id="d"><p>Content</p><p>Further Elaborated</p></div>
+<div id="d">
+    <p>Content</p>
+    <p>Further Elaborated</p>
+</div>
 ```
 ```javascript
 var d = document.getElementById("d");
+
+// 通过outerHTML获取了元素节点内的html（包含当前元素）
 console.log(d.outerHTML);   //'<div id="d"><p>Content</p><p>Further Elaborated</p></div>'
 ```
 
 **Example2**
 
 ```html
-<div id="container"><div id="d">This is a div.</div></div>
+<div id="container">
+    <div id="d">This is a div.</div>
+</div>
 ```
 ```javascript
-var
-    container = document.getElementById("container"),
-    d = document.getElementById("d");
+var d = document.getElementById("d");
 
+// 通过outerHTML替换当前节点html
 d.outerHTML = "<p>This paragraph replaced the original div.</p>";
 ```
-*after set outer html*
+*设置之后的html为：*
 
 ```html
 <div id="container"><p>This paragraph replaced the original div.</p></div>
