@@ -8,7 +8,7 @@ ParentNode is a raw interface and no object of this type can be created; it is i
 
 ##### [ParentNode.childElementCount](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/childElementCount)
 
-The ParentNode.childElementCount read-only property returns an unsigned long representing the number of child elements of the given element.
+childElementCount属性返回子元素（只返回elements类型）的数量。
 
 **Example**
 
@@ -26,20 +26,18 @@ The ParentNode.childElementCount read-only property returns an unsigned long rep
 ```javascript
 var body = document.body;
 var bodyNodes = body.childNodes;
-console.log(bodyNodes.length);  //13  all type of node count
-console.log(body.childElementCount);    //4  only element node count
+console.log(bodyNodes.length);  //13  所有节点类型的数量
+console.log(body.childElementCount);    //4  只是包含元素节点的数量
 ```
-
-*The returned value contains the number of child element nodes, not the number of all child nodes (like text and comment nodes).*
 
 ##### [ParentNode.children](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children)
 
-Node.children is a read-only property that returns a live [HTMLCollection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection) of the child elements of Node
+返回节点中的子元素列表，它是动态的[HTMLCollection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection)类型
 
 ```javascript
 var elList = elementNodeReference.children;
 ```
-elList is a HTMLCollection, which is an ordered collection of DOM elements that are children of elementNodeReference. If there are no element children, then elList contains no elements and has a length of 0
+elList是一个HTMLCollection对象，它是一个节点中有序的DOM子元素的集合。如果没有子元素，它的长度为0
 
 **Example**
 
@@ -52,11 +50,11 @@ var len = children.length;  //4
 
 ##### [ParentNode.firstElementChild](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/firstElementChild)
 
-The **ParentNode.firstElementChild** read-only property returns the object's first child Element, or null if there are no child elements
+返回节点中的第一个子元素
 
 ##### [ParentNode.lastElementChild](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/lastElementChild)
 
-The **ParentNode.lastElementChild** read-only property returns the object's last child Element or null if there are no child elements
+返回节点中的最后一个子元素
 
 **Example**
 
