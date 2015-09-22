@@ -223,18 +223,17 @@ var html = owner.documentElement;
 
 ##### [Node.appendChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)
 
-The *Node.appendChild()* method adds a node to the end of the list of children of a specified parent node. If the given child is a reference to an existing node in the document, appendChild() moves it from its current position to the new position
-
+添加一个子节点到指定元素内的尾部。如果给定的子节点已经存在文档内，将会把这个节点移动到新的位置
 
 **Example1**
 
-create new element <p> and append to <body> element
+创建新的元素<p>并添加到<body>元素中
 
 ```javascript
 var p = document.createElement('p');
 document.body.appendChild(p);
 ```
-result:
+结果:
 
 ```html
 <body>
@@ -243,7 +242,7 @@ result:
 ```
 
 **Example2**
-before append, html is like:
+appendChild之前，html如下：
 
 ```html
 <body>
@@ -256,7 +255,7 @@ var div1 = document.getElementById('div1');
 var div0 = document.getElementById('div0');
 div0.appendChild(div1);
 ```
-after append, div1's position has been changed
+由于div1已经存在，所以appendChild把div1移到div0的内部
 
 ```html
 <body>
@@ -267,13 +266,18 @@ after append, div1's position has been changed
 ##### [Node.cloneNode()](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
 
 The *Node.cloneNode()* method returns a duplicate of the node on which this method was called
+返回一个新的元素，它是指定元素的一个拷贝。
 
 ```javascript
 var dupNode = node.cloneNode(deep);
 ```
-* *node:* The node to be cloned
-* *deep:* The new node that will be a clone of node
-* *dupNode:* true if the children of the node should also be cloned, or false to clone only the specified node, default is false
+* *node:* 要被复制的元素
+* *deep:* 如果为ture就是深拷贝（不仅复制当前节点，而且复制子节点），为false是浅拷贝（只复制当前节点），默认是浅拷贝。
+* *dupNode:* 复制后的元素
+
+浅拷贝的例子
+
+初始html为:
 
 ```html
 <body>
@@ -284,10 +288,12 @@ var dupNode = node.cloneNode(deep);
 ```javascript
 var div1 = document.getElementById('div1');
 var div0 = document.getElementById('div0');
-// no deep clone or equal to div1.cloneNode(false)
+// 不指定参数默认为浅拷贝，等价于div1.cloneNode(false)
 var newdiv1 = div1.cloneNode();
 div0.appendChild(newdiv1);
 ```
+执行后html为：
+
 ```html
 <body>
     <div id="div1"><div id="subdiv1"></div></div>
@@ -295,7 +301,7 @@ div0.appendChild(newdiv1);
 </body>
 ```
 
-deep clone
+深拷贝的例子
 
 ```javascript
 var newdiv2 = div1.cloneNode(true);
@@ -310,20 +316,20 @@ div0.appendChild(newdiv2);
 
 ##### [Node.hasChildNodes()](https://developer.mozilla.org/en-US/docs/Web/API/Node/hasChildNodes)
 
-The *Node.hasChildNodes()* method returns a Boolean value indicating whether the current Node has child nodes or not.
+判断指定的元素是否有子节点
 
 ##### [Node.insertBefore()](https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore)
 
-The Node.insertBefore() method inserts the specified node before a reference element as a child of the current node
+在当前元素的子节点前插入一个子节点
 
 ```javascript
 var insertedElement = parentElement.insertBefore(newElement, referenceElement);
 ```
 
-* *insertedElement:* The node being inserted, that is newElement
-* *parentElement:* The parent of the newly inserted node.
-* *newElement:* The node to insert
-* *referenceElement:* The node before which newElement is inserted
+* *insertedElement:* 插入后的新的节点
+* *parentElement:* 指定的父节点
+* *newElement:* 要插入的新的节点
+* *referenceElement:* 在哪个节点前插入（它是父节点的一个子节点）
 
 **Example**
 
@@ -333,13 +339,17 @@ var insertedElement = parentElement.insertBefore(newElement, referenceElement);
 </div>
 ```
 ```javascript
+// 创建一个新节点<span>
 var sp1 = document.createElement('span');
+// sp2一个子节点
 var sp2 = document.getElementById('childElement');
+// 通过子节点获取父节点
 var parent = sp2.parentNode;
+// 在sp2之前插入新创建的span节点
 var newnode = parent.insertBefore(sp1, sp2);
 console.log(newnode === sp1);   //ture
 ```
-after insertBefore:
+插入之后的html为:
 
 ```html
 <div id="parentElement">
@@ -350,15 +360,15 @@ after insertBefore:
 
 ##### [Node.removeChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild)
 
-The Node.removeChild() method removes a child node from the DOM. Returns removed node
+在指定的节点上删除一个子节点，返回这个删除的子节点
 
 ```javascript
 var oldChild = element.removeChild(child);
 ```
 
-* *child* is the child node to be removed from the DOM.
-* *element* is the parent node of child.
-* *oldChild* holds a reference to the removed child node. oldChild === child.
+* *child* 要被删除的节点
+* *element* 指定的父节点
+* *oldChild* 删除后的节点，oldChild === child.
 
 **Example**
 
@@ -376,14 +386,15 @@ console.log(throwawayNode === d_nested);    //true
 
 #### [Node.replaceChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/replaceChild)
 
-The Node.replaceChild() method replaces one child node of the specified element with another
+在指定的节点上用一个新的子节点替换另一个子节点
 
 ```javascript
 replacedNode = parentNode.replaceChild(newChild, oldChild);
 ```
-* *newChild* is the new node to replace oldChild. If it already exists in the DOM, it is first removed.
-* *oldChild* is the existing child to be replaced.
-* *replacedNode* is the replaced node. This is the same node as oldChild.
+* *newChild* 要替换的新的节点
+* *oldChild* 要被替换的子节点
+* *replacedNode* 被替换的节点，它和oldChild相同
+* *parentNode* 指定的父节点
 
 **Example**
 
@@ -393,19 +404,22 @@ replacedNode = parentNode.replaceChild(newChild, oldChild);
 </div>
 ```
 ```javascript
+// 创建一个新的节点span
 var sp1 = document.createElement('span');
+// 给新节点加属性
 sp1.setAttribute('id', 'newSpan');
-
+// 创建文本节点并加入到新创建的节点中
 var sp1_content = document.createTextNode('new replacement span element.');
 sp1.appendChild(sp1_content);
-
+// 获取子节点sp2
 var sp2 = document.getElementById('childSpan');
+// 获取父节点
 var parentDiv = sp2.parentNode;
-
+// 用sp1替换sp2
 var replaceNode = parentDiv.replaceChild(sp1, sp2);
 console.log(replaceNode === sp2);   //true
 ```
-after replace:
+替换之后的html如下:
 
 ```html
 <div>
@@ -416,6 +430,7 @@ after replace:
 #### [Node.normalize()](https://developer.mozilla.org/en-US/docs/Web/API/Node/normalize)
 
 The **Node.normalize()** method puts the specified node and all of its sub-tree into a "normalized" form. In a normalized sub-tree, no text nodes in the sub-tree are empty and there are no adjacent text nodes
+把父节点内的子节点格式化，如果有多个文本子节点，格式化后会变成一个子节点。
 
 **Example**
 
