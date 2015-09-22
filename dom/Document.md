@@ -180,7 +180,6 @@ Notes:
 
 ##### [Document.links](https://developer.mozilla.org/en-US/docs/Web/API/Document/links)
 
-The links property returns a collection of all <area> elements and <a> elements in a document with a value for the href attribute
 links属性返回文档中带`href`属性的`<area>`元素和`<a>`元素的集合
 
 ```html
@@ -212,11 +211,11 @@ document.location.href = 'http://www.mozilla.org';
 
 ##### [Document.domain](https://developer.mozilla.org/en-US/docs/Web/API/Document/domain)
 
-Gets/sets the domain portion of the origin of the current document, as used by the same origin policy.
+获取或设置文档的域名
 
 ##### [Document.activeElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/activeElement)
 
-Returns the currently focused element.
+返回当前文档焦点所在的元素
 
 **Example**
 
@@ -229,11 +228,11 @@ input.focus();
 console.log(document.activeElement === input);  //true
 ```
 
-*Note:* after document finish load, `document.activeElement` reference to `document.body`. during document load `document.activeElement` is null.
+注：当文档加载完成后，`document.activeElement` 返回`document.body`，在文档加载期间`document.activeElement`是null.
 
 ##### [Document.readyState](https://developer.mozilla.org/en-US/docs/Web/API/Document/readyState)
 
-Returns "loading" while the document is loading, "interactive" once it is finished parsing but still loading sub-resources, and "complete" once it has loaded.
+当文档正在加载时返回"loading"，解析完成但仍然加载资源返回"interactive"，所有的资源全部加载完成返回"complete"。
 
 ```javascript
 document.onreadystatechange = function () {
