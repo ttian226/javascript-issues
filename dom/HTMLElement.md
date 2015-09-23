@@ -12,7 +12,7 @@
 
 ##### HTMLElement.hidden
 
-指示元素是否隐藏
+指示元素是否隐藏，也可以通过改变hidden属性来设置元素隐藏或显示。
 
 ##### [HTMLElement.style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style)
 
