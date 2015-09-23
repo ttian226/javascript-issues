@@ -188,8 +188,8 @@ console.log(newstr);    // oranges are round, and oranges are juicy.
 var re = /(\w+)\s(\w+)/;
 var str = 'John Smith';
 // $1,$2为对应的分组信息
-var newstr = str.replace(re, '$1, $2');
-console.log(newstr);
+var newstr = str.replace(re, '$2, $1');
+console.log(newstr);  //Smith, John
 ```
 
 例：第二个参数为回调函数
@@ -236,6 +236,24 @@ console.log(str);
 // location
 // <p>URL: <strong>url</strong>, name: <strong>name</strong>, location: <strong>location</strong></p>
 ```
+
+例：
+
+```javascript
+var html = '<div id="t" data-name="rem" data-height="short">This element has data</div>';
+var reg = /[<>]/g;
+var nhtml = html.replace(reg, function (m) {
+    var o = {
+        '<': '&lt;',
+        '>': '&gt;'
+    };
+    return o[m];
+});
+
+console.log(nhtml); //&lt;div id="t" data-name="rem" data-height="short"&gt;This element has data&lt;/div&gt;
+```
+
+
 
 ##### [String.prototype.search()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search)
 

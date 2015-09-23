@@ -40,3 +40,43 @@ document.addEventListener('drop', function (e) {
 
 }, false);
 ```
+
+例子：<input>选择文件并预览
+
+```html
+<article>
+    <p id="status">File API &amp; FileReader API not supported</p>
+    <p><input type=file></p>
+    <p>Select an image from your machine to read the contents of the file without using a server</p>
+    <div id="holder"></div>
+</article>
+```
+
+```javascript
+var upload = document.getElementsByTagName('input')[0],
+    holder = document.getElementById('holder'),
+    status = document.getElementById('status');
+
+upload.addEventListener('change', function (e) {
+    e.preventDefault();
+
+    // 获取第一个File对象
+    var file = upload.files[0],
+        reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onload = function (event) {
+        var img = new Image();
+        img.src = event.target.result;
+
+        if (img.width > 560) { // 控制图片宽度
+            img.width = 560;
+        }
+
+        holder.innerHTML = '';
+        holder.appendChild(img);
+    };
+
+}, false);
+```
