@@ -250,24 +250,22 @@ document.onreadystatechange = function () {
 // complete
 ```
 
-*The [readystatechange](https://developer.mozilla.org/en-US/docs/Web/Events/readystatechange) event is fired when the readyState attribute of a document has changed*
+*[readystatechange](https://developer.mozilla.org/en-US/docs/Web/Events/readystatechange)事件当readyState属性改变时触发。*
 
 
 #### Methods
 
 ##### [Document.getElementById()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById)
 
-通过元素id返回元素的引用
-* element is a reference to an **Element** object, or null if an element with the specified ID is not in the document
-* id is a case-sensitive string representing the unique ID of the element being sought
+通过元素id返回元素的引用，如果在文档中找不到id，返回null(id是大小写敏感的)
 
 ##### [Document.getElementsByTagName()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByTagName)
 
-Returns an **HTMLCollection** of elements with the given tag name.
+根据标签名返回元素的集合（一个HTMLCollection对象）
 
 ##### [Document.getElementsByName()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByName)
 
-Returns a nodelist collection with a given name in the (X)HTML document.
+根据节点的属性name值返回元素的集合（一个NodeList对象）
 
 **Example**
 
@@ -277,29 +275,29 @@ Returns a nodelist collection with a given name in the (X)HTML document.
 <div id="div3" name="test"></div>
 ```
 ```javascript
-// divs return a HTMLCollection obj
+// 返回一个HTMLCollection对象
 var divs = document.getElementsByTagName('div');
 console.log(divs);
 
-// names return a nodelist obj
+// 返回一个NodeList对象
 var names = document.getElementsByName('test');
 console.log(names);
 
-// divs[0] and names[0] return a same reference to the Element of the first div
+// divs[0]和names[0]都返回了第一个div元素的引用
 console.log(divs[0] === names[0]);
 ```
 ##### [Document.getElementsByClassName()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName)
 
-Returns an array-like object(HTMLCollection) of all child elements which have all of the given class names. When called on the document object, the complete document is searched, including the root node. You may also call getElementsByClassName() on any element; it will return only elements which are descendants of the specified root element with the given class names.
+根据类名返回元素的集合（一个类数组的对象HTMLCollection），当作用在document上，将搜索整个文档的。也可以通过`element.getElementsByClassName()`作用在指定的节点元素上查找。
 
 ```javascript
 var elements = document.getElementsByClassName(names); // or:
 var elements = rootElement.getElementsByClassName(names);
 ```
 
-* elements is a live HTMLCollection of found elements
-* names is a string representing the list of class names to match; class names are separated by whitespace
-* getElementsByClassName can be called on any element, not only on the document. The element on which it is called will be used as the root of the search
+* elements是一个动态元素的集合。
+* names要查找的类名的字符串，如果有多个类名时，需要用空格分开。
+* getElementsByClassName可以作用在任意元素上，不仅仅是document对象
 
 **Example1**
 
@@ -331,13 +329,14 @@ console.log(lis instanceof HTMLCollection);  //true
 ```
 
 ##### [Document.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
-Returns the first element within the document (using depth-first pre-order traversal of the document's nodes) that matches the specified group of selectors.
+
+通过匹配css选择器，返回第一个匹配的元素。
 
 ```javascript
 var element = document.querySelector(selectors);
 ```
-* *element* is an element object.
-* *selectors* is a string containing one or more CSS selectors separated by commas
+* *element* 是返回的一个元素对象
+* *selectors* 是一组匹配的选择器
 
 **Example**
 
@@ -357,7 +356,8 @@ console.log(ul);    //<li class="test" id="l1"></li>
 
 
 ##### [Document.querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)
-Returns a list of the elements within the document (using depth-first pre-order traversal of the document's nodes) that match the specified group of selectors. The object returned is a **NodeList**.
+
+通过匹配css选择器返回NodeList对象
 
 **Example1**
 
@@ -375,7 +375,8 @@ var uls = document.querySelectorAll('.test');
 console.log(uls.length);    //5
 ```
 
-**Example2** returns a list of all div elements within the document with a class of either "note" or "alert":
+**Example2**
+返回div元素带有calss为'note'或'alert'元素的集合
 
 ```javascript
 var matches = document.querySelectorAll("div.note, div.alert");
@@ -383,39 +384,39 @@ var matches = document.querySelectorAll("div.note, div.alert");
 
 ##### [Document.createElement()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
 
-In an HTML document, the Document.createElement() method creates the specified HTML element or an HTMLUnknownElement if the given element name isn't a known one
+创建一个html元素
 
 ```javascript
 var element = document.createElement(tagName);
 ```
 
-* *element* is the created Element object.
-* *tagName* is a string that specifies the type of element to be created. The nodeName of the created element is initialized with the value of tagName. Don't use qualified names (like "html:a") with this method
+* *element* 创建后的元素对象
+* *tagName* 要创建元素的标签名
 
 
 ##### [Document.createTextNode()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode)
 
-Creates a new Text node.
+创建一个文本节点
 
 ```javascript
 var text = document.createTextNode(data);
 ```
-* *text* is a Text node.
-* *data* is a string containing the data to be put in the text node.
+* *text* 创建后的文本节点
+* *data* 文本字符串
 
 ##### [Document.createAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createAttribute)
 
-createAttribute creates a new attribute node, and returns it.
+创建一个属性节点
 
 ```javascript
 attribute = document.createAttribute(name)
 ```
-* *attribute* is an attribute node.
-* *name* is a string containing the name of the attribute.
+* *attribute* 创建的属性节点.
+* *name* 属性名.
 
 **Example**
 
-*init html is:*
+*初始html为:*
 
 ```html
 <div>
@@ -426,8 +427,11 @@ attribute = document.createAttribute(name)
 var sp1 = document.createElement('span');
 sp1.setAttribute('id', 'newSpan');
 
+// 创建属性节点a，属性名为myattr
 var a = document.createAttribute('myattr');
+// 设置属性值为my_value
 a.value = 'my_value';
+// 通过setAttributeNode设置节点属性
 sp1.setAttributeNode(a);
 
 var sp1_content = document.createTextNode('new replacement span element.');
@@ -438,7 +442,7 @@ var parentDiv = sp2.parentNode;
 
 parentDiv.appendChild(sp1);
 ```
-*after appendChild html is:*
+*现在html为:*
 
 ```html
 <div>
@@ -449,7 +453,7 @@ parentDiv.appendChild(sp1);
 
 ##### [Document.hasFocus()](https://developer.mozilla.org/en-US/docs/Web/API/Document/hasFocus)
 
-The **Document.hasFocus()** method returns a Boolean value indicating whether the document or any element inside the document has focus. This method can be used to determine whether the active element in a document has focus.
+指示文档或文档中的任何元素是否处于焦点状态。这个方法用来检查在文档中是否有焦点元素
 
 **Example**
 
