@@ -252,6 +252,15 @@ document.onreadystatechange = function () {
 
 *[readystatechange](https://developer.mozilla.org/en-US/docs/Web/Events/readystatechange)事件当readyState属性改变时触发。*
 
+##### [Document.cookie](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
+
+设置或读取当前文档的cookie
+
+* 读取所有cookie:
+`allCookies = document.cookie;`读取后的cookie是一个键值对的字符串
+
+* 设置新的cookie:
+`document.cookie = newCookie;`
 
 #### Methods
 
