@@ -1,5 +1,5 @@
 
-1. 实现javascript的异步，`alert(2)`虽然延时了0ms,但是执行顺序为：1，3，2。这样就保证setTimeout里面的语句在某一代码段中最后执行
+实现javascript的异步，`alert(2)`虽然延时了0ms,但是执行顺序为：1，3，2。这样就保证setTimeout里面的语句在某一代码段中最后执行
 
 ```javascript
 alert(1);
@@ -9,7 +9,7 @@ setTimeout(function () {
 alert(3);
 ```
 
-2. 在事件中，由于javascript是单线程的，在onmousedown时无法同时处理focus，select事件，导致这两个事件被忽略，使用setTimeout可以把这两个事件放在一个新的队列中执行。
+在事件中，由于javascript是单线程的，在onmousedown时无法同时处理focus，select事件，导致这两个事件被忽略，使用setTimeout可以把这两个事件放在一个新的队列中执行。
 
 ```html
 <body>
