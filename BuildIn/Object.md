@@ -20,14 +20,12 @@ function Shape() {
     this.x = 0;
     this.y = 0;
 }
-
 // 原型方法move
 Shape.prototype.move = function(x, y) {
     this.x += x;
     this.y += y;
     console.info('Shape moved.');
 };
-
 function Rectangle() {
     Shape.call(this); //调用Shape的构造函数，此时Rectangle也有两个属性x,y
 }
@@ -38,6 +36,23 @@ Rectangle.prototype.constructor = Rectangle;
 var r = new Rectangle();
 // 调用原型方法move
 r.move(10, 20);
+```
+
+##### [Object.keys()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
+
+返回对象可枚举的属性集合（不包括继承属性）
+
+```javascript
+var arr = ['a', 'b', 'c'];
+console.log(Object.keys(arr)); // console: ['0', '1', '2']
+
+// array like object
+var obj = { 0: 'a', 1: 'b', 2: 'c' };
+console.log(Object.keys(obj)); // console: ['0', '1', '2']
+
+// array like object with random key ordering
+var an_obj = { 100: 'a', 2: 'b', 7: 'c' };
+console.log(Object.keys(an_obj)); // console: ['2', '7', '100']
 ```
 
 ##### [Object.defineProperty()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
