@@ -11,6 +11,35 @@ Allows the addition of properties to all objects of type Object.
 
 #### Methods of the Object constructor
 
+##### [Object.create()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+
+用指定的原型对象创建一个新的原型对象
+
+```javascript
+function Shape() {
+    this.x = 0;
+    this.y = 0;
+}
+
+// 原型方法move
+Shape.prototype.move = function(x, y) {
+    this.x += x;
+    this.y += y;
+    console.info('Shape moved.');
+};
+
+function Rectangle() {
+    Shape.call(this); //调用Shape的构造函数，此时Rectangle也有两个属性x,y
+}
+// 用Shape的原型对象初始化Rectangle的原型对象，此时Rectangle继承了Shape的原型方法move
+Rectangle.prototype = Object.create(Shape.prototype);
+Rectangle.prototype.constructor = Rectangle;
+// 创建Rectangle的实例r
+var r = new Rectangle();
+// 调用原型方法move
+r.move(10, 20);
+```
+
 ##### [Object.defineProperty()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
 
 ##### [Object.defineProperties()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties)
