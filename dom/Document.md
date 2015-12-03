@@ -484,3 +484,23 @@ function myFunction() {
     }
 }
 ```
+
+##### [Document.createDocumentFragment()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createDocumentFragment)
+
+创建一个空的文档片段
+
+*多次使用节点方法(如：appendChild)绘制页面,每次都要刷新页面一次。效率也就大打折扣了，而使用document.createDocumentFragment()创建一个文档碎片，把所有的新结点附加在其上，然后把文档碎片的内容一次性添加到document中，这也就只需要一次页面刷新就可*
+
+```javascript
+var ul = document.getElementsByTagName('ul')[0];
+var docfrag = document.createDocumentFragment();
+var browserList = ["Internet Explorer", "Mozilla Firefox", "Safari", "Chrome", "Opera"];
+browserList.forEach(function (item) {
+  var li = document.createElement('li');
+  li.textContent = item;
+  docfrag.appendChild(li);
+});
+ul.appendChild(docfrag);
+```
+
+
