@@ -125,3 +125,11 @@ el.dataset.dateOfBirth = '1981-08-25';
 ```html
 <div id="user" data-id="1234567890" data-user="johndoe" data-date-of-birth="1981-08-25">John Doe</div>
 ```
+
+##### [HTMLElement.offsetHeight](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetHeight)
+
+返回元素的高度（包括垂直的padding,border）。比`Element.clientHeight`多出border的长度
+
+##### [HTMLElement.offsetWidth](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth)
+
+返回元素的宽度（包括padding,border）

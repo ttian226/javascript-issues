@@ -251,6 +251,24 @@ d.outerHTML = "<p>This paragraph replaced the original div.</p>";
 
 ##### [ParentNode.lastElementChild](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/lastElementChild)
 
+##### [Element.clientHeight](https://developer.mozilla.org/en-US/docs/Web/API/Element/clientHeight)
+
+返回元素padding + height的总高度(不包括border,margin的高度)
+
+获取窗口的高度：`document.documentElement.clientHeight`
+
+##### [Element.clientWidth](https://developer.mozilla.org/en-US/docs/Web/API/Element/clientWidth)
+
+返回元素padding + height的总宽度(不包括border,margin的宽度)
+
+##### [Element.scrollHeight](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight)
+
+返回元素内容区域的高度（它把padding计算在内，不包括margin）
+
+##### [Element.scrollWidth](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollWidth)
+
+返回元素内容区域的宽度
+
 #### Methods
 
 ##### [Element.getAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute)
