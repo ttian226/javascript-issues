@@ -133,3 +133,15 @@ el.dataset.dateOfBirth = '1981-08-25';
 ##### [HTMLElement.offsetWidth](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth)
 
 返回元素的宽度（包括padding,border）
+
+##### [HTMLElement.offsetParent](https://developer.mozilla.org/en-US/docs/Web/API/HTMLelement/offsetParent)
+
+返回一个包含这个元素并且离它最近的一个带有定位的元素
+
+##### [HTMLElement.offsetTop](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop)
+
+返回当前元素顶部（不包含margin）相对于offsetParent元素的偏移。
+
+##### [HTMLElement.offsetLeft](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetLeft)
+
+返回当前元素左侧（不包含margin）相对于offsetParent元素的偏移。
