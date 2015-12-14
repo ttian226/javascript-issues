@@ -262,6 +262,10 @@ document.onreadystatechange = function () {
 * 设置新的cookie:
 `document.cookie = newCookie;`
 
+##### [Document.defaultView](https://developer.mozilla.org/en-US/docs/Web/API/Document/defaultView)
+
+返回文档对应的window对象
+
 #### Methods
 
 ##### [Document.getElementById()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById)

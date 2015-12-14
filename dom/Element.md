@@ -269,6 +269,16 @@ d.outerHTML = "<p>This paragraph replaced the original div.</p>";
 
 返回元素内容区域的宽度
 
+##### [Element.clientTop](https://developer.mozilla.org/en-US/docs/Web/API/Element/clientTop)
+
+返回元素上边框（top broder）的宽度,不包括padding和margin
+
+##### [Element.clientLeft](https://developer.mozilla.org/en-US/docs/Web/API/Element/clientLeft)
+
+返回元素左边框(left border)的宽度,不包括padding和margin
+
+返回元素内容区域的宽度
+
 #### Methods
 
 ##### [Element.getAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute)
@@ -391,3 +401,19 @@ var matches = document.body.querySelectorAll('p');
 var el = document.querySelector('#test');
 var matches = el.querySelectorAll('div.highlighted > p');
 ```
+
+##### [Element.getBoundingClientRect()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
+
+返回元素相对于视窗的相对位置，返回是一个[DOMRect对象](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIDOMClientRect)
+
+DOMRect对象包括如下属性：
+1. bottom，视窗顶部距离元素底部的高度
+2. height，等价于`offsetHeight`
+3. left，视窗左侧距离元素左侧的宽度
+4. right，视窗左侧距离元素右侧的宽度
+5. top，视窗顶部距离元素顶部的高度
+6. width，等价于`offsetWidth`
+
+*left,right,top,bottom是相对于window而不是相对于document的*
+
+
