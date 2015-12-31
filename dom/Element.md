@@ -279,6 +279,14 @@ d.outerHTML = "<p>This paragraph replaced the original div.</p>";
 
 返回元素内容区域的宽度
 
+##### [Element.scrollTop](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTop)
+
+获取或设置元素内容区域垂直向上滚动的像素
+
+##### [Element.scrollLeft](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft)
+
+获取或设置元素内容区域水平向左滚动的像素
+
 #### Methods
 
 ##### [Element.getAttribute()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute)
