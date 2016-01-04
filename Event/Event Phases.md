@@ -47,7 +47,7 @@ ul.addEventListener('click', callback, false);
 li.addEventListener('click', callback, false);
 ```
 
-这个例子中，当点击`<li>`节点后，事件传播的路径为：li > ul > div > body > html
+这个例子中，当点击`<li>`节点后，事件传播的路径为：li > ul > div > body > html。[完整代码](http://jsbin.com/coseho/edit?html,js)
 
 使用`stopPropagation()`阻止事件冒泡。**它既可以阻止事件捕获，又可以阻止事件冒泡的传播。**
 
@@ -61,6 +61,8 @@ function callback(event) {
     // ...
 }
 ```
+
+[完整代码](http://jsbin.com/zelefe/edit?html,js)
 
 事件冒泡机制可以实现事件委托，我们没有必要监听某个指定的元素上的事件，而是在父节点上监听多个元素的事件。这样会大大提高性能。
 
@@ -91,49 +93,17 @@ child.addEventListener('click', function(event) {
 });
 ```
 
-**Example**
-
-```html
-<div class='overlay'>Click outside to close.</div>
-```
-
-```css
-* {
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-  font: bold 64px/70px helvetica;
-  background: #41B7D8;
-  color: red;
-}
-
-.overlay {
-  position: absolute;
-  top: 0; right: 0;
-  bottom: 0; left: 0;
-  height: 80%;
-  width: 80%;
-  margin: auto;
-  padding: 20px;
-  background: #FFF;
-  box-shadow: 1px 4px 40px rgba(0,0,0,0.5);
-}
-```
+#### 一个例子
 
 ```javascript
 var overlay = document.querySelector('.overlay');
 
+// 点击overlay时阻止冒泡
 overlay.addEventListener('click', function(event) {
     event.stopPropagation();
 });
 
-// Remove the overlay when a 'click'
-// is heard on the document (<html>) element
+// 点击外部时才响应事件
 document.addEventListener('click', function(event) {
     if (overlay.parentNode) {
         overlay.parentNode.removeChild(overlay);
@@ -141,4 +111,20 @@ document.addEventListener('click', function(event) {
 });
 ```
 
-*Reference to [An Introduction To DOM Events](http://www.smashingmagazine.com/2013/11/12/an-introduction-to-dom-events/)*
+[完整代码](http://jsbin.com/miyupu/edit?html,js,output)
+
+也可以不使用`stopPropagation()`来实现。
+
+```javascript
+document.addEventListener('click', function (e) {
+    if (e.target !== overlay) {
+        if (overlay.parentNode) {
+            overlay.parentNode.removeChild(overlay);
+        }
+    }
+});
+```
+
+[完整代码](http://jsbin.com/ceciwi/edit?html,js)
+
+*参考文章 [An Introduction To DOM Events](http://www.smashingmagazine.com/2013/11/12/an-introduction-to-dom-events/)*
