@@ -131,6 +131,8 @@ ELEMENT_NODE|1
 TEXT_NODE|3
 COMMENT_NODE|8
 DOCUMENT_NODE|9
+DOCUMENT_FRAGMENT_NODE|11
+ATTRIBUTE_NODE|2
 
 
 ##### [Node.nodeValue](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeValue)

@@ -424,4 +424,19 @@ DOMRect对象包括如下属性：
 
 *left,right,top,bottom是相对于window而不是相对于document的*
 
+##### [Element.setAttributeNode()](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttributeNode)
+
+给指定的元素添加一个新的属性，它接受一个Attr Object（nodeType=2）作为参数
+
+```javascript
+var sp1 = document.createElement('span');
+
+// 创建一个Attr Object
+var a = document.createAttribute('myattr');
+a.value = 'my_value';
+
+sp1.setAttributeNode(a);
+// <span myattr="my_value"></span>
+```
+
 

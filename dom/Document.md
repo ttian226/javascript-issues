@@ -198,7 +198,7 @@ alert(document.links.length);     //3
 
 ##### [Document.URL](https://developer.mozilla.org/en-US/docs/Web/API/Document/URL)
 
-返回当前文档的url
+返回当前文档的url，但不能设置url
 
 ```javascript
 document.location = 'http://www.mozilla.org';   //Equivalent to
