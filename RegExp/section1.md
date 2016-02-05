@@ -372,7 +372,7 @@ console.log(arr);   // ['']
 ```
 
 ```javascript
-var re = /a+/;
+var re = /a+?/; //量词后面加?是惰性匹配
 var str = 'aaabc';
 
 // 最多匹配1个'a'
