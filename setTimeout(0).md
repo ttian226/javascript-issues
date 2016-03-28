@@ -76,4 +76,3 @@ alert(3);
 ```
 
 *参考 [setTimeout(0)](http://www.cnblogs.com/fullhouse/archive/2012/10/10/2718542.html)*
-
