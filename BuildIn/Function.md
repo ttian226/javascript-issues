@@ -48,6 +48,8 @@ var bindGetX = getX.bind(obj);
 var x1 = bindGetX();    //81
 ```
 
+[code](http://plnkr.co/edit/BdQLdh2MAt87FfjO4b6q)
+
 例子2：
 
 ```javascript
@@ -72,6 +74,8 @@ var boundGetX = getX.bind(module);
 var x = boundGetX();    //81
 ```
 
+[code](http://plnkr.co/edit/XQ78dG9mCWEQnxwZIRxL)
+
 例子3：bind带参数
 
 ```javascript
@@ -90,6 +94,8 @@ var sum = addY();   //81+10+20=111
 var addY = add.bind(obj);
 var sum = addY(10, 20); //111
 ```
+
+[code](http://plnkr.co/edit/hplkJmmsouymcuFIozVg)
 
 例子4：
 
